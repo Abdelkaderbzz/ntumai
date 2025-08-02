@@ -35,6 +35,7 @@ import {
 import VendorTabs from "./screens/vendor/VendorTabs";
 import AppText from "./components/AppText";
 import EditProductScreen from "./screens/home/EditProductScreen";
+import ProductsScreen from "./screens/home/ProductsScreen";
 
 // Keep splash screen visible while loading fonts
 SplashScreen.preventAutoHideAsync();
@@ -218,6 +219,14 @@ export default function App() {
               <Stack.Screen
                 name='EditProduct'
                 component={EditProductScreen}
+                options={{
+                  headerShown: false,
+                  animation: 'slide_from_bottom',
+                }}
+              />
+              <Stack.Screen
+                name='ProductScreen'
+                component={ProductsScreen}
                 options={{
                   headerShown: false,
                   animation: 'slide_from_bottom',

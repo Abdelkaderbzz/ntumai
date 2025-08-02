@@ -20,6 +20,7 @@ import {
   Trash2,
 } from 'lucide-react-native';
 import Text from '../../components/Text';
+import { useNavigation } from '@react-navigation/native';
 
 interface Product {
   id: string;
@@ -41,6 +42,8 @@ interface Category {
 }
 
 export default function ProductsScreen() {
+  const navigation = useNavigation();
+
   const [activeTab, setActiveTab] = useState('Products');
   const [searchQuery, setSearchQuery] = useState('');
   const [showActionModal, setShowActionModal] = useState(false);
@@ -140,8 +143,7 @@ export default function ProductsScreen() {
   const handleEditProduct = (product: Product) => {
     // Navigate to edit screen
     console.log('Navigate to edit screen for product:', product.id);
-    // You can implement navigation here using React Navigation
-    // navigation.navigate('EditProduct', { product });
+    navigation.navigate('EditProduct' as never);
     setShowActionModal(false);
     setSelectedProduct(null);
   };
@@ -333,14 +335,14 @@ export default function ProductsScreen() {
         onRequestClose={() => setShowActionModal(false)}
       >
         <Pressable
-          className='flex-1 bg-black bg-opacity-50'
+          className='flex-1 bg-opacity-50'
           onPress={() => setShowActionModal(false)}
         >
           <View className='flex-1 justify-end'>
             <Pressable className='bg-white rounded-t-3xl p-6'>
               {/* Edit Option */}
               <TouchableOpacity
-                className='flex-row items-center py-4 border-b border-gray-100'
+                className='flex-row items-center py-4 '
                 onPress={() =>
                   selectedProduct && handleEditProduct(selectedProduct)
                 }
@@ -355,7 +357,7 @@ export default function ProductsScreen() {
               </TouchableOpacity>
 
               {/* Public Toggle Option */}
-              <View className='flex-row items-center py-4 border-b border-gray-100'>
+              <View className='flex-row items-center py-4 '>
                 <Globe size={20} color='#6B7280' />
                 <Text
                   style={{ fontFamily: 'Ubuntu-Regular' }}
