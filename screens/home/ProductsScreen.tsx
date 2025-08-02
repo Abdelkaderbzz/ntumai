@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  View,
   ScrollView,
   TouchableOpacity,
   TextInput,
@@ -21,6 +20,7 @@ import {
 } from 'lucide-react-native';
 import Text from '../../components/Text';
 import { useNavigation } from '@react-navigation/native';
+import { View } from 'react-native';
 
 interface Product {
   id: string;
@@ -34,6 +34,14 @@ interface Product {
 interface Promotion {
   id: string;
   name: string;
+  code: string;
+  discount: string;
+  startDate: string;
+  startTime: string;
+  endDate: string;
+  endTime: string;
+  status: 'Active' | 'Inactive';
+  image: string;
 }
 
 interface Category {
@@ -43,7 +51,6 @@ interface Category {
 
 export default function ProductsScreen() {
   const navigation = useNavigation();
-
   const [activeTab, setActiveTab] = useState('Products');
   const [searchQuery, setSearchQuery] = useState('');
   const [showActionModal, setShowActionModal] = useState(false);
@@ -107,8 +114,89 @@ export default function ProductsScreen() {
     },
   ]);
 
-  // Mock data for promotions and categories
-  const [promotions, setPromotions] = useState<Promotion[]>([]);
+  // Mock data for promotions
+  const [promotions, setPromotions] = useState<Promotion[]>([
+    {
+      id: '1',
+      name: 'Store wide promotion',
+      code: 'B28769',
+      discount: '50% OFF',
+      startDate: '07-02-2025',
+      startTime: '08:00am',
+      endDate: '03-02-2025',
+      endTime: '09:00am',
+      status: 'Active',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+    {
+      id: '2',
+      name: 'Bonus promotion',
+      code: 'B28768',
+      discount: '25% OFF',
+      startDate: '07-02-2025',
+      startTime: '08:00am',
+      endDate: '03-02-2025',
+      endTime: '09:00am',
+      status: 'Active',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+    {
+      id: '3',
+      name: 'Store wide promotion',
+      code: 'B28767',
+      discount: '50% OFF',
+      startDate: '07-02-2025',
+      startTime: '08:00am',
+      endDate: '03-02-2025',
+      endTime: '09:00am',
+      status: 'Inactive',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+    {
+      id: '4',
+      name: 'Mini Pack promotion',
+      code: 'B28766',
+      discount: '10% OFF',
+      startDate: '07-02-2025',
+      startTime: '08:00am',
+      endDate: '03-02-2025',
+      endTime: '09:00am',
+      status: 'Active',
+      image:
+        'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop',
+    },
+    {
+      id: '5',
+      name: 'Store wide promotion',
+      code: 'B28765',
+      discount: '50% OFF',
+      startDate: '07-02-2025',
+      startTime: '08:00am',
+      endDate: '03-02-2025',
+      endTime: '09:00am',
+      status: 'Active',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+    {
+      id: '6',
+      name: 'Extravagant Promo',
+      code: 'B28764',
+      discount: '50% OFF',
+      startDate: '07-02-2025',
+      startTime: '08:00am',
+      endDate: '03-02-2025',
+      endTime: '09:00am',
+      status: 'Inactive',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+  ]);
+
+  // Mock data for categories
   const [categories, setCategories] = useState<Category[]>([]);
 
   const getAddButtonText = () => {
@@ -156,7 +244,7 @@ export default function ProductsScreen() {
   const renderProducts = () => (
     <View className='px-4'>
       {products.map((product) => (
-        <View key={product.id} className='bg-gray-100 rounded-xl p-4 mb-3'>
+        <View key={product.id} className='bg-[#eeeeee] rounded-3xl p-4 mb-3'>
           <View className='flex-row items-center'>
             {/* Product Image */}
             <View className='w-16 h-16 rounded-full overflow-hidden mr-4'>
@@ -213,22 +301,73 @@ export default function ProductsScreen() {
 
   const renderPromotions = () => (
     <View className='px-4'>
-      {promotions.length === 0 ? (
-        <View className='bg-white rounded-xl p-6 items-center'>
-          <Text
-            style={{ fontFamily: 'Ubuntu-Regular' }}
-            className='text-gray-500 mt-4'
-          >
-            No promotions yet
-          </Text>
-        </View>
-      ) : (
-        promotions.map((promo) => (
-          <View key={promo.id} className='bg-white rounded-xl p-4 mb-3'>
-            <Text>{promo.name}</Text>
+      {promotions.map((promo) => (
+        <View key={promo.id} className='bg-[#eeeeee] rounded-3xl  mb-3'>
+          <View className='h-[140px] flex-row justify-between items-start'>
+            {/* Promotion Image */}
+            <View className='w-[140px] mr-3 h-full relative'>
+              <Image
+                source={{ uri: promo.image }}
+                className='w-full h-full rounded-3xl'
+                resizeMode='cover'
+              />
+              {/* Status Badge */}
+              <View
+                className={`absolute top-8 left-0 px-2 py-1 rounded-tr-full rounded-br-full ${
+                  promo.status === 'Active' ? 'bg-[#40af97]' : 'bg-gray-400'
+                }`}
+              >
+                <Text className='text-white text-xl font-medium'>
+                  {promo.status}
+                </Text>
+              </View>
+            </View>
+
+            {/* Promotion Details */}
+            <View className='flex-1 h-full pt-2'>
+              <Text
+                style={{ fontFamily: 'Ubuntu-Medium' }}
+                className='font-semibold text-gray-900 text-lg mb-1'
+              >
+                {promo.name}
+              </Text>
+              <Text
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+                className='text-gray-900text-sm mb-2'
+              >
+                Code: {promo.code}
+              </Text>
+              <View className='bg-[#ed4877] rounded-full px-3 py-1 self-start mb-2'>
+                <Text
+                  style={{ fontFamily: 'Ubuntu-Medium' }}
+                  className='text-white font-medium'
+                >
+                  {promo.discount}
+                </Text>
+              </View>
+              <Text
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+                className='text-gray-500 text-sm'
+              >
+                {promo.startDate} {promo.startTime}
+              </Text>
+              <Text
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+                className='text-gray-500 text-sm'
+              >
+                {promo.endDate} {promo.endTime}
+              </Text>
+            </View>
+
+            {/* Action Menu */}
+            <View className='h-full flex-col align-center justify-center pr-3'>
+              <TouchableOpacity className='p-2 items-center'>
+                <Text className='text-[#43b7a2] text-2xl font-bold'>⋮</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        ))
-      )}
+        </View>
+      ))}
     </View>
   );
 
