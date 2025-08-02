@@ -1,0 +1,76 @@
+{
+  "expo": {
+    "name": "NTUMAI",
+    "slug": "NTUMAI",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/ntumai_logo.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "fonts": [
+        {
+          "path": "./assets/fonts/Ubuntu-Regular.ttf",
+          "weight": "normal",
+          "style": "normal"
+        },
+        {
+          "path": "./assets/fonts/Ubuntu-Bold.ttf",
+          "weight": "bold",
+          "style": "normal"
+        },
+        {
+          "path": "./assets/fonts/Ubuntu-Light.ttf",
+          "weight": "normal",
+          "style": "italic"
+        },
+        {
+          "path": "./assets/fonts/Ubuntu-Medium.ttf",
+          "weight": "medium",
+          "style": "normal"
+        }
+      ]
+    },
+    "android": {
+      "icon": "./assets/ntumai_logo.png",
+      "edgeToEdgeEnabled": true,
+      "fonts": [
+        {
+          "path": "./assets/fonts/Ubuntu-Regular.ttf",
+          "weight": "normal",
+          "style": "normal"
+        },
+        {
+          "path": "./assets/fonts/Ubuntu-Bold.ttf",
+          "weight": "bold",
+          "style": "normal"
+        },
+        {
+          "path": "./assets/fonts/Ubuntu-Light.ttf",
+          "weight": "normal",
+          "style": "italic"
+        },
+        {
+          "path": "./assets/fonts/Ubuntu-Medium.ttf",
+          "weight": "medium",
+          "style": "normal"
+        }
+      ],
+      "package": "com.dannydc.NTUMAI"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9eac9c8e-770e-4955-8f73-5453db7ba4bc"
+      }
+    }
+  }
+}
