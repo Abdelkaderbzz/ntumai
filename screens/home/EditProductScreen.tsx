@@ -7,20 +7,24 @@ import {
   StatusBar,
   SafeAreaView,
   Switch,
+  Modal,
+  Pressable,
 } from 'react-native';
 import {
   ArrowLeft,
   ChevronDown,
   ChevronUp,
   Package,
-  FolderOpen,
+  Layers,
   Settings,
   Tag,
-  ArrowRight,
+  CornerDownLeft,
   DollarSign,
   Image as ImageIcon,
+  Trash2,
 } from 'lucide-react-native';
 import Text from '../../components/Text';
+import { useNavigation } from '@react-navigation/native';
 
 interface Product {
   id: string;
@@ -34,12 +38,11 @@ interface Product {
 }
 
 export default function EditProductScreen() {
-  const [expandedSections, setExpandedSections] = useState({
-    generalInfo: true,
-    media: false,
-    variant: false,
-    option: false,
-  });
+  const navigation = useNavigation();
+  const [expandedSection, setExpandedSection] = useState<string | null>(
+    'generalInfo'
+  );
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const [product, setProduct] = useState<Product>({
     id: '1',
@@ -52,11 +55,8 @@ export default function EditProductScreen() {
     isRefundable: true,
   });
 
-  const toggleSection = (section: keyof typeof expandedSections) => {
-    setExpandedSections((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
+  const toggleSection = (section: string) => {
+    setExpandedSection(expandedSection === section ? null : section);
   };
 
   const updateProduct = (field: keyof Product, value: any) => {
@@ -64,6 +64,17 @@ export default function EditProductScreen() {
       ...prev,
       [field]: value,
     }));
+  };
+
+  const handleDeleteProduct = () => {
+    // Handle product deletion logic here
+    console.log('Product deleted');
+    setShowDeleteModal(false);
+    navigation.goBack();
+  };
+
+  const openDeleteModal = () => {
+    setShowDeleteModal(true);
   };
 
   const renderGeneralInfo = () => (
@@ -96,7 +107,7 @@ export default function EditProductScreen() {
           Categories
         </Text>
         <View className='bg-gray-100 rounded-lg px-3 py-3 flex-row items-center'>
-          <FolderOpen size={20} color='#6B7280' />
+          <Layers size={20} color='#6B7280' />
           <TextInput
             className='flex-1 ml-2 text-gray-900'
             value={product.category}
@@ -148,7 +159,7 @@ export default function EditProductScreen() {
       {/* Refundable */}
       <View className='flex-row items-center justify-between'>
         <View className='flex-row items-center'>
-          <ArrowRight size={20} color='#6B7280' />
+          <CornerDownLeft size={20} color='#6B7280' />
           <Text
             style={{ fontFamily: 'Ubuntu-Regular' }}
             className='text-gray-900 ml-2'
@@ -212,23 +223,13 @@ export default function EditProductScreen() {
       {/* Add Cover */}
       <View className='bg-gray-100 rounded-lg p-6 items-center'>
         <ImageIcon size={40} color='#08AF97' />
-        <Text
-          style={{ fontFamily: 'Ubuntu-Medium' }}
-          className='text-gray-900 mt-2'
-        >
-          Add Cover
-        </Text>
+        <Text className='text-gray-900 mt-2'>Add Cover</Text>
       </View>
 
       {/* Add Product */}
       <View className='bg-gray-100 rounded-lg p-6 items-center'>
         <ImageIcon size={40} color='#08AF97' />
-        <Text
-          style={{ fontFamily: 'Ubuntu-Medium' }}
-          className='text-gray-900 mt-2'
-        >
-          Add Product
-        </Text>
+        <Text className='text-gray-900 mt-2'>Add Product</Text>
         <Text
           style={{ fontFamily: 'Ubuntu-Regular' }}
           className='text-gray-500 text-sm mt-1'
@@ -240,18 +241,77 @@ export default function EditProductScreen() {
   );
 
   const renderVariant = () => (
-    <View className='bg-gray-100 rounded-lg p-6 items-center'>
-      <Text style={{ fontFamily: 'Ubuntu-Regular' }} className='text-gray-500'>
-        Variant options will appear here
-      </Text>
+    <View className='space-y-4'>
+      {/* Variant Name */}
+      <View>
+        <Text className='text-gray-600 text-sm'>Variant name</Text>
+        <View className='bg-[#f8f9fa] rounded-[40px] py-2 px-[9px] flex-row items-center justify-between'>
+          <Package size={20} color='#6B7280' />
+          <TextInput
+            className='flex-1 ml-2 text-gray-900'
+            value='Brand 0751 Discount Offer'
+            placeholder='Enter variant name'
+          />
+          <TouchableOpacity className='w-8 h-8 rounded-full ml-2 border-2 border-[#40af97] flex items-center justify-center'>
+            <Text className='text-[#40af97] text-xl font-bold pb-1'>+</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Fixed Price */}
+      <View>
+        <Text className='text-gray-600 text-sm'>Fixed Price</Text>
+        <View className='bg-[#f8f9fa] rounded-[40px] py-2 px-[9px] flex-row items-center justify-between'>
+          <DollarSign size={20} color='#6B7280' />
+          <TextInput
+            className='flex-1 ml-2 text-gray-900'
+            value='$ 250.00'
+            placeholder='0.00'
+            keyboardType='numeric'
+          />
+        </View>
+      </View>
+
+      {/* Informational Text */}
+      <View className='items-center pt-2'>
+        <Text className='text-gray-500 text-sm text-center'>
+          The product price will be the same for all variants
+        </Text>
+      </View>
     </View>
   );
 
   const renderOption = () => (
-    <View className='bg-gray-100 rounded-lg p-6 items-center'>
-      <Text style={{ fontFamily: 'Ubuntu-Regular' }} className='text-gray-500'>
-        Option settings will appear here
-      </Text>
+    <View className='space-y-4'>
+      {/* Copy from other product button */}
+      <TouchableOpacity className='bg-white border-2 border-[#40af97] rounded-full py-4 px-6 items-center'>
+        <Text className='text-[#40af97] text-lg'>Copy from other product</Text>
+      </TouchableOpacity>
+
+      {/* Create New option label */}
+      <View className='mt-4'>
+        <Text
+          style={{ fontFamily: 'Ubuntu-Regular' }}
+          className='text-[#909090] text-l pb-4'
+        >
+          Create New option
+        </Text>
+      </View>
+
+      {/* Option Name Input */}
+      <View>
+        <View className='bg-white rounded-full px-3 py-3 flex-row items-center justify-between'>
+          <Package size={20} color='#6B7280' />
+          <TextInput
+            className='flex-1 ml-2 text-gray-900'
+            placeholder='Option Name'
+            placeholderTextColor='#9CA3AF'
+          />
+          <TouchableOpacity className='w-8 h-8 rounded-full ml-2 border-2 border-[#40af97] flex items-center justify-center'>
+            <Text className='text-[#40af97] text-xl font-bold pb-1'>+</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 
@@ -261,14 +321,12 @@ export default function EditProductScreen() {
 
       {/* Header */}
       <View className='bg-[#08AF97] px-4 py-4'>
-        <TouchableOpacity className='flex-row items-center'>
+        <TouchableOpacity
+          className='flex-row items-center'
+          onPress={() => navigation.goBack()}
+        >
           <ArrowLeft size={24} color='white' />
-          <Text
-            style={{ fontFamily: 'Ubuntu-Medium' }}
-            className='text-white text-lg ml-2'
-          >
-            Back
-          </Text>
+          <Text className='text-white text-lg ml-2'>Back</Text>
         </TouchableOpacity>
       </View>
 
@@ -276,7 +334,7 @@ export default function EditProductScreen() {
         {/* Title */}
         <Text
           style={{ fontFamily: 'Ubuntu-Bold' }}
-          className='text-gray-900 text-2xl text-center mb-6'
+          className='text-[#909090] text-2xl text-center mb-6'
         >
           Edit Product
         </Text>
@@ -289,19 +347,14 @@ export default function EditProductScreen() {
               className='flex-row items-center justify-between py-3'
               onPress={() => toggleSection('generalInfo')}
             >
-              <Text
-                style={{ fontFamily: 'Ubuntu-Medium' }}
-                className='text-gray-900 text-lg'
-              >
-                General Info
-              </Text>
-              {expandedSections.generalInfo ? (
+              <Text className='text-gray-900 text-lg'>General Info</Text>
+              {expandedSection === 'generalInfo' ? (
                 <ChevronUp size={20} color='#6B7280' />
               ) : (
                 <ChevronDown size={20} color='#6B7280' />
               )}
             </TouchableOpacity>
-            {expandedSections.generalInfo && (
+            {expandedSection === 'generalInfo' && (
               <View className='pt-4'>{renderGeneralInfo()}</View>
             )}
           </View>
@@ -314,19 +367,14 @@ export default function EditProductScreen() {
               className='flex-row items-center justify-between py-3'
               onPress={() => toggleSection('media')}
             >
-              <Text
-                style={{ fontFamily: 'Ubuntu-Medium' }}
-                className='text-gray-900 text-lg'
-              >
-                Media
-              </Text>
-              {expandedSections.media ? (
+              <Text className='text-gray-900 text-lg'>Media</Text>
+              {expandedSection === 'media' ? (
                 <ChevronUp size={20} color='#6B7280' />
               ) : (
                 <ChevronDown size={20} color='#6B7280' />
               )}
             </TouchableOpacity>
-            {expandedSections.media && (
+            {expandedSection === 'media' && (
               <View className='pt-4'>{renderMedia()}</View>
             )}
           </View>
@@ -339,19 +387,14 @@ export default function EditProductScreen() {
               className='flex-row items-center justify-between py-3'
               onPress={() => toggleSection('variant')}
             >
-              <Text
-                style={{ fontFamily: 'Ubuntu-Medium' }}
-                className='text-gray-900 text-lg'
-              >
-                Variant
-              </Text>
-              {expandedSections.variant ? (
+              <Text className='text-gray-900 text-lg'>Variant</Text>
+              {expandedSection === 'variant' ? (
                 <ChevronUp size={20} color='#6B7280' />
               ) : (
                 <ChevronDown size={20} color='#6B7280' />
               )}
             </TouchableOpacity>
-            {expandedSections.variant && (
+            {expandedSection === 'variant' && (
               <View className='pt-4'>{renderVariant()}</View>
             )}
           </View>
@@ -364,36 +407,73 @@ export default function EditProductScreen() {
               className='flex-row items-center justify-between py-3'
               onPress={() => toggleSection('option')}
             >
-              <Text
-                style={{ fontFamily: 'Ubuntu-Medium' }}
-                className='text-gray-900 text-lg'
-              >
-                Option
-              </Text>
-              {expandedSections.option ? (
+              <Text className='text-gray-900 text-lg'>Option</Text>
+              {expandedSection === 'option' ? (
                 <ChevronUp size={20} color='#6B7280' />
               ) : (
                 <ChevronDown size={20} color='#6B7280' />
               )}
             </TouchableOpacity>
-            {expandedSections.option && (
+            {expandedSection === 'option' && (
               <View className='pt-4'>{renderOption()}</View>
             )}
+          </View>
+
+          {/* Delete this item section */}
+          <View>
+            <TouchableOpacity
+              className='bg-gray-100 rounded-lg pt-4 flex-row items-center justify-between border-t border-gray-200'
+              onPress={openDeleteModal}
+            >
+              <Text className='text-[#ed4877] text-lg flex-1'>
+                Delete this item
+              </Text>
+              <Trash2 size={20} color='#ed4877' />
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
 
-      {/* Save Button */}
-      <View className='px-4 py-4'>
-        <TouchableOpacity className='bg-[#08AF97] rounded-lg py-4 items-center'>
-          <Text
-            style={{ fontFamily: 'Ubuntu-Medium' }}
-            className='text-white text-lg'
-          >
-            Save
-          </Text>
+      {/* Save Button - Fixed at bottom right */}
+      <View className='absolute bottom-4 right-4'>
+        <TouchableOpacity className='bg-[#08AF97] rounded-full py-3 px-6 items-center'>
+          <Text className='text-white text-base font-medium'>Save</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Delete Confirmation Modal */}
+      <Modal
+        visible={showDeleteModal}
+        animationType='fade'
+        transparent={true}
+        onRequestClose={() => setShowDeleteModal(false)}
+      >
+        <Pressable
+          className='flex-1 bg-[#a6a6a673] bg-opacity-50 justify-center items-center'
+          onPress={() => setShowDeleteModal(false)}
+        >
+          <View className='bg-white rounded-xl p-6 w-80 mx-4'>
+            <Text className='text-gray-900 text-xl mb-4'>Delete Product</Text>
+            <Text className='text-gray-600 text-sm mb-6'>
+              Are you sure you want to delete this product?
+            </Text>
+            <View className='flex-row space-x-3 gap-6'>
+              <TouchableOpacity
+                className='flex-1 bg-white border border-[#08AF97] rounded-full py-3 items-center'
+                onPress={() => setShowDeleteModal(false)}
+              >
+                <Text className='text-[#08AF97] text-base'>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                className='flex-1 bg-[#08AF97] rounded-full py-3 items-center'
+                onPress={handleDeleteProduct}
+              >
+                <Text className='text-white text-base'>Okay</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Pressable>
+      </Modal>
     </SafeAreaView>
   );
 }
