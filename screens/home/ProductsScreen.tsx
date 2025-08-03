@@ -17,6 +17,7 @@ import {
   Edit,
   Globe,
   Trash2,
+  Clock4,
 } from 'lucide-react-native';
 import Text from '../../components/Text';
 import { useNavigation } from '@react-navigation/native';
@@ -47,6 +48,13 @@ interface Promotion {
 interface Category {
   id: string;
   name: string;
+  status: 'Active' | 'Inactive';
+  image: string;
+}
+interface Brand {
+  id: string;
+  name: string;
+  image: string;
 }
 
 export default function ProductsScreen() {
@@ -55,6 +63,13 @@ export default function ProductsScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showActionModal, setShowActionModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedBrand, setSelectedBrand] = useState<Brand | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
+    null
+  );
+  const [selectedPromotion, setSelectedPromotion] = useState<Promotion | null>(
+    null
+  );
 
   // Mock data for products
   const [products, setProducts] = useState<Product[]>([
@@ -197,7 +212,62 @@ export default function ProductsScreen() {
   ]);
 
   // Mock data for categories
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<Category[]>([
+    {
+      id: '1',
+      name: 'Beef',
+      status: 'Active',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+    {
+      id: '2',
+      name: 'Meat',
+      status: 'Inactive',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+    {
+      id: '3',
+      name: 'Soya',
+      status: 'Active',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+    {
+      id: '4',
+      name: 'Chicken',
+      status: 'Inactive',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+  ]);
+  const [brands, setBrands] = useState<Brand[]>([
+    {
+      id: '1',
+      name: 'Beef',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+    {
+      id: '2',
+      name: 'Meat',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+    {
+      id: '3',
+      name: 'Soya',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+    {
+      id: '4',
+      name: 'Chicken',
+      image:
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop',
+    },
+  ]);
 
   const getAddButtonText = () => {
     switch (activeTab) {
@@ -208,7 +278,7 @@ export default function ProductsScreen() {
       case 'Categories':
         return 'Add Category';
       default:
-        return 'Add';
+        return 'Add Brand';
     }
   };
 
@@ -240,7 +310,64 @@ export default function ProductsScreen() {
     setSelectedProduct(product);
     setShowActionModal(true);
   };
+  const handleDeletePromotion = (promotionId: string) => {
+    setPromotions(
+      promotions.filter((promotion) => promotion.id !== promotionId)
+    );
+    setShowActionModal(false);
+    setSelectedPromotion(null);
+  };
 
+  const handleEditPromotion = (promotion: Promotion) => {
+    // Navigate to edit screen
+    console.log('Navigate to edit screen for promotion:', promotion.id);
+    navigation.navigate('EditPromotion' as never);
+    setShowActionModal(false);
+    setSelectedPromotion(null);
+  };
+
+  const openActionModalPromotion = (promotion: Promotion) => {
+    setSelectedPromotion(promotion);
+    setShowActionModal(true);
+  };
+  const openActionModalBrand = (brand: Brand) => {
+    setSelectedBrand(brand);
+    setShowActionModal(true);
+  };
+  const handleDeleteCategory = (categoryId: string) => {
+    setCategories(
+      categories.filter((category) => category.id !== categoryId)
+    );
+    setShowActionModal(false);
+    setSelectedCategory(null);
+  };
+
+  const handleEditCategory = (category: Category) => {
+    // Navigate to edit screen
+    console.log('Navigate to edit screen for category:', category.id);
+    navigation.navigate('EditCategory' as never);
+    setShowActionModal(false);
+    setSelectedCategory(null);
+  };
+
+  const openActionModalCategory = (category: Category) => {
+    setSelectedCategory(category);
+    setShowActionModal(true);
+  };
+
+  const handleCreate = () =>
+  {
+    const buttonLable=getAddButtonText()
+    if (buttonLable == 'Add Promotions') {
+      navigation.navigate('CreatePromotion' as never);
+    } else if (buttonLable =='Add Category')
+    {
+      navigation.navigate('CreateCategory' as never);
+    } else if (buttonLable =='Add Brand')
+    {
+      navigation.navigate('CreateBrand' as never);
+    }
+  };
   const renderProducts = () => (
     <View className='px-4'>
       {products.map((product) => (
@@ -257,22 +384,13 @@ export default function ProductsScreen() {
 
             {/* Product Details */}
             <View className='flex-1'>
-              <Text
-                style={{ fontFamily: 'Ubuntu-Medium' }}
-                className='font-semibold text-gray-900 text-lg mb-1'
-              >
+              <Text className='font-semibold text-gray-900 text-lg mb-1'>
                 {product.name}
               </Text>
-              <Text
-                style={{ fontFamily: 'Ubuntu-Regular' }}
-                className='text-gray-700 text-sm mb-1'
-              >
+              <Text className='text-gray-700 text-sm mb-1'>
                 Price ${product.price.toFixed(2)}
               </Text>
-              <Text
-                style={{ fontFamily: 'Ubuntu-Regular' }}
-                className='text-gray-700 text-sm'
-              >
+              <Text className='text-gray-700 text-sm'>
                 Rating: {product.rating}/5 ★
               </Text>
             </View>
@@ -302,7 +420,11 @@ export default function ProductsScreen() {
   const renderPromotions = () => (
     <View className='px-4'>
       {promotions.map((promo) => (
-        <View key={promo.id} className='bg-[#eeeeee] rounded-3xl  mb-3'>
+        <TouchableOpacity
+          key={promo.id}
+          className='bg-[#eeeeee] rounded-3xl mb-3'
+          onPress={() => navigation.navigate('PreviewPromotion' as never)}
+        >
           <View className='h-[140px] flex-row justify-between items-start'>
             {/* Promotion Image */}
             <View className='w-[140px] mr-3 h-full relative'>
@@ -311,7 +433,6 @@ export default function ProductsScreen() {
                 className='w-full h-full rounded-3xl'
                 resizeMode='cover'
               />
-              {/* Status Badge */}
               <View
                 className={`absolute top-8 left-0 px-2 py-1 rounded-tr-full rounded-br-full ${
                   promo.status === 'Active' ? 'bg-[#40af97]' : 'bg-gray-400'
@@ -325,70 +446,118 @@ export default function ProductsScreen() {
 
             {/* Promotion Details */}
             <View className='flex-1 h-full pt-2'>
-              <Text
-                style={{ fontFamily: 'Ubuntu-Medium' }}
-                className='font-semibold text-gray-900 text-lg mb-1'
-              >
+              <Text className='font-semibold text-gray-900 text-lg mb-1'>
                 {promo.name}
               </Text>
-              <Text
-                style={{ fontFamily: 'Ubuntu-Regular' }}
-                className='text-gray-900text-sm mb-2'
-              >
+              <Text className='text-gray-900text-sm mb-2'>
                 Code: {promo.code}
               </Text>
               <View className='bg-[#ed4877] rounded-full px-3 py-1 self-start mb-2'>
-                <Text
-                  style={{ fontFamily: 'Ubuntu-Medium' }}
-                  className='text-white font-medium'
-                >
-                  {promo.discount}
-                </Text>
+                <Text className='text-white font-medium'>{promo.discount}</Text>
               </View>
-              <Text
-                style={{ fontFamily: 'Ubuntu-Regular' }}
-                className='text-gray-500 text-sm'
-              >
+              <Text className='text-gray-500 text-sm'>
                 {promo.startDate} {promo.startTime}
               </Text>
-              <Text
-                style={{ fontFamily: 'Ubuntu-Regular' }}
-                className='text-gray-500 text-sm'
-              >
+              <Text className='text-gray-500 text-sm'>
                 {promo.endDate} {promo.endTime}
               </Text>
             </View>
 
             {/* Action Menu */}
             <View className='h-full flex-col align-center justify-center pr-3'>
-              <TouchableOpacity className='p-2 items-center'>
+              <TouchableOpacity
+                onPress={() => openActionModalPromotion(promo)}
+                className='p-2 items-center'
+              >
                 <Text className='text-[#43b7a2] text-2xl font-bold'>⋮</Text>
               </TouchableOpacity>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
       ))}
     </View>
   );
 
   const renderCategories = () => (
     <View className='px-4'>
-      {categories.length === 0 ? (
-        <View className='bg-white rounded-xl p-6 items-center'>
-          <Text
-            style={{ fontFamily: 'Ubuntu-Regular' }}
-            className='text-gray-500 mt-4'
+      <View className='flex-row flex-wrap justify-between'>
+        {categories.map((category) => (
+          <TouchableOpacity
+            onPress={() => handleCreate()}
+            key={category.id}
+            className='w-[48%] bg-[#eeeeee] rounded-2xl p-4 mb-4 relative'
           >
-            No categories yet
-          </Text>
-        </View>
-      ) : (
-        categories.map((category) => (
-          <View key={category.id} className='bg-white rounded-xl p-4 mb-3'>
-            <Text>{category.name}</Text>
-          </View>
-        ))
-      )}
+            {/* Status Tag */}
+            <View
+              className={`absolute top-8 z-20 left-0 px-3 py-1 rounded-tr-full rounded-br-full shadow-lg ${
+                category.status === 'Active' ? 'bg-[#0aaf97]' : 'bg-[#909090]'
+              }`}
+            >
+              <Text className='text-white text-xl font-medium'>
+                {category.status}
+              </Text>
+            </View>
+            {/* Ellipsis Menu */}
+
+            <TouchableOpacity
+              onPress={() => openActionModalCategory(category)}
+              className='absolute top-2 right-2 p-1'
+            >
+              <Text className='color-primary text-2xl font-bold'>⋮</Text>
+            </TouchableOpacity>
+            {/* Category Image */}
+            <View className='items-center mt-6 mb-3'>
+              <View className='w-32 h-32 rounded-3xl overflow-hidden relative'>
+                <Image
+                  source={{ uri: category.image }}
+                  className='w-full h-full absolute'
+                  resizeMode='cover'
+                />
+                <View className='w-full h-full absolute opacity-25 bg-green-500 bg-opacity-50'></View>
+              </View>
+            </View>
+            {/* Category Label */}
+            <Text className='text-center text-black font-medium text-base'>
+              {category.name}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
+  );
+  const renderBrands = () => (
+    <View className='px-4'>
+      <View className='flex-row flex-wrap justify-between'>
+        {brands.map((brand) => (
+          <TouchableOpacity
+            onPress={() => handleCreate()}
+            key={brand.id}
+            className='w-[48%] bg-[#eeeeee] rounded-2xl p-4 mb-4 relative'
+          >
+            <TouchableOpacity
+              onPress={() => openActionModalBrand(brand)}
+              className='absolute top-2 right-2 p-1'
+            >
+              <Text className='color-primary text-2xl font-bold'>⋮</Text>
+            </TouchableOpacity>
+            {/* Brand Image */}
+            <View className='items-center mt-6 mb-3'>
+              <View className='w-32 h-32 rounded-3xl overflow-hidden relative'>
+                <Image
+                  source={{ uri: brand.image }}
+                  className='w-full h-full absolute'
+                  resizeMode='cover'
+                />
+                <View className='w-full h-full absolute opacity-25 bg-green-500 bg-opacity-50'></View>
+              </View>
+            </View>
+            {/* Brand Label */}
+            <Text className='text-center text-black font-medium text-base'>
+              {brand.name}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
     </View>
   );
 
@@ -398,7 +567,7 @@ export default function ProductsScreen() {
       <View className='bg-white px-4 py-4 border-b border-gray-200'>
         {/* Navigation Tabs */}
         <View className='flex-row rounded-lg p-1 mb-4'>
-          {['Products', 'Promotions', 'Categories'].map((tab) => (
+          {['Products', 'Promotions', 'Categories','Brands'].map((tab) => (
             <TouchableOpacity
               key={tab}
               onPress={() => setActiveTab(tab)}
@@ -407,7 +576,6 @@ export default function ProductsScreen() {
               }`}
             >
               <Text
-                style={{ fontFamily: 'Ubuntu-Medium' }}
                 className={`text-center font-medium ${
                   activeTab === tab ? 'text-white' : 'text-[#08AF97]'
                 }`}
@@ -438,23 +606,18 @@ export default function ProductsScreen() {
             <SlidersHorizontal size={20} color='#08AF97' />
           </TouchableOpacity>
           <View className='flex-row'>
-            <TouchableOpacity className='bg-[#eeeeee] px-4 py-2 rounded-[20px] flex-row items-center mr-2'>
+            <TouchableOpacity
+              onPress={() => handleCreate()}
+              className='bg-[#eeeeee] px-4 py-2 rounded-[20px] flex-row items-center mr-2'
+            >
               <Plus size={20} color='#08AF97' />
-              <Text
-                style={{ fontFamily: 'Ubuntu-Medium' }}
-                className='text-[#08AF97] font-medium ml-1'
-              >
+              <Text className='text-[#08AF97] font-medium ml-1'>
                 {getAddButtonText()}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity className='bg-[#08AF97] flex gap-2 px-4 py-2 rounded-[20px] flex-row items-center'>
               <SlidersHorizontal size={20} color='white' />
-              <Text
-                style={{ fontFamily: 'Ubuntu-Medium' }}
-                className='text-white font-medium ml-1'
-              >
-                Reorder
-              </Text>
+              <Text className='text-white font-medium ml-1'>Reorder</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -464,6 +627,7 @@ export default function ProductsScreen() {
         {activeTab === 'Products' && renderProducts()}
         {activeTab === 'Promotions' && renderPromotions()}
         {activeTab === 'Categories' && renderCategories()}
+        {activeTab === 'Brands' && renderBrands()}
       </ScrollView>
 
       {/* Action Modal */}
@@ -487,55 +651,58 @@ export default function ProductsScreen() {
                 }
               >
                 <Edit size={20} color='#6B7280' />
-                <Text
-                  style={{ fontFamily: 'Ubuntu-Regular' }}
-                  className='text-gray-600 ml-3 flex-1'
-                >
-                  Edit
-                </Text>
+                <Text className='text-gray-600 ml-3 flex-1'>Edit</Text>
               </TouchableOpacity>
 
               {/* Public Toggle Option */}
-              <View className='flex-row items-center py-4 '>
-                <Globe size={20} color='#6B7280' />
-                <Text
-                  style={{ fontFamily: 'Ubuntu-Regular' }}
-                  className='text-gray-600 ml-3 flex-1'
+              {selectedPromotion||selectedCategory ? (
+                <TouchableOpacity
+                  className='flex-row items-center py-4 '
+                  onPress={() =>
+                    selectedProduct
+                      ? handleEditProduct(selectedProduct)
+                      : handleEditPromotion(selectedPromotion)
+                  }
                 >
-                  Public
-                </Text>
-                <Switch
-                  value={selectedProduct?.isActive || false}
-                  onValueChange={() => {
-                    if (selectedProduct) {
-                      const updatedProduct = {
-                        ...selectedProduct,
-                        isActive: !selectedProduct.isActive,
-                      };
-                      setSelectedProduct(updatedProduct);
-                      handleToggleProduct(updatedProduct.id);
-                    }
-                  }}
-                  trackColor={{ false: '#E5E7EB', true: '#08AF97' }}
-                  thumbColor='#FFFFFF'
-                  ios_backgroundColor='#E5E7EB'
-                />
-              </View>
+                  <Clock4 size={20} color='#6B7280' />
+                  <Text className='text-gray-600 ml-3 flex-1'>
+                    set {activeTab=='promotions'?'expire':''} Time
+                  </Text>
+                </TouchableOpacity>
+              ) : (
+                <View className='flex-row items-center py-4 '>
+                  <Globe size={20} color='#6B7280' />
+                  <Text className='text-gray-600 ml-3 flex-1'>Public</Text>
+                  <Switch
+                    value={selectedProduct?.isActive || false}
+                    onValueChange={() => {
+                      if (selectedProduct) {
+                        const updatedProduct = {
+                          ...selectedProduct,
+                          isActive: !selectedProduct.isActive,
+                        };
+                        setSelectedProduct(updatedProduct);
+                        handleToggleProduct(updatedProduct.id);
+                      }
+                    }}
+                    trackColor={{ false: '#E5E7EB', true: '#08AF97' }}
+                    thumbColor='#FFFFFF'
+                    ios_backgroundColor='#E5E7EB'
+                  />
+                </View>
+              )}
 
               {/* Delete Option */}
               <TouchableOpacity
                 className='flex-row items-center py-4'
                 onPress={() =>
-                  selectedProduct && handleDeleteProduct(selectedProduct.id)
+                  selectedProduct
+                    ? handleDeleteProduct(selectedProduct.id)
+                    : handleDeletePromotion(selectedPromotion?.id || '')
                 }
               >
                 <Trash2 size={20} color='#EF4444' />
-                <Text
-                  style={{ fontFamily: 'Ubuntu-Regular' }}
-                  className='text-red-500 ml-3 flex-1'
-                >
-                  Delete
-                </Text>
+                <Text className='text-red-500 ml-3 flex-1'>Delete</Text>
               </TouchableOpacity>
             </Pressable>
           </View>
