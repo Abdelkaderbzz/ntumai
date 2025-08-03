@@ -1,41 +1,45 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import SplashScreenComponent from "./screens/SplashScreen";
-import OnboardingScreen from "./screens/OnboardingScreen";
-import SelectMethodScreen from "./screens/SelectMethodScreen";
-import OtpInputScreen from "./screens/OtpInputScreen";
-import LoginScreen from "./screens/LoginScreen";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import "./global.css";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import ContinueSignUpScreen from "./screens/ContinueSignUpScreen";
-import ContinueBoardingScreen from "./screens/ContinueBoarding";
-import HomeTabs from "./screens/home/HomeTabs";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
+import SplashScreenComponent from './screens/SplashScreen';
+import OnboardingScreen from './screens/OnboardingScreen';
+import SelectMethodScreen from './screens/SelectMethodScreen';
+import OtpInputScreen from './screens/OtpInputScreen';
+import LoginScreen from './screens/LoginScreen';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import './global.css';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import ContinueSignUpScreen from './screens/ContinueSignUpScreen';
+import ContinueBoardingScreen from './screens/ContinueBoarding';
+import HomeTabs from './screens/home/HomeTabs';
 import DriverHome, {
   DriverDashboard,
   DriverEarnings,
   DriverOrders,
   DriverRoutes,
   DriverSettings,
-} from "./screens/driver/DriverHome";
+} from './screens/driver/DriverHome';
 import {
   CartScreen,
   ProductDetailScreen,
   RestaurantDetailScreen,
-} from "./screens/home/MarketplaceScreen";
+} from './screens/home/MarketplaceScreen';
 import {
   CheckoutScreen,
   OrderTrackingScreen,
   RateOrderScreen,
-} from "./screens/checkout/CheckoutScreen";
-import VendorTabs from "./screens/vendor/VendorTabs";
-import AppText from "./components/AppText";
-import EditProductScreen from "./screens/home/EditProductScreen";
-import ProductsScreen from "./screens/home/ProductsScreen";
+} from './screens/checkout/CheckoutScreen';
+import VendorTabs from './screens/vendor/VendorTabs';
+import AppText from './components/AppText';
+import EditProductScreen from './screens/home/EditProductScreen';
+import ProductsScreen from './screens/home/ProductsScreen';
+import CreatePromotion from './screens/CreatePromotion';
+import PreviewPromotion from './screens/PreviewPromotion';
+import CreateCategory from './screens/CreateCategory';
+import CreateBrand from './screens/CreateBrand';
 
 // Keep splash screen visible while loading fonts
 SplashScreen.preventAutoHideAsync();
@@ -44,7 +48,7 @@ export type RootStackParamList = {
   Splash: undefined;
   Onboarding: undefined;
   SelectMethod: undefined;
-  Otp: { method: "phone" | "email"; value: string };
+  Otp: { method: 'phone' | 'email'; value: string };
   Login: undefined;
   ContinueSignUp: undefined;
   ContinueBoarding: undefined;
@@ -63,16 +67,21 @@ export type RootStackParamList = {
   RateOrder: undefined;
   AdminDashboard: undefined;
   VendorDashboard: undefined;
+  CreatePromotion: undefined;
+  PreviewPromotion: undefined;
+  EditProduct: undefined;
+  CreateBrand: undefined;
+  ProductScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    "Ubuntu-Regular": require("./assets/fonts/Ubuntu-Regular.ttf"),
-    "Ubuntu-Bold": require("./assets/fonts/Ubuntu-Bold.ttf"),
-    "Ubuntu-Light": require("./assets/fonts/Ubuntu-Light.ttf"),
-    "Ubuntu-Medium": require("./assets/fonts/Ubuntu-Medium.ttf"),
+    'Ubuntu-Regular': require('./assets/fonts/Ubuntu-Regular.ttf'),
+    'Ubuntu-Bold': require('./assets/fonts/Ubuntu-Bold.ttf'),
+    'Ubuntu-Light': require('./assets/fonts/Ubuntu-Light.ttf'),
+    'Ubuntu-Medium': require('./assets/fonts/Ubuntu-Medium.ttf'),
   });
 
   useEffect(() => {
@@ -219,6 +228,38 @@ export default function App() {
               <Stack.Screen
                 name='EditProduct'
                 component={EditProductScreen}
+                options={{
+                  headerShown: false,
+                  animation: 'slide_from_bottom',
+                }}
+              />
+              <Stack.Screen
+                name='CreatePromotion'
+                component={CreatePromotion}
+                options={{
+                  headerShown: false,
+                  animation: 'slide_from_bottom',
+                }}
+              />
+              <Stack.Screen
+                name='PreviewPromotion'
+                component={PreviewPromotion}
+                options={{
+                  headerShown: false,
+                  animation: 'slide_from_bottom',
+                }}
+              />
+              <Stack.Screen
+                name='CreateCategory'
+                component={CreateCategory}
+                options={{
+                  headerShown: false,
+                  animation: 'slide_from_bottom',
+                }}
+              />
+              <Stack.Screen
+                name='CreateBrand'
+                component={CreateBrand}
                 options={{
                   headerShown: false,
                   animation: 'slide_from_bottom',
