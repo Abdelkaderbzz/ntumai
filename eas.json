@@ -3,12 +3,16 @@
     "version": ">= 5.9.2",
     "appVersionSource": "remote"
   },
-   "build": {
+  "build": {
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      }
+    },
     "production": {
       "android": {
         "buildType": "apk"
       }
     }
-    
-    }
   }
+}
