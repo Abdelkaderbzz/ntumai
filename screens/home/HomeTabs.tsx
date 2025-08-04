@@ -3,9 +3,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./HomeScreen";
 import MarketplaceScreen from "./MarketplaceScreen";
 import ProfileScreen from "./ProfileScreen";
-import { Home, ShoppingBag, Package, User } from "lucide-react-native";
+import { Home, ShoppingBag, Package, User, File } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ProductsScreen from "./ProductsScreen";
+import ReportsScreen from "./ReportsScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +20,8 @@ export default function HomeTabs() {
             return <ShoppingBag size={size} color={color} />;
           if (route.name === "Products")
             return <Package size={size} color={color} />;
+          if (route.name === "Reports")
+            return <File size={size} color={color} />;
           if (route.name === "Profile")
             return <User size={size} color={color} />;
         },
@@ -33,6 +36,7 @@ export default function HomeTabs() {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Marketplace" component={MarketplaceScreen} />
       <Tab.Screen name="Products" component={ProductsScreen} />
+      <Tab.Screen name="Reports" component={ReportsScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
