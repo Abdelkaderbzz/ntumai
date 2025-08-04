@@ -588,7 +588,7 @@ export default function ProductsScreen() {
 
         {/* Search Bar */}
         <View className='flex-row items-center mb-4'>
-          <View className='flex-row items-center bg-gray-100 rounded-lg px-3 py-2 flex-1 mr-2'>
+          <View className='flex-row items-center bg-gray-100 rounded-full px-3 py-2 flex-1 mr-2'>
             <Search size={20} color='#9CA3AF' />
             <TextInput
               className='flex-1 ml-2 text-gray-700'
