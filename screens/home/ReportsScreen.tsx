@@ -11,7 +11,13 @@ import {
   Pressable,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { CreditCard, DollarSign, Search, Filter } from 'lucide-react-native';
+import {
+  CreditCard,
+  DollarSign,
+  Search,
+  Filter,
+  SlidersHorizontal,
+} from 'lucide-react-native';
 
 interface ReportsScreenProps {
   navigation: any;
@@ -25,6 +31,15 @@ interface Order {
   time: string;
   price: string;
   status: 'Paid' | 'Unpaid';
+  image: string;
+}
+
+interface Transaction {
+  id: string;
+  restaurantName: string;
+  description: string;
+  amount: string;
+  date: string;
   image: string;
 }
 
@@ -126,6 +141,46 @@ const ReportsScreen: React.FC<ReportsScreenProps> = ({ navigation }) => {
     },
   ];
 
+  // Mock transaction data for Payment report
+  const transactions: Transaction[] = [
+    {
+      id: '1',
+      restaurantName: 'Madindigo Restaurant',
+      description: 'Top up for UDM',
+      amount: '$ 9.50',
+      date: 'Jan 25, 2021',
+      image:
+        'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
+    },
+    {
+      id: '2',
+      restaurantName: 'Madindigo Restaurant',
+      description: 'Top up for UDM',
+      amount: '$ 9.50',
+      date: 'Jan 25, 2021',
+      image:
+        'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
+    },
+    {
+      id: '3',
+      restaurantName: 'Izoniq 1 Stop',
+      description: 'Amanda foodpoint',
+      amount: '$ 9.50',
+      date: 'Feb 25, 2021',
+      image:
+        'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
+    },
+    {
+      id: '4',
+      restaurantName: 'Izoniq 1 Stop',
+      description: 'Amanda foodpoint',
+      amount: '$ 9.50',
+      date: 'Feb 25, 2021',
+      image:
+        'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
+    },
+  ];
+
   const handleBackPress = () => {
     navigation.goBack();
   };
@@ -147,16 +202,13 @@ const ReportsScreen: React.FC<ReportsScreenProps> = ({ navigation }) => {
       animationType='slide'
       onRequestClose={handleCloseModal}
     >
-      <Pressable
-        className='flex-1 bg-opacity-50'
-        onPress={handleCloseModal}
-      >
+      <Pressable className='flex-1 bg-opacity-50' onPress={handleCloseModal}>
         <View className='flex-1 justify-end'>
           <Pressable className='bg-white rounded-t-3xl p-6'>
             {/* Price Section */}
             <View className='flex-row items-center mb-6'>
-              <View className='bg-[#0aaf97] rounded-full p-3 mr-4'>
-                <DollarSign size={32} color='white' />
+              <View className='rounded-full p-3'>
+                <DollarSign size={32} color='#0aaf97' />
               </View>
               <Text className='text-black font-bold text-3xl'>
                 {selectedOrder?.price}
@@ -287,20 +339,17 @@ const ReportsScreen: React.FC<ReportsScreenProps> = ({ navigation }) => {
     <View className='flex-1'>
       {/* Search Bar */}
       <View className='flex-row items-center mb-4'>
-        <View className='flex-row items-center bg-[#eeeeee] rounded-xl px-3 py-2 flex-1 mr-2'>
-          <Search size={20} color='#666' />
+        <View className='flex-row items-center bg-gray-100 rounded-full px-3 py-2 flex-1 mr-2'>
+          <Search size={20} color='#9CA3AF' />
           <TextInput
             className='flex-1 ml-2 text-gray-700'
             placeholder='Search'
             value={searchQuery}
             onChangeText={setSearchQuery}
           />
+          <SlidersHorizontal size={20} color='#9CA3AF' />
         </View>
-        <TouchableOpacity className='p-2'>
-          <Filter size={20} color='#666' />
-        </TouchableOpacity>
       </View>
-
       {/* Order List */}
       <ScrollView className='flex-1'>
         {orders.map((order) => (
@@ -359,6 +408,122 @@ const ReportsScreen: React.FC<ReportsScreenProps> = ({ navigation }) => {
       </ScrollView>
     </View>
   );
+
+  const renderPaymentReport = () => {
+    // Group transactions by date
+    const groupedTransactions = transactions.reduce((groups, transaction) => {
+      const date = transaction.date;
+      if (!groups[date]) {
+        groups[date] = [];
+      }
+      groups[date].push(transaction);
+      return groups;
+    }, {} as Record<string, Transaction[]>);
+
+    return (
+      <View className='flex-1'>
+        {/* Account Header Section */}
+        <View className='bg-[#0aaf97] p-6 mb-6'>
+          <View className='flex-row items-center justify-between mb-4'>
+            <View className='flex-row items-center'>
+              <View className='w-12 h-12 rounded-full bg-white mr-3'>
+                <Image
+                  source={{
+                    uri: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+                  }}
+                  className='w-full h-full rounded-full'
+                  resizeMode='cover'
+                />
+              </View>
+              <Text className='text-white font-semibold text-lg'>Gibson</Text>
+            </View>
+            <Image
+              source={require('../../assets/splash_logo.png')}
+              style={{ width: 80, height: 30 }}
+            />
+          </View>
+
+          <Text className='text-white text-4xl py-4 font-bold mb-2 w-full text-center tracking-wider'>
+            1 3 2 0 7 5 1 3 9
+          </Text>
+
+          <View className='flex-row justify-between items-end'>
+            <View>
+              <Text className='text-white text-sm opacity-90'>Balance:</Text>
+              <Text className='text-white text-2xl font-bold'>$ 250.00</Text>
+            </View>
+            <View className='items-end'>
+              <Text className='text-white text-sm opacity-90'>
+                Member since
+              </Text>
+              <Text className='text-white text-lg font-semibold'>
+                Jan 25, 2021
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Terms & Conditions Link */}
+        <View className='flex-row justify-end mb-4'>
+          <TouchableOpacity>
+            <Text className='text-[#55c2fd] text-sm'>Terms & Conditions</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Recent Transactions Section */}
+        <View className='flex-1'>
+          <Text className='text-black font-bold text-xl mb-2'>
+            Recent Transactions
+          </Text>
+
+          <ScrollView className='flex-1'>
+            {Object.entries(groupedTransactions).map(
+              ([date, dateTransactions]) => (
+                <View key={date} className='mb-6'>
+                  <View className='flex-row justify-between items-center mb-3'>
+                    <Text className='text-gray-500 text-base'>{date}</Text>
+                    <TouchableOpacity>
+                      <Text className='text-[#0aaf97] text-sm font-medium'>
+                        View All
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+
+                  <View className='bg-gray-100 rounded-2xl p-4 '>
+                    {dateTransactions.map((transaction) => (
+                      <View
+                        key={transaction.id}
+                        className=' mb-4 flex-row items-center'
+                      >
+                        <View className='w-14 h-14 rounded-full overflow-hidden mr-3'>
+                          <Image
+                            source={{ uri: transaction.image }}
+                            className='w-full h-full'
+                            resizeMode='cover'
+                          />
+                        </View>
+                        <View className='flex-1'>
+                          <Text className='text-black font-medium text-base'>
+                            {transaction.restaurantName}
+                          </Text>
+                          <Text className='text-gray-600 text-sm'>
+                            {transaction.description}
+                          </Text>
+                        </View>
+                        <Text className='text-[#ed4877] font-bold text-base'>
+                          {transaction.amount}
+                        </Text>
+                      </View>
+                    ))}
+                  </View>
+                </View>
+              )
+            )}
+          </ScrollView>
+        </View>
+      </View>
+    );
+  };
 
   return (
     <SafeAreaView className='flex-1 bg-white'>
@@ -424,11 +589,7 @@ const ReportsScreen: React.FC<ReportsScreenProps> = ({ navigation }) => {
 
         {activeTab === 'Order report' && renderOrderList()}
 
-        {activeTab === 'Payment report' && (
-          <View className='flex-1 items-center justify-center'>
-            <Text className='text-gray-500 text-lg'>Payment Report</Text>
-          </View>
-        )}
+        {activeTab === 'Payment report' && renderPaymentReport()}
       </ScrollView>
 
       {/* Total Paid Bottom Bar - Only show for All tab */}
