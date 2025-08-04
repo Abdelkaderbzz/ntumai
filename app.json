@@ -2,6 +2,7 @@
   "expo": {
     "name": "NTUMAI",
     "slug": "NTUMAI",
+    "owner": "abdelkaderbzz",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/ntumai_logo.png",
@@ -40,6 +41,11 @@
     "android": {
       "icon": "./assets/ntumai_logo.png",
       "edgeToEdgeEnabled": true,
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/ntumai_logo.png",
+        "backgroundColor": "#ffffff"
+      },
       "fonts": [
         {
           "path": "./assets/fonts/Ubuntu-Regular.ttf",
@@ -67,9 +73,12 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      "expo-build-properties"
+    ],
     "extra": {
       "eas": {
-        "projectId": "9eac9c8e-770e-4955-8f73-5453db7ba4bc"
+        "projectId": "d06157d6-eb1c-4c48-8e70-468fd60f71f2"
       }
     }
   }
