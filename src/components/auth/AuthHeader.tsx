@@ -14,22 +14,22 @@ const AuthHeader: React.FC<AuthHeaderProps> = ({
   description,
 }) => {
   return (
-    <View className="px-6 pt-20 pb-6 font-ubuntu">
+    <View className='px-6 pt-20 pb-6 font-ubuntu'>
       <AppText
-        className="text-primary text-5xl font-ubuntu-bold mb-1 leading-tight"
-        style={{ fontFamily: "Ubuntu-Bold" }}
+        className='text-primary text-5xl font-ubuntu-bold mb-1 leading-tight'
+        style={{ fontFamily: 'Ubuntu-Bold' }}
       >
         {title}
       </AppText>
       <AppText
-        className="text-primary text-2xl font-ubuntu-medium"
-        style={{ fontFamily: "Ubuntu-Medium" }}
+        className='text-primary text-5xl font-ubuntu-bold'
+        style={{ fontFamily: 'Ubuntu-Medium' }}
       >
         {subtitle}
       </AppText>
       <AppText
-        className="text-gray-700 text-base mt-4 leading-relaxed"
-        style={{ fontFamily: "Ubuntu-Regular" }}
+        className='text-base mt-4 leading-relaxed pt-4 pb-4'
+        style={{ color: '#606268' }}
       >
         {description}
       </AppText>
