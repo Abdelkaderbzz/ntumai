@@ -6,7 +6,7 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../App";
 import { LinearGradient } from "expo-linear-gradient";
 import Button from "../src/components/ui/Button";
-import { Ubuntu_400Regular, Ubuntu_500Medium } from "@expo-google-fonts/ubuntu";
+
 
 type OnboardingScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,

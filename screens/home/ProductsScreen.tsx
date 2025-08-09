@@ -9,6 +9,8 @@ import {
   Switch,
   Modal,
   Pressable,
+  FlatList,
+  View,
 } from 'react-native';
 import {
   Search,
@@ -21,7 +23,6 @@ import {
 } from 'lucide-react-native';
 import Text from '../../components/Text';
 import { useNavigation } from '@react-navigation/native';
-import { View } from 'react-native';
 
 interface Product {
   id: string;
@@ -335,9 +336,7 @@ export default function ProductsScreen() {
     setShowActionModal(true);
   };
   const handleDeleteCategory = (categoryId: string) => {
-    setCategories(
-      categories.filter((category) => category.id !== categoryId)
-    );
+    setCategories(categories.filter((category) => category.id !== categoryId));
     setShowActionModal(false);
     setSelectedCategory(null);
   };
@@ -355,16 +354,13 @@ export default function ProductsScreen() {
     setShowActionModal(true);
   };
 
-  const handleCreate = () =>
-  {
-    const buttonLable=getAddButtonText()
+  const handleCreate = () => {
+    const buttonLable = getAddButtonText();
     if (buttonLable == 'Add Promotions') {
       navigation.navigate('CreatePromotion' as never);
-    } else if (buttonLable =='Add Category')
-    {
+    } else if (buttonLable == 'Add Category') {
       navigation.navigate('CreateCategory' as never);
-    } else if (buttonLable =='Add Brand')
-    {
+    } else if (buttonLable == 'Add Brand') {
       navigation.navigate('CreateBrand' as never);
     }
   };
@@ -401,7 +397,7 @@ export default function ProductsScreen() {
                 className='p-2 mb-2'
                 onPress={() => openActionModal(product)}
               >
-                <Text className='text-gray-400 text-xl'>⋮</Text>
+                <Text className='text-[#43b7a2] text-2xl font-bold'>⋮</Text>
               </TouchableOpacity>
               <Switch
                 value={product.isActive}
@@ -566,12 +562,18 @@ export default function ProductsScreen() {
       <StatusBar barStyle='dark-content' />
       <View className='bg-white px-4 py-4 border-b border-gray-200'>
         {/* Navigation Tabs */}
-        <View className='flex-row rounded-lg p-1 mb-4'>
-          {['Products', 'Promotions', 'Categories','Brands'].map((tab) => (
+        <FlatList
+          horizontal
+          data={['Products', 'Promotions', 'Categories', 'Brands']}
+          keyExtractor={(item) => item}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingVertical: 4, paddingHorizontal: 4 }}
+          style={{ marginBottom: 16 }}
+          ItemSeparatorComponent={() => <View style={{ width: 8 }} />}
+          renderItem={({ item: tab }) => (
             <TouchableOpacity
-              key={tab}
               onPress={() => setActiveTab(tab)}
-              className={`flex-1 py-3 rounded-full mx-1 border border-[#08AF97] ${
+              className={`py-3 px-4 rounded-full border border-[#08AF97] ${
                 activeTab === tab ? 'bg-[#08AF97]' : 'bg-white'
               }`}
             >
@@ -583,8 +585,8 @@ export default function ProductsScreen() {
                 {tab}
               </Text>
             </TouchableOpacity>
-          ))}
-        </View>
+          )}
+        />
 
         {/* Search Bar */}
         <View className='flex-row items-center mb-4'>
@@ -615,10 +617,12 @@ export default function ProductsScreen() {
                 {getAddButtonText()}
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#08AF97] flex gap-2 px-4 py-2 rounded-[20px] flex-row items-center'>
-              <SlidersHorizontal size={20} color='white' />
-              <Text className='text-white font-medium ml-1'>Reorder</Text>
-            </TouchableOpacity>
+            {activeTab === 'Products' && (
+              <TouchableOpacity className='bg-[#08AF97] flex gap-2 px-4 py-2 rounded-[20px] flex-row items-center'>
+                <SlidersHorizontal size={20} color='white' />
+                <Text className='text-white font-medium ml-1'>Reorder</Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       </View>
@@ -655,18 +659,22 @@ export default function ProductsScreen() {
               </TouchableOpacity>
 
               {/* Public Toggle Option */}
-              {selectedPromotion||selectedCategory ? (
+              {selectedPromotion || selectedCategory ? (
                 <TouchableOpacity
                   className='flex-row items-center py-4 '
-                  onPress={() =>
-                    selectedProduct
-                      ? handleEditProduct(selectedProduct)
-                      : handleEditPromotion(selectedPromotion)
-                  }
+                  onPress={() => {
+                    if (selectedProduct) {
+                      handleEditProduct(selectedProduct);
+                    } else if (selectedPromotion) {
+                      handleEditPromotion(selectedPromotion);
+                    } else if (selectedCategory) {
+                      handleEditCategory(selectedCategory);
+                    }
+                  }}
                 >
                   <Clock4 size={20} color='#6B7280' />
                   <Text className='text-gray-600 ml-3 flex-1'>
-                    set {activeTab=='promotions'?'expire':''} Time
+                    set {activeTab == 'promotions' ? 'expire' : ''} Time
                   </Text>
                 </TouchableOpacity>
               ) : (
