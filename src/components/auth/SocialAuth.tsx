@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, View } from 'react-native';
+import { Pressable, View, Image } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import AppText from '../../../components/AppText';
 
@@ -7,12 +7,12 @@ const SocialAuth: React.FC = () => {
   return (
     <>
       {/* Divider */}
-      <View className='flex-row items-center mb-10'>
-        <View className='flex-1 h-px bg-gray-200' />
-        <AppText className='mx-6 text-gray-400 text-sm font-medium tracking-wide'>
-          OR
-        </AppText>
-        <View className='flex-1 h-px bg-gray-200' />
+      <View className='flex-row items-center mb-10 w-full'>
+        <Image
+          source={require('../../../assets/divider.png')}
+          resizeMode='cover'
+          style={{ height: 34, width: '100%' }}
+        />
       </View>
 
       {/* Social Icons */}
