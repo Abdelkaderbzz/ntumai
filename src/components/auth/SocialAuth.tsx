@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, View, Image } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
-import AppText from '../../../components/AppText';
+
 
 const SocialAuth: React.FC = () => {
   return (
