@@ -9,6 +9,7 @@ import {
   Image,
   Modal,
   Pressable,
+  FlatList,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import {
@@ -537,27 +538,33 @@ const ReportsScreen: React.FC<ReportsScreenProps> = ({ navigation }) => {
 
       <ScrollView className='flex-1 p-4'>
         {/* Navigation Tabs */}
-        <View className='flex-row rounded-lg p-1 mb-6 '>
-          {['All', 'Order report', 'Payment report'].map((tab) => (
+        <FlatList
+          horizontal
+          data={['All', 'Order report', 'Payment report']}
+          keyExtractor={(item) => item}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingVertical: 4, paddingHorizontal: 4 }}
+          style={{ marginBottom: 24 }}
+          ItemSeparatorComponent={() => <View style={{ width: 8 }} />}
+          renderItem={({ item: tab }) => (
             <TouchableOpacity
-              key={tab}
               onPress={() => setActiveTab(tab)}
-              className={`flex-1 py-3 rounded-full mx-1 ${
+              className={`py-3 px-4 rounded-full ${
                 activeTab === tab
                   ? 'bg-[#0aaf97]'
                   : 'bg-white border border-[#0aaf97]'
               }`}
             >
               <Text
-                className={`text-center font-medium ${
+                className={`text-center font-medium w-[110px] ${
                   activeTab === tab ? 'text-white' : 'text-[#0aaf97]'
                 }`}
               >
                 {tab}
               </Text>
             </TouchableOpacity>
-          ))}
-        </View>
+          )}
+        />
 
         {/* Content based on active tab */}
         {activeTab === 'All' && (
