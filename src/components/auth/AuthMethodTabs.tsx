@@ -25,7 +25,7 @@ const AuthMethodTabs: React.FC<AuthMethodTabsProps> = ({
 }) => {
   return (
     <View
-      className='flex-row w-full mb-8 rounded-full bg-gray-100 p-2'
+      className='flex-row w-full mb-8 rounded-full bg-[#ededed] p-2'
       style={styles.container}
     >
       <Pressable

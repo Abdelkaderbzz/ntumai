@@ -41,6 +41,7 @@ const CountryCodePicker: React.FC<CountryCodePickerProps> = ({
             borderLeftColor: 'transparent',
             borderRightColor: 'transparent',
             borderTopColor: '#606268',
+            backgroundColor:'transparent'
           }}
         />
       </TouchableOpacity>
