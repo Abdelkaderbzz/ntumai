@@ -20,21 +20,22 @@ const AuthInput: React.FC<AuthInputProps> = ({
 }) => {
   if (method === "phone") {
     return (
-      <View className="mb-8">
-        <Text className="mb-2 text-gray-500 text-base">
+      <View className='mb-8'>
+        <Text className='mb-2 text-gray-500 text-base'>
           Enter your mobile no.*
         </Text>
-        <View className="w-full flex-row items-center">
+        <View className='w-full flex-row items-center'>
           <CountryCodePicker
+
             code={countryCode}
             onSelect={onCountryCodeChange}
           />
           <TextInput
-            className="flex-1 bg-gray-100 border border-gray-200 rounded-full h-11 ml-4 px-4 p-3 text-base"
-            keyboardType="phone-pad"
+            className='flex-1 bg-gray-100 border border-gray-200 rounded-full h-11 ml-4 px-4 p-3 text-base'
+            keyboardType='phone-pad'
             value={value}
             onChangeText={onChangeText}
-            autoCapitalize="none"
+            autoCapitalize='none'
             autoCorrect={false}
           />
         </View>

@@ -25,32 +25,32 @@ const AuthMethodTabs: React.FC<AuthMethodTabsProps> = ({
 }) => {
   return (
     <View
-      className="flex-row w-full mb-8 rounded-full bg-gray-100 p-2"
+      className='flex-row w-full mb-8 rounded-full bg-[#ededed] p-2'
       style={styles.container}
     >
       <Pressable
         className={`flex-1 py-4 rounded-full items-center ${
-          selectedMethod === "phone" ? "bg-white" : ""
+          selectedMethod === 'phone' ? 'bg-white' : ''
         }`}
-        onPress={() => onMethodChange("phone")}
+        onPress={() => onMethodChange('phone')}
       >
         <AppText
-          className={`text-base font-semibold ${
-            selectedMethod === "phone" ? "text-primary" : "text-gray-500"
+          className={`text-base  font-bold ${
+            selectedMethod === 'phone' ? 'text-[#3B3A3A]' : 'text-[#3B3A3A]'
           }`}
         >
           Phone Number
         </AppText>
       </Pressable>
       <Pressable
-        className={`flex-1 py-4 rounded-full items-center ${
-          selectedMethod === "email" ? "bg-white" : ""
+        className={`flex-1 py-4 rounded-full items-center  ${
+          selectedMethod === 'email' ? 'bg-white' : ''
         }`}
-        onPress={() => onMethodChange("email")}
+        onPress={() => onMethodChange('email')}
       >
         <AppText
-          className={`text-base font-semibold ${
-            selectedMethod === "email" ? "text-primary" : "text-gray-500"
+          className={`text-base font-bold ${
+            selectedMethod === 'email' ? 'text-[#3B3A3A]' : 'text-[#3B3A3A]'
           }`}
         >
           Email
