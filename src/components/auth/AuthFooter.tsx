@@ -16,11 +16,12 @@ const AuthFooter: React.FC<AuthFooterProps> = ({
   return (
     <View className='px-6 pb-12 font-ubuntu'>
       <Pressable onPress={onPress}>
-        <AppText className='text-base text-center leading-relaxed' style={{ color: '#787878' }}>
+        <AppText
+          className='text-base text-center leading-relaxed'
+          style={{ color: '#787878' }}
+        >
           {questionText}{' '}
-          <AppText className='text-[#001f3f] font-ubuntu-bold'>
-            {actionText}
-          </AppText>
+          <Text className='text-primary font-ubuntu-bold'>{actionText}</Text>
         </AppText>
       </Pressable>
     </View>
