@@ -12,6 +12,7 @@ import {
   FlatList,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import HeaderBar from '../../components/HeaderBar';
 import {
   CreditCard,
   DollarSign,
@@ -308,29 +309,31 @@ const ReportsScreen: React.FC<ReportsScreenProps> = ({ navigation }) => {
             $ 2,374.10
           </Text>
         </View>
-        <View className='w-[48%] bg-[#eeeeee] rounded-xl p-4 mb-3'>
-          <Text className='text-primary font-medium text-xl mb-1'>
-            This Week
-          </Text>
-          <Text className='text-black font-bold text-2xl text-right pt-7'>
-            $ 14,592.00
-          </Text>
-        </View>
-        <View className='w-[48%] bg-[#eeeeee] rounded-xl p-4 mb-3'>
-          <Text className='text-primary font-medium text-xl mb-1'>
-            This Month
-          </Text>
-          <Text className='text-black font-bold text-2xl text-right pt-7'>
-            $ 14,592.00
-          </Text>
-        </View>
-        <View className='w-[48%] bg-[#eeeeee] rounded-xl p-4 mb-3'>
-          <Text className='text-primary font-medium text-xl mb-1'>
-            This Year
-          </Text>
-          <Text className='text-black font-bold text-2xl text-right pt-7'>
-            $ 14,592.00
-          </Text>
+        <View className='flex-row justify-between'>
+          <View className='w-[32%] bg-[#eeeeee] rounded-xl p-4 mb-3'>
+            <Text className='text-primary font-medium text-xl mb-1'>
+              This Week
+            </Text>
+            <Text className='text-black font-bold text-2xl text-right pt-7'>
+              $ 14,592.00
+            </Text>
+          </View>
+          <View className='w-[32%] bg-[#eeeeee] rounded-xl p-4 mb-3'>
+            <Text className='text-primary font-medium text-xl mb-1'>
+              This Month
+            </Text>
+            <Text className='text-black font-bold text-2xl text-right pt-7'>
+              $ 14,592.00
+            </Text>
+          </View>
+          <View className='w-[32%] bg-[#eeeeee] rounded-xl p-4 mb-3'>
+            <Text className='text-primary font-medium text-xl mb-1'>
+              This Year
+            </Text>
+            <Text className='text-black font-bold text-2xl text-right pt-7'>
+              $ 14,592.00
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -528,13 +531,14 @@ const ReportsScreen: React.FC<ReportsScreenProps> = ({ navigation }) => {
 
   return (
     <SafeAreaView className='flex-1 bg-white'>
+        <HeaderBar />
       {/* Header */}
-      <View className='bg-white px-4 py-3 flex-row items-center border-b border-gray-200'>
+      {/* <View className='bg-white px-4 py-3 flex-row items-center border-b border-gray-200'>
         <TouchableOpacity onPress={handleBackPress} className='mr-4'>
           <Ionicons name='arrow-back' size={24} color='#000' />
         </TouchableOpacity>
         <Text className='text-lg font-semibold text-black'>Reports</Text>
-      </View>
+      </View> */}
 
       <ScrollView className='flex-1 p-4'>
         {/* Navigation Tabs */}
