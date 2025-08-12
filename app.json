@@ -42,6 +42,7 @@
       "icon": "./assets/ntumai_logo.png",
       "edgeToEdgeEnabled": true,
       "versionCode": 1,
+      "minSdkVersion": 21,
       "adaptiveIcon": {
         "foregroundImage": "./assets/ntumai_logo.png",
         "backgroundColor": "#ffffff"
@@ -73,9 +74,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-build-properties"
-    ],
+    "plugins": ["expo-build-properties"],
     "extra": {
       "eas": {
         "projectId": "d06157d6-eb1c-4c48-8e70-468fd60f71f2"

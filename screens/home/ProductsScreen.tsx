@@ -23,6 +23,7 @@ import {
 } from 'lucide-react-native';
 import Text from '../../components/Text';
 import { useNavigation } from '@react-navigation/native';
+import HeaderBar from '../../components/HeaderBar';
 
 interface Product {
   id: string;
@@ -560,6 +561,7 @@ export default function ProductsScreen() {
   return (
     <SafeAreaView className='flex-1 bg-gray-50'>
       <StatusBar barStyle='dark-content' />
+      <HeaderBar />
       <View className='bg-white px-4 py-4 border-b border-gray-200'>
         {/* Navigation Tabs */}
         <FlatList
