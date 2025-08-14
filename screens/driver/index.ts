@@ -5,3 +5,7 @@ export { default as DriverOrders } from './DriverOrders';
 export { default as DriverRoutes } from './DriverRoutes';
 export { default as DriverEarnings } from './DriverEarnings';
 export { default as DriverProfile } from './DriverProfile';
+
+// Delivery Task Screens
+export { default as DeliveryTaskDetails } from './DeliveryTaskDetails';
+
