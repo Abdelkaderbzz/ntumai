@@ -15,13 +15,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import ContinueSignUpScreen from './screens/ContinueSignUpScreen';
 import ContinueBoardingScreen from './screens/ContinueBoarding';
 import HomeTabs from './screens/home/HomeTabs';
-import DriverHome, {
-  DriverDashboard,
-  DriverEarnings,
-  DriverOrders,
-  DriverRoutes,
-  DriverSettings,
-} from './screens/driver/DriverHome';
+
 import {
   CartScreen,
   ProductDetailScreen,
@@ -40,6 +34,8 @@ import CreatePromotion from './screens/CreatePromotion';
 import PreviewPromotion from './screens/PreviewPromotion';
 import CreateCategory from './screens/CreateCategory';
 import CreateBrand from './screens/CreateBrand';
+import { DriverDashboard, DriverEarnings, DriverHome, DriverOrders, DriverRoutes } from './screens/driver';
+import DriverSettings from './screens/driver/DriverProfile';
 
 // Keep splash screen visible while loading fonts
 SplashScreen.preventAutoHideAsync();
