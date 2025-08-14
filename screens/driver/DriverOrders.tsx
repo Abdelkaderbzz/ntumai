@@ -8,18 +8,20 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AppText from '../../components/AppText';
+import { Image } from 'react-native';
+import { Check, ChevronLeft } from 'lucide-react-native';
 
 interface DriverOrdersProps {
   navigation: any;
 }
 
 const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
-  const [activeTab, setActiveTab] = useState('active');
+  const [activeTab, setActiveTab] = useState('upcoming');
 
   const orders = [
     {
       id: 1,
-      status: 'pending',
+      status: 'canceled',
       customer: 'John D.',
       amount: 23.6,
       distance: '4.2 mi',
@@ -27,7 +29,7 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
     },
     {
       id: 2,
-      status: 'active',
+      status: 'to be delivered',
       customer: 'Sarah M.',
       amount: 18.4,
       distance: '2.1 mi',
@@ -35,7 +37,7 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
     },
     {
       id: 3,
-      status: 'completed',
+      status: 'delivered',
       customer: 'Mike R.',
       amount: 31.2,
       distance: '6.3 mi',
@@ -43,7 +45,7 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
     },
     {
       id: 4,
-      status: 'completed',
+      status: 'delivered',
       customer: 'Lisa K.',
       amount: 15.8,
       distance: '1.8 mi',
@@ -52,9 +54,9 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
   ];
 
   const filteredOrders = orders.filter((order) =>
-    activeTab === 'active'
-      ? order.status !== 'completed'
-      : order.status === 'completed'
+    activeTab === 'upcoming'
+      ? order.status === 'to be delivered'
+      : order.status !== ''
   );
 
   return (
@@ -62,48 +64,48 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
       <StatusBar barStyle='dark-content' backgroundColor='white' />
 
       {/* Header */}
-      <View className='flex-row items-center px-4 py-3 bg-white border-b border-gray-100'>
-        <TouchableOpacity onPress={() => navigation.goBack()} className='mr-3'>
-          <Ionicons name='arrow-back' size={24} color='#374151' />
-        </TouchableOpacity>
-        <AppText
-          className='text-xl font-semibold text-gray-900'
-          style={{ fontFamily: 'Ubuntu-Bold' }}
-        >
-          Orders
-        </AppText>
+      <View className='flex-row items-center justify-between px-6 py-3 bg-white '>
+        <View className='flex-row items-center'>
+          <AppText className='text-4xl font-bold text-primary'>Orders</AppText>
+        </View>
+        <View className='flex-row items-center'>
+          <TouchableOpacity className='mr-3'>
+            <Ionicons name='help-circle-outline' size={24} color='#14b8a6' />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Ionicons name='notifications-outline' size={24} color='#14b8a6' />
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* Tab Navigation */}
-      <View className='flex-row bg-gray-100 m-4 rounded-xl p-1'>
+      <View className='flex-row bg-white m-4 rounded-full p-2 shadow-xl'>
         <TouchableOpacity
-          onPress={() => setActiveTab('active')}
-          className={`flex-1 py-2 rounded-lg ${
-            activeTab === 'active' ? 'bg-white' : ''
+          onPress={() => setActiveTab('upcoming')}
+          className={`flex-1 py-2 rounded-full ${
+            activeTab === 'upcoming' ? 'bg-primary' : ''
           }`}
         >
           <AppText
-            className={`text-center font-medium ${
-              activeTab === 'active' ? 'text-gray-900' : 'text-gray-500'
+            className={`text-center text-lg font-medium ${
+              activeTab === 'upcoming' ? 'text-white' : 'text-primary'
             }`}
-            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
-            Active Orders
+            upcoming
           </AppText>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => setActiveTab('completed')}
-          className={`flex-1 py-2 rounded-lg ${
-            activeTab === 'completed' ? 'bg-white' : ''
+          onPress={() => setActiveTab('history')}
+          className={`flex-1 py-2 rounded-full ${
+            activeTab === 'history' ? 'bg-primary' : ''
           }`}
         >
           <AppText
-            className={`text-center font-medium ${
-              activeTab === 'completed' ? 'text-gray-900' : 'text-gray-500'
+            className={`text-center text-lg font-medium ${
+              activeTab === 'history' ? 'text-white' : 'text-primary'
             }`}
-            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
-            Completed
+            history
           </AppText>
         </TouchableOpacity>
       </View>
@@ -112,75 +114,68 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
         {filteredOrders.map((order) => (
           <TouchableOpacity
             key={order.id}
-            className='mx-4 mb-3 bg-white rounded-xl p-4 border border-gray-100'
+            className='mx-4 mb-3 bg-white rounded-xl p-4 border border-gray-100 shadow-xl'
           >
-            <View className='flex-row items-center justify-between mb-3'>
-              <View className='flex-row items-center'>
-                <View
-                  className={`w-3 h-3 rounded-full mr-3 ${
-                    order.status === 'pending'
-                      ? 'bg-yellow-500'
-                      : order.status === 'active'
-                      ? 'bg-emerald-500'
-                      : 'bg-gray-400'
-                  }`}
+            <View className='flex-row items-center'>
+              {/* Left Section - Icon */}
+              <View className='w-[100px] h-24 bg-primary rounded-2xl mr-4 items-center justify-center'>
+                <Image
+                  source={require('../../assets/order.png')}
+                  className='w-14 h-14'
                 />
-                <AppText
-                  className='font-semibold text-gray-900'
-                  style={{ fontFamily: 'Ubuntu-Bold' }}
-                >
-                  Order #{order.id}240
-                </AppText>
               </View>
-              <AppText
-                className='font-bold text-lg text-gray-900'
-                style={{ fontFamily: 'Ubuntu-Bold' }}
-              >
-                ${order.amount}
-              </AppText>
-            </View>
 
-            <View className='flex-row justify-between items-center'>
-              <View>
-                <AppText className='text-gray-600'>
-                  Customer: {order.customer}
-                </AppText>
-                <AppText className='text-sm text-gray-500'>
-                  {order.distance} • {order.time}
+              {/* Right Section - Text and Navigation */}
+              <View className='flex-1'>
+                <View className='flex-row items-center mb-1'>
+                  <AppText
+                    className={`text-sm mr-2 ${
+                      order.status === 'canceled'
+                        ? 'text-pink-500'
+                        : 'text-primary'
+                    }`}
+                  >
+                    {order.status === 'canceled'
+                      ? 'Canceled'
+                      : order.status === 'to be delivered'
+                      ? 'to be delivered'
+                      : 'Delivered'}
+                  </AppText>
+                  <AppText className='text-sm text-gray-500'>|</AppText>
+                  <AppText className='text-sm text-gray-500 ml-2'>
+                    {order.time}
+                  </AppText>
+                </View>
+                <AppText className='text-2xl font-bold text-primary'>
+                  {order.customer}
                 </AppText>
               </View>
-              <View className='flex-row'>
-                {order.status === 'pending' && (
-                  <>
-                    <TouchableOpacity className='bg-red-100 px-3 py-1 rounded-lg mr-2'>
-                      <AppText className='text-red-600 font-medium'>
-                        Decline
-                      </AppText>
-                    </TouchableOpacity>
-                    <TouchableOpacity className='bg-emerald-500 px-3 py-1 rounded-lg'>
-                      <AppText className='text-white font-medium'>
-                        Accept
-                      </AppText>
-                    </TouchableOpacity>
-                  </>
-                )}
-                {order.status === 'active' && (
-                  <TouchableOpacity className='bg-blue-500 px-3 py-1 rounded-lg'>
-                    <AppText className='text-white font-medium'>Track</AppText>
-                  </TouchableOpacity>
-                )}
-                {order.status === 'completed' && (
-                  <View className='bg-gray-100 px-3 py-1 rounded-lg'>
-                    <AppText className='text-gray-600 font-medium'>
-                      Completed
-                    </AppText>
-                  </View>
+
+              {/* Navigation Arrow */}
+              <View className='ml-2'>
+                {order.status === 'canceled' ? (
+                  <ChevronLeft size={24} color='#999595' />
+                ) : order.status === 'delivered' ? (
+                  <Check size={24} color='#999595' />
+                ) : (
+                  <AppText className='text-gray-400 text-[40px]'>›</AppText>
                 )}
               </View>
             </View>
           </TouchableOpacity>
         ))}
       </ScrollView>
+      <View className='items-center py-8'>
+        <AppText
+          className='text-gray-400 text-sm mb-2'
+          style={{ fontFamily: 'Ubuntu-Regular' }}
+        >
+          App version 1.0.0
+        </AppText>
+        <AppText className='text-primary text-l font-thin'>
+          Ntumai delivery express
+        </AppText>
+      </View>
     </SafeAreaView>
   );
 };
