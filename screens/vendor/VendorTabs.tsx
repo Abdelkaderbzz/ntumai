@@ -2,10 +2,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { VendorDashboard } from './VendorDashboard';
-import { VendorProducts } from './VendorProducts';
-import { VendorReports } from './VendorReports';
+import  VendorProducts  from './VendorProducts';
+import  VendorReports  from './VendorReports';
 import { VendorNotifications } from './VendorNotifications';
-import { VendorProfile } from './VendorProfile';
+import  VendorProfile  from './VendorProfile';
 
 const Tab = createBottomTabNavigator();
 
