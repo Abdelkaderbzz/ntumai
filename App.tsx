@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
@@ -15,13 +15,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import ContinueSignUpScreen from './screens/ContinueSignUpScreen';
 import ContinueBoardingScreen from './screens/ContinueBoarding';
 import HomeTabs from './screens/home/HomeTabs';
-import DriverHome, {
-  DriverDashboard,
-  DriverEarnings,
-  DriverOrders,
-  DriverRoutes,
-  DriverSettings,
-} from './screens/driver/DriverHome';
+
 import {
   CartScreen,
   ProductDetailScreen,
@@ -33,13 +27,17 @@ import {
   RateOrderScreen,
 } from './screens/checkout/CheckoutScreen';
 import VendorTabs from './screens/vendor/VendorTabs';
-import AppText from './components/AppText';
 import EditProductScreen from './screens/home/EditProductScreen';
-import ProductsScreen from './screens/home/ProductsScreen';
 import CreatePromotion from './screens/CreatePromotion';
 import PreviewPromotion from './screens/PreviewPromotion';
 import CreateCategory from './screens/CreateCategory';
 import CreateBrand from './screens/CreateBrand';
+import { DriverDashboard, DriverEarnings, DriverHome, DriverOrders, DriverRoutes } from './screens/driver';
+import DriverSettings from './screens/driver/DriverProfile';
+import VenderProducts from './screens/vendor/VendorProducts';
+import OrderDeliveryFirstStep from './screens/driver/deliveries/OrderDeliveryFirstStep';
+import OrderDeliveryLastStep from './screens/driver/deliveries/OrderDeliveryLastStep';
+import OrderDeliverySecondStep from './screens/driver/deliveries/OrderDeliverySecondStep';
 
 // Keep splash screen visible while loading fonts
 SplashScreen.preventAutoHideAsync();
@@ -71,6 +69,9 @@ export type RootStackParamList = {
   PreviewPromotion: undefined;
   EditProduct: undefined;
   CreateBrand: undefined;
+  OrderDeliveryFirstStep: undefined;
+  OrderDeliverySecondStep: undefined;
+  OrderDeliveryLastStep: undefined;
   ProductScreen: undefined;
 };
 
@@ -250,6 +251,30 @@ export default function App() {
                 }}
               />
               <Stack.Screen
+                name='OrderDeliveryFirstStep'
+                component={OrderDeliveryFirstStep}
+                options={{
+                  headerShown: false,
+                  animation: 'slide_from_bottom',
+                }}
+              />
+              <Stack.Screen
+                name='OrderDeliverySecondStep'
+                component={OrderDeliverySecondStep}
+                options={{
+                  headerShown: false,
+                  animation: 'slide_from_bottom',
+                }}
+              />
+              <Stack.Screen
+                name='OrderDeliveryLastStep'
+                component={OrderDeliveryLastStep}
+                options={{
+                  headerShown: false,
+                  animation: 'slide_from_bottom',
+                }}
+              />
+              <Stack.Screen
                 name='CreateCategory'
                 component={CreateCategory}
                 options={{
@@ -267,7 +292,7 @@ export default function App() {
               />
               <Stack.Screen
                 name='ProductScreen'
-                component={ProductsScreen}
+                component={VenderProducts}
                 options={{
                   headerShown: false,
                   animation: 'slide_from_bottom',
