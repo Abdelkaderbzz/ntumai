@@ -1,5 +1,6 @@
 import { View, Text, Pressable, Image } from 'react-native';
 import { Search, ShoppingCart } from 'lucide-react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface HeaderBarProps {
   cartItemCount?: number;
@@ -28,31 +29,35 @@ export default function HeaderBar({
           zIndex: 20, // increased zIndex to ensure it stands out above other views
         }}
       >
-        <View className='flex-row items-center h-16 '>
+        <View className='flex-row items-center h-12 '>
           {/* User Profile Icon */}
-          <View className='w-12'>
-            <Image
-              source={require('../assets/person.png')}
-              className='h-12 w-12 rounded-full'
+          <View>
+            <LinearGradient
+              colors={['#08AF97', 'rgba(8, 175, 151, 0.02)']}
+              start={{ x: 0.5, y: 0 }}
+              end={{ x: 0.5, y: 1 }}
               style={{
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.25,
-                shadowRadius: 3.84,
-                borderColor: '#08AF97',
-                borderWidth: 3,
+                padding: 3, // thickness of border
+                borderRadius: 999, // fully round
               }}
-              width={48}
-              height={48}
-            />
+            >
+              <Image
+                source={require('./../assets/person.png')}
+                style={{
+                  width: 46,
+                  height: 46,
+                  borderRadius: 999,
+                }}
+              />
+            </LinearGradient>
           </View>
 
           {/* Brand Logo */}
-          <View className='flex-1 items-center'>
+          <View className='flex-1 items-center '>
             <Image
               source={require('../assets/logo_green.png')}
-              height={15}
-              width={60}
+              height={10}
+              width={20}
             />
           </View>
 
