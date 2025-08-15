@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AppText from '../../components/AppText';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface DriverSettingsProps {
   navigation: any;
@@ -76,12 +77,26 @@ const DriverSettings: React.FC<DriverSettingsProps> = ({ navigation }) => {
         {/* Profile Section */}
         <View className='items-center py-8'>
           <View className='relative'>
-            <Image
-              source={require('./../../assets/person.png')}
-              className='w-24 h-24 rounded-full border-2 border-green-300'
-            />
-            <TouchableOpacity className='absolute bottom-0 right-0 bg-green-300 w-8 h-8 rounded-full items-center justify-center'>
-              <Ionicons name='pencil' size={16} color='white' />
+            <LinearGradient
+              colors={['#08AF97', 'rgba(8, 175, 151, 0.02)']}
+              start={{ x: 0.5, y: 0 }}
+              end={{ x: 0.5, y: 1 }}
+              style={{
+                padding: 3, // thickness of border
+                borderRadius: 999, // fully round
+              }}
+            >
+              <Image
+                source={require('./../../assets/person.png')}
+                style={{
+                  width: 96,
+                  height: 96,
+                  borderRadius: 999,
+                }}
+              />
+            </LinearGradient>
+            <TouchableOpacity className='absolute bottom-0 right-0 bg-[#e8fac8] w-8 h-8 rounded-full items-center justify-center'>
+              <Ionicons name='pencil' size={16} color='#000101' />
             </TouchableOpacity>
           </View>
 
