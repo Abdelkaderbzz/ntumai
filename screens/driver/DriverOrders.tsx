@@ -114,6 +114,7 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
         {filteredOrders.map((order) => (
           <TouchableOpacity
             key={order.id}
+            onPress={() => navigation.navigate('OrderDeliveryFirstStep')}
             className='mx-4 mb-3 bg-white rounded-xl p-4 border border-gray-100 shadow-xl'
           >
             <View className='flex-row items-center'>
