@@ -1,0 +1,199 @@
+import React from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+  ScrollView,
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import AppText from '../../../components/AppText';
+import { Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+const OrderDeliverySecondStep: React.FC = () => {
+  const navigation = useNavigation();
+  return (
+    <SafeAreaView className='flex-1 bg-white'>
+      {/* Header */}
+      <TouchableOpacity
+        className='flex-row items-center px-4 py-3 bg-primary'
+        onPress={() => {
+          // If using react-navigation, you can use navigation.goBack()
+          // Otherwise, replace with your go back logic
+          if (typeof navigation !== 'undefined' && navigation.goBack) {
+            navigation.goBack();
+          }
+        }}
+        activeOpacity={0.7}
+      >
+        <Ionicons
+          name='arrow-back'
+          size={24}
+          color='white'
+          style={{ marginRight: 12 }}
+        />
+        <AppText className='text-white text-lg font-semibold'>Back</AppText>
+      </TouchableOpacity>
+
+      {/* Progress Tracker */}
+      <View className='px-6 py-6'>
+        <Image
+          source={require('./../../../assets/order-second-step.png')}
+          className='h-32 w-full'
+        />
+      </View>
+
+      {/* Main Content - Scrollable */}
+      <ScrollView className='flex-1 px-6' showsVerticalScrollIndicator={false}>
+        <AppText className='text-xl font-bold text-[#919190] mb-6'>
+          Sender details
+        </AppText>
+
+        {/* Sender Details Container */}
+        <View className='border border-primary/20 rounded-2xl p-6 mb-6 bg-white'>
+          {/* Sender Name Input */}
+          <View className='mb-4'>
+            <TouchableOpacity className='bg-primary rounded-2xl px-4 py-[20px] '>
+              <AppText className='text-white text-base'>
+                Enter sender name
+              </AppText>
+            </TouchableOpacity>
+          </View>
+
+          {/* Sender Phone Input */}
+          <View className='mb-4'>
+            <TouchableOpacity className='bg-primary rounded-2xl px-4 py-[20px] '>
+              <AppText className='text-white text-base'>
+                Enter sender phone
+              </AppText>
+            </TouchableOpacity>
+          </View>
+
+          {/* Sender Remarks Input */}
+          <View className='flex-row w-full'>
+            <TouchableOpacity className='flex-row w-full justify-start bg-primary rounded-2xl p-4 min-h-[100px] '>
+              <AppText className='text-white text-base'>Sender remarks</AppText>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <AppText className='text-xl font-bold text-[#919190] mb-6'>
+          Receiver details
+        </AppText>
+
+        {/* Sender Details Container */}
+        <View className='rounded-2xl p-6 mb-6 bg-[#e8fac8]'>
+          {/* Sender Name Input */}
+          <View className='mb-4'>
+            <TouchableOpacity className='bg-primary rounded-2xl px-4 py-[20px]'>
+              <AppText className='text-white text-base'>
+                Enter sender name
+              </AppText>
+            </TouchableOpacity>
+          </View>
+
+          {/* Sender Phone Input */}
+          <View className='mb-4'>
+            <TouchableOpacity className='bg-primary rounded-xl px-4 py-[20px]'>
+              <AppText className='text-white text-base'>
+                Enter sender phone
+              </AppText>
+            </TouchableOpacity>
+          </View>
+
+          {/* Sender Remarks Input */}
+          <View>
+            <TouchableOpacity className='flex-row w-full justify-start bg-primary rounded-2xl p-4 min-h-[100px] '>
+              <AppText className='text-white text-base'>Sender remarks</AppText>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Choose Type Section */}
+        <View className='mb-[90px]'>
+          <AppText className='text-xl font-bold text-[#919190] mb-4'>
+            Choose type
+          </AppText>
+
+          <View className='space-y-3'>
+            {/* First Row */}
+            <View className='flex-row gap-3 pb-2'>
+              {[
+                { label: 'Book', selected: false },
+                { label: 'Goods', selected: false },
+                { label: 'Cosmetics', selected: false },
+                { label: 'Electronic', selected: true },
+              ].map((type, index) => (
+                <TouchableOpacity
+                  key={index}
+                  className={`px-4 py-3 rounded-full ${
+                    type.selected ? 'bg-primary' : 'bg-gray-800'
+                  }`}
+                >
+                  <AppText
+                    className={`font-medium text-sm ${
+                      type.selected ? 'text-white' : 'text-gray-300'
+                    }`}
+                  >
+                    {type.label}
+                  </AppText>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            {/* Second Row */}
+            <View className='flex-row gap-3'>
+              {[
+                { label: 'Medicine', selected: false },
+                { label: 'Computer', selected: false },
+                { label: 'Computer', selected: false },
+              ].map((type, index) => (
+                <TouchableOpacity
+                  key={index + 4}
+                  className={`px-4 py-3 rounded-full ${
+                    type.selected ? 'bg-primary' : 'bg-gray-800'
+                  }`}
+                >
+                  <AppText
+                    className={`font-medium text-sm ${
+                      type.selected ? 'text-white' : 'text-gray-300'
+                    }`}
+                  >
+                    {type.label}
+                  </AppText>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+        </View>
+        <View className='h-8' />
+      </ScrollView>
+      <View className='absolute w-full left-0 right-0 bottom-0 bg-primary rounded-t-3xl px-6 py-6'>
+        <View className='flex-row items-center justify-between'>
+          {/* Total Amount */}
+          <View>
+            <AppText className='text-white text-sm mb-1'>
+              Total (incl. VAT)
+            </AppText>
+            <AppText className='text-white text-2xl font-bold'>$2.00</AppText>
+          </View>
+
+          {/* Process Next Button */}
+          <TouchableOpacity
+            className='bg-white rounded-full px-8 py-4'
+            onPress={() => {
+              navigation.navigate('OrderDeliveryLastStep')
+            }}
+            activeOpacity={0.8}
+          >
+            <AppText className='text-primary font-bold text-lg'>
+              Process Next
+            </AppText>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+export default OrderDeliverySecondStep;
