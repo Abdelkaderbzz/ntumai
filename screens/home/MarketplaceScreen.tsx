@@ -1367,7 +1367,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
   }
 
   return (
-    <View className='flex-1 bg-gray-50'>
+    <View className='flex-1 bg-white'>
       <TouchableOpacity
         className='flex-row items-center px-4 py-3 bg-primary'
         onPress={() => {
@@ -1389,21 +1389,45 @@ export function CartScreen({ navigation }: CartScreenProps) {
       </TouchableOpacity>
 
       <ScrollView className='flex-1'>
+        {/* Cart Header */}
+        <View className='px-4 pt-4'>
+          <Text className='text-center text-[#929292] font-bold text-2xl  mb-4'>
+            Cart
+          </Text>
+
+          <View className='flex-row items-center justify-between'>
+            <Text
+              style={{ fontFamily: 'Ubuntu-Bold' }}
+              className='text-gray-900 font-bold text-2xl'
+            >
+              Product
+            </Text>
+            <View
+              className='px-6 py-2 rounded-full'
+              style={{ backgroundColor: '#ec4876' }}
+            >
+              <Text className='text-white font-medium'>3 Items</Text>
+            </View>
+          </View>
+        </View>
         <View className='px-4 py-4'>
           {cartItems.map((item, index) => (
             <View
               key={`${item.id}-${index}`}
-              className='bg-white rounded-2xl mb-4 p-4 shadow-sm'
+              className='bg-white rounded-2xl p-2 shadow-sm'
             >
               <View className='flex-row items-center'>
                 {/* Selection Indicator - Pink checkmark */}
-                <View className='w-6 h-6 rounded-full bg-pink-500 items-center justify-center mr-3'>
-                  <View className='w-3 h-3 border-2 border-white rounded-full' />
+                <View
+                  className='w-6 h-6 rounded-full items-center justify-center mr-3'
+                  style={{ backgroundColor: '#ec4876' }}
+                >
+                  <Ionicons name='checkmark' size={16} color='white' />
                 </View>
 
                 {/* Product Image with teal background */}
                 <View className='relative'>
-                  <View className='w-20 h-20 rounded-2xl bg-teal-400 items-center justify-center mr-4'>
+                  <View className='w-28 h-28 rounded-3xl bg-primary items-center justify-center mr-4'>
                     <Image
                       source={{
                         uri:
@@ -1416,16 +1440,11 @@ export function CartScreen({ navigation }: CartScreenProps) {
                   </View>
                   {/* Heart Icon */}
                   <TouchableOpacity className='absolute top-1 right-5'>
-                    <View className='w-5 h-5 rounded-full bg-pink-500 items-center justify-center'>
-                      <View
-                        className='w-2.5 h-2.5 bg-white'
-                        style={{
-                          transform: [{ rotate: '45deg' }],
-                          borderTopLeftRadius: 2,
-                          borderTopRightRadius: 2,
-                          borderBottomLeftRadius: 2,
-                        }}
-                      />
+                    <View
+                      className='w-6 h-6 rounded-full items-center justify-center'
+                      style={{ backgroundColor: '#ec4876' }}
+                    >
+                      <Ionicons name='heart' size={14} color='white' />
                     </View>
                   </TouchableOpacity>
                 </View>
@@ -1433,18 +1452,18 @@ export function CartScreen({ navigation }: CartScreenProps) {
                 {/* Product Information */}
                 <View className='flex-1'>
                   <AppText
-                    className='text-gray-900 font-bold text-lg mb-1'
+                    className='text-gray-900 font-bold text-lg'
                     numberOfLines={1}
                     style={{ fontFamily: 'Ubuntu-Bold' }}
                   >
-                    {item.name}
+                    Apple Watch
                   </AppText>
 
                   <AppText
-                    className='text-gray-500 text-sm mb-3'
+                    className='text-gray-500 text-sm'
                     style={{ fontFamily: 'Ubuntu-Regular' }}
                   >
-                    {item.restaurant}
+                    Sabai's Store
                   </AppText>
 
                   <View className='flex-row items-center justify-between'>
@@ -1452,18 +1471,18 @@ export function CartScreen({ navigation }: CartScreenProps) {
                       className='text-gray-900 font-bold text-xl'
                       style={{ fontFamily: 'Ubuntu-Bold' }}
                     >
-                      ${item.price}
+                      $300
                     </AppText>
 
                     {/* Quantity Selector with gray background and pink plus */}
-                    <View className='flex-row items-center'>
+                    <View className='flex-row  items-center'>
                       <TouchableOpacity
                         onPress={() =>
                           updateQuantity(item.id, item.quantity - 1)
                         }
                         className='w-8 h-8 rounded-full bg-gray-200 items-center justify-center'
                       >
-                        <Minus size={16} color='#EF4444' strokeWidth={2} />
+                        <Minus size={16} color='#ec4876' strokeWidth={2} />
                       </TouchableOpacity>
                       <AppText
                         className='mx-4 font-bold text-gray-900 text-lg'
@@ -1475,7 +1494,8 @@ export function CartScreen({ navigation }: CartScreenProps) {
                         onPress={() =>
                           updateQuantity(item.id, item.quantity + 1)
                         }
-                        className='w-8 h-8 rounded-full bg-pink-500 items-center justify-center'
+                        className='w-8 h-8 rounded-full items-center justify-center'
+                        style={{ backgroundColor: '#ec4876' }}
                       >
                         <Plus size={16} color='white' strokeWidth={2} />
                       </TouchableOpacity>
@@ -1488,7 +1508,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
         </View>
 
         {/* Add Other Items */}
-        <View className='mx-4 mb-6'>
+        <View className='mx-4 mb-2'>
           <TouchableOpacity className='flex-row items-center mb-6'>
             <View className='w-8 h-8 rounded-full bg-pink-500 items-center justify-center mr-3'>
               <Plus size={16} color='white' strokeWidth={2} />
@@ -1502,7 +1522,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
           </TouchableOpacity>
 
           {/* Apply Discount Code */}
-          <TouchableOpacity className='border-2 border-dashed border-pink-400 rounded-2xl p-4 mb-6'>
+          <TouchableOpacity className='border-2 border-dashed bg-[#eeefef] border-pink-400 rounded-full p-2 py-1 mb-6'>
             <AppText
               className='text-pink-500 font-bold text-center text-lg'
               style={{ fontFamily: 'Ubuntu-Bold' }}
@@ -1513,7 +1533,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
         </View>
 
         {/* Payment Info */}
-        <View className='mx-4 mb-6'>
+        <View className='mx-4 pb-[100px]'>
           <AppText
             className='text-gray-900 font-bold text-xl mb-4'
             style={{ fontFamily: 'Ubuntu-Bold' }}
@@ -1637,7 +1657,9 @@ export function CartScreen({ navigation }: CartScreenProps) {
             onPress={() => navigation.navigate('Checkout')}
             activeOpacity={0.8}
           >
-            <AppText className='text-primary font-bold text-lg'>Proceed to Checkout</AppText>
+            <AppText className='text-primary font-bold text-lg'>
+              Proceed to Checkout
+            </AppText>
           </TouchableOpacity>
         </View>
       </View>
