@@ -21,11 +21,9 @@ import {
   ProductDetailScreen,
   RestaurantDetailScreen,
 } from './screens/home/MarketplaceScreen';
-import {
-  CheckoutScreen,
-  OrderTrackingScreen,
-  RateOrderScreen,
-} from './screens/checkout/CheckoutScreen';
+import { CheckoutScreen } from './screens/checkout/CheckoutScreen';
+import { OrderTrackingScreen } from './screens/checkout/steps/OrderTrackingScreen';
+import { RateOrderScreen } from './screens/checkout/steps/RateOrderScreen';
 import VendorTabs from './screens/vendor/VendorTabs';
 import EditProductScreen from './screens/home/EditProductScreen';
 import CreatePromotion from './screens/CreatePromotion';
