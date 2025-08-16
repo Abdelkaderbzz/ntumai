@@ -1,4 +1,3 @@
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
@@ -30,12 +29,19 @@ import CreatePromotion from './screens/CreatePromotion';
 import PreviewPromotion from './screens/PreviewPromotion';
 import CreateCategory from './screens/CreateCategory';
 import CreateBrand from './screens/CreateBrand';
-import { DriverDashboard, DriverEarnings, DriverHome, DriverOrders, DriverRoutes } from './screens/driver';
+import {
+  DriverDashboard,
+  DriverEarnings,
+  DriverHome,
+  DriverOrders,
+  DriverRoutes,
+} from './screens/driver';
 import DriverSettings from './screens/driver/DriverProfile';
 import VenderProducts from './screens/vendor/VendorProducts';
 import OrderDeliveryFirstStep from './screens/driver/deliveries/OrderDeliveryFirstStep';
 import OrderDeliveryLastStep from './screens/driver/deliveries/OrderDeliveryLastStep';
 import OrderDeliverySecondStep from './screens/driver/deliveries/OrderDeliverySecondStep';
+import { AddLocation } from './screens/checkout/steps/AddLocation';
 
 // Keep splash screen visible while loading fonts
 SplashScreen.preventAutoHideAsync();
@@ -61,6 +67,7 @@ export type RootStackParamList = {
   Checkout: undefined;
   OrderTracking: undefined;
   RateOrder: undefined;
+  AddLocation: undefined;
   AdminDashboard: undefined;
   VendorDashboard: undefined;
   CreatePromotion: undefined;
@@ -217,6 +224,14 @@ export default function App() {
               <Stack.Screen
                 name='RateOrder'
                 component={RateOrderScreen}
+                options={{
+                  headerShown: false,
+                  animation: 'slide_from_bottom',
+                }}
+              />
+              <Stack.Screen
+                name='AddLocation'
+                component={AddLocation}
                 options={{
                   headerShown: false,
                   animation: 'slide_from_bottom',
