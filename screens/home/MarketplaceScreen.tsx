@@ -1,5 +1,5 @@
 // screens/marketplace/MarketplaceScreen.tsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -11,7 +11,7 @@ import {
   StyleSheet,
   FlatList,
   Alert,
-} from "react-native";
+} from 'react-native';
 import {
   Search,
   Filter,
@@ -26,11 +26,12 @@ import {
   Truck,
   Minus,
   X,
-} from "lucide-react-native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import AppText from "../../components/AppText";
+} from 'lucide-react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import AppText from '../../components/AppText';
+import { Ionicons } from '@expo/vector-icons';
 
-const { width } = Dimensions.get("window");
+const { width } = Dimensions.get('window');
 
 // Navigation Types
 type RootStackParamList = {
@@ -44,13 +45,13 @@ type RootStackParamList = {
 type MarketplaceScreenProps = NativeStackScreenProps<RootStackParamList>;
 type RestaurantDetailScreenProps = NativeStackScreenProps<
   RootStackParamList,
-  "RestaurantDetail"
+  'RestaurantDetail'
 >;
 type ProductDetailScreenProps = NativeStackScreenProps<
   RootStackParamList,
-  "ProductDetail"
+  'ProductDetail'
 >;
-type CartScreenProps = NativeStackScreenProps<RootStackParamList, "Cart">;
+type CartScreenProps = NativeStackScreenProps<RootStackParamList, 'Cart'>;
 
 // Types
 interface Product {
@@ -102,67 +103,67 @@ interface CartItem extends Product {
 // Enhanced Mock Data
 const promoCards: PromoCard[] = [
   {
-    id: "1",
-    title: "Get ready",
-    subtitle: "Promo out",
-    discount: "10%",
+    id: '1',
+    title: 'Get ready',
+    subtitle: 'Promo out',
+    discount: '10%',
     image:
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100&h=100&fit=crop",
-    color: "#10B981",
-    textColor: "#FFFFFF",
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100&h=100&fit=crop',
+    color: '#10B981',
+    textColor: '#FFFFFF',
   },
   {
-    id: "2",
-    title: "Special",
-    subtitle: "Deal",
-    discount: "25%",
+    id: '2',
+    title: 'Special',
+    subtitle: 'Deal',
+    discount: '25%',
     image:
-      "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=100&h=100&fit=crop",
-    color: "#F59E0B",
-    textColor: "#FFFFFF",
+      'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=100&h=100&fit=crop',
+    color: '#F59E0B',
+    textColor: '#FFFFFF',
   },
 ];
 
 const restaurants: Restaurant[] = [
   {
-    id: "1",
-    name: "Dewaxe Restaurant",
+    id: '1',
+    name: 'Dewaxe Restaurant',
     image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=250&fit=crop",
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=250&fit=crop',
     rating: 4.5,
-    deliveryTime: "25-35 min",
-    category: "African • $$ • 2.1km",
-    location: "Lusaka, Zambia",
+    deliveryTime: '25-35 min',
+    category: 'African • $$ • 2.1km',
+    location: 'Lusaka, Zambia',
     followers: 1250,
     isFollowing: false,
-    promoText: "Up to 25% Off",
+    promoText: 'Up to 25% Off',
     deliveryFee: 15,
     minOrder: 50,
   },
   {
-    id: "2",
-    name: "Mama Pork",
+    id: '2',
+    name: 'Mama Pork',
     image:
-      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=250&fit=crop",
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=250&fit=crop',
     rating: 4.8,
-    deliveryTime: "20-30 min",
-    category: "BBQ • $$$ • 1.5km",
-    location: "Kabwe, Zambia",
+    deliveryTime: '20-30 min',
+    category: 'BBQ • $$$ • 1.5km',
+    location: 'Kabwe, Zambia',
     followers: 2100,
     isFollowing: true,
-    promoText: "Free Delivery",
+    promoText: 'Free Delivery',
     deliveryFee: 0,
     minOrder: 30,
   },
   {
-    id: "3",
-    name: "Green Garden",
+    id: '3',
+    name: 'Green Garden',
     image:
-      "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=400&h=250&fit=crop",
+      'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=400&h=250&fit=crop',
     rating: 4.3,
-    deliveryTime: "15-25 min",
-    category: "Healthy • $ • 0.8km",
-    location: "Ndola, Zambia",
+    deliveryTime: '15-25 min',
+    category: 'Healthy • $ • 0.8km',
+    location: 'Ndola, Zambia',
     followers: 890,
     isFollowing: false,
     deliveryFee: 10,
@@ -172,64 +173,64 @@ const restaurants: Restaurant[] = [
 
 const products: Product[] = [
   {
-    id: "1",
-    name: "Mixed Salad",
+    id: '1',
+    name: 'Mixed Salad',
     price: 45,
     originalPrice: 60,
     image:
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop",
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
     rating: 4.6,
     reviews: 128,
-    category: "Salads",
-    restaurant: "Dewaxe Restaurant",
-    restaurantId: "1",
+    category: 'Salads',
+    restaurant: 'Dewaxe Restaurant',
+    restaurantId: '1',
     description:
-      "Fresh mixed greens with seasonal vegetables, cherry tomatoes, cucumber, and house dressing",
+      'Fresh mixed greens with seasonal vegetables, cherry tomatoes, cucumber, and house dressing',
     isPromo: true,
-    promoText: "25% Off",
+    promoText: '25% Off',
     discount: 25,
   },
   {
-    id: "2",
-    name: "Soulful Jollof",
+    id: '2',
+    name: 'Soulful Jollof',
     price: 75,
     image:
-      "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&h=400&fit=crop",
+      'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&h=400&fit=crop',
     rating: 4.9,
     reviews: 245,
-    category: "African",
-    restaurant: "Dewaxe Restaurant",
-    restaurantId: "1",
+    category: 'African',
+    restaurant: 'Dewaxe Restaurant',
+    restaurantId: '1',
     description:
-      "Traditional Nigerian jollof rice with perfectly balanced spices, tender chicken, and vegetables",
+      'Traditional Nigerian jollof rice with perfectly balanced spices, tender chicken, and vegetables',
   },
   {
-    id: "3",
-    name: "Sweet Cupcake",
+    id: '3',
+    name: 'Sweet Cupcake',
     price: 25,
     image:
-      "https://images.unsplash.com/photo-1587668178277-295251f900ce?w=400&h=400&fit=crop",
+      'https://images.unsplash.com/photo-1587668178277-295251f900ce?w=400&h=400&fit=crop',
     rating: 4.4,
     reviews: 89,
-    category: "Desserts",
-    restaurant: "Green Garden",
-    restaurantId: "3",
+    category: 'Desserts',
+    restaurant: 'Green Garden',
+    restaurantId: '3',
     description:
-      "Vanilla cupcake with buttercream frosting and colorful sprinkles",
+      'Vanilla cupcake with buttercream frosting and colorful sprinkles',
   },
   {
-    id: "4",
-    name: "Grilled Chicken",
+    id: '4',
+    name: 'Grilled Chicken',
     price: 85,
     image:
-      "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=400&fit=crop",
+      'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=400&fit=crop',
     rating: 4.7,
     reviews: 156,
-    category: "BBQ",
-    restaurant: "Mama Pork",
-    restaurantId: "2",
+    category: 'BBQ',
+    restaurant: 'Mama Pork',
+    restaurantId: '2',
     description:
-      "Perfectly grilled chicken breast with herbs and spices, served with roasted vegetables",
+      'Perfectly grilled chicken breast with herbs and spices, served with roasted vegetables',
   },
 ];
 
@@ -239,14 +240,14 @@ let globalCart: CartItem[] = [];
 export default function MarketplaceScreen({
   navigation,
 }: MarketplaceScreenProps) {
-  const [searchText, setSearchText] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchText, setSearchText] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [followedRestaurants, setFollowedRestaurants] = useState<string[]>([
-    "2",
+    '2',
   ]);
   const [cartCount, setCartCount] = useState(3);
 
-  const categories = ["All", "African", "BBQ", "Healthy", "Desserts", "Salads"];
+  const categories = ['All', 'African', 'BBQ', 'Healthy', 'Desserts', 'Salads'];
 
   const toggleFollow = (restaurantId: string) => {
     setFollowedRestaurants((prev) =>
@@ -271,37 +272,37 @@ export default function MarketplaceScreen({
       .toLowerCase()
       .includes(searchText.toLowerCase());
     const matchesCategory =
-      selectedCategory === "All" || product.category === selectedCategory;
+      selectedCategory === 'All' || product.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
   const PromoCard = ({ promo }: { promo: PromoCard }) => (
     <TouchableOpacity
       style={[styles.promoCard, { backgroundColor: promo.color }]}
-      className="mr-4 p-4 rounded-2xl flex-row items-center justify-between"
+      className='mr-4 p-4 rounded-2xl flex-row items-center justify-between'
     >
-      <View className="flex-1">
+      <View className='flex-1'>
         <AppText
-          style={{ color: promo.textColor, fontFamily: "Ubuntu-Medium" }}
-          className="text-sm"
+          style={{ color: promo.textColor, fontFamily: 'Ubuntu-Medium' }}
+          className='text-sm'
         >
           {promo.title}
         </AppText>
         <AppText
-          style={{ color: promo.textColor, fontFamily: "Ubuntu-Medium" }}
-          className="text-sm"
+          style={{ color: promo.textColor, fontFamily: 'Ubuntu-Medium' }}
+          className='text-sm'
         >
           {promo.subtitle}
         </AppText>
         <AppText
-          style={{ color: promo.textColor, fontFamily: "Ubuntu-Bold" }}
-          className="text-2xl mt-1"
+          style={{ color: promo.textColor, fontFamily: 'Ubuntu-Bold' }}
+          className='text-2xl mt-1'
         >
           {promo.discount}
         </AppText>
-        <TouchableOpacity className="bg-white px-3 py-1 rounded-full mt-2 self-start">
+        <TouchableOpacity className='bg-white px-3 py-1 rounded-full mt-2 self-start'>
           <AppText
-            className="text-xs font-semibold"
+            className='text-xs font-semibold'
             style={{ color: promo.color }}
           >
             Order now
@@ -310,92 +311,92 @@ export default function MarketplaceScreen({
       </View>
       <Image
         source={{ uri: promo.image }}
-        className="w-16 h-16 rounded-full"
-        resizeMode="cover"
+        className='w-16 h-16 rounded-full'
+        resizeMode='cover'
       />
     </TouchableOpacity>
   );
 
   const RestaurantCard = ({ restaurant }: { restaurant: Restaurant }) => (
     <TouchableOpacity
-      className="bg-white rounded-2xl overflow-hidden mr-4 shadow-sm"
+      className='bg-white rounded-2xl overflow-hidden mr-4 shadow-sm'
       style={{ width: width * 0.8 }}
-      onPress={() => navigation.navigate("RestaurantDetail", { restaurant })}
+      onPress={() => navigation.navigate('RestaurantDetail', { restaurant })}
     >
-      <View className="relative">
+      <View className='relative'>
         <Image
           source={{ uri: restaurant.image }}
-          className="w-full h-36"
-          resizeMode="cover"
+          className='w-full h-36'
+          resizeMode='cover'
         />
         {restaurant.promoText && (
-          <View className="absolute top-3 left-3 bg-red-500 px-2 py-1 rounded-md">
+          <View className='absolute top-3 left-3 bg-red-500 px-2 py-1 rounded-md'>
             <AppText
-              className="text-white text-xs font-semibold"
-              style={{ fontFamily: "Ubuntu-Medium" }}
+              className='text-white text-xs font-semibold'
+              style={{ fontFamily: 'Ubuntu-Medium' }}
             >
               {restaurant.promoText}
             </AppText>
           </View>
         )}
         <TouchableOpacity
-          className="absolute top-3 right-3 bg-white w-8 h-8 rounded-full items-center justify-center shadow-sm"
+          className='absolute top-3 right-3 bg-white w-8 h-8 rounded-full items-center justify-center shadow-sm'
           onPress={() => toggleFollow(restaurant.id)}
         >
           <Heart
             size={16}
             color={
               followedRestaurants.includes(restaurant.id)
-                ? "#EF4444"
-                : "#9CA3AF"
+                ? '#EF4444'
+                : '#9CA3AF'
             }
             fill={
-              followedRestaurants.includes(restaurant.id) ? "#EF4444" : "none"
+              followedRestaurants.includes(restaurant.id) ? '#EF4444' : 'none'
             }
           />
         </TouchableOpacity>
       </View>
 
-      <View className="p-4">
+      <View className='p-4'>
         <AppText
-          className="text-gray-800 font-bold text-base mb-1"
-          style={{ fontFamily: "Ubuntu-Bold" }}
+          className='text-gray-800 font-bold text-base mb-1'
+          style={{ fontFamily: 'Ubuntu-Bold' }}
         >
           {restaurant.name}
         </AppText>
-        <View className="flex-row items-center mb-2">
-          <Star size={14} color="#FCD34D" fill="#FCD34D" />
+        <View className='flex-row items-center mb-2'>
+          <Star size={14} color='#FCD34D' fill='#FCD34D' />
           <AppText
-            className="text-gray-600 text-sm ml-1"
-            style={{ fontFamily: "Ubuntu-Medium" }}
+            className='text-gray-600 text-sm ml-1'
+            style={{ fontFamily: 'Ubuntu-Medium' }}
           >
             {restaurant.rating}
           </AppText>
-          <AppText className="text-gray-400 text-sm ml-2">•</AppText>
-          <Clock size={14} color="#9CA3AF" />
+          <AppText className='text-gray-400 text-sm ml-2'>•</AppText>
+          <Clock size={14} color='#9CA3AF' />
           <AppText
-            className="text-gray-600 text-sm ml-1"
-            style={{ fontFamily: "Ubuntu-Medium" }}
+            className='text-gray-600 text-sm ml-1'
+            style={{ fontFamily: 'Ubuntu-Medium' }}
           >
             {restaurant.deliveryTime}
           </AppText>
         </View>
         <AppText
-          className="text-gray-500 text-sm mb-2"
-          style={{ fontFamily: "Ubuntu-Medium" }}
+          className='text-gray-500 text-sm mb-2'
+          style={{ fontFamily: 'Ubuntu-Medium' }}
         >
           {restaurant.category}
         </AppText>
-        <View className="flex-row items-center justify-between">
-          <View className="flex-row items-center">
-            <Truck size={14} color="#10B981" />
-            <AppText className="text-green-600 text-sm ml-1 font-medium">
+        <View className='flex-row items-center justify-between'>
+          <View className='flex-row items-center'>
+            <Truck size={14} color='#10B981' />
+            <AppText className='text-green-600 text-sm ml-1 font-medium'>
               {restaurant.deliveryFee === 0
-                ? "Free delivery"
+                ? 'Free delivery'
                 : `K${restaurant.deliveryFee} delivery`}
             </AppText>
           </View>
-          <AppText className="text-gray-500 text-xs">
+          <AppText className='text-gray-500 text-xs'>
             Min K{restaurant.minOrder}
           </AppText>
         </View>
@@ -405,21 +406,21 @@ export default function MarketplaceScreen({
 
   const ProductCard = ({ product }: { product: Product }) => (
     <TouchableOpacity
-      className="bg-white rounded-2xl overflow-hidden mb-4 shadow-sm"
-      onPress={() => navigation.navigate("ProductDetail", { product })}
+      className='bg-white rounded-2xl overflow-hidden mb-4 shadow-sm'
+      onPress={() => navigation.navigate('ProductDetail', { product })}
     >
-      <View className="flex-row p-4">
-        <View className="relative">
+      <View className='flex-row p-4'>
+        <View className='relative'>
           <Image
             source={{ uri: product.image }}
-            className="w-24 h-24 rounded-xl"
-            resizeMode="cover"
+            className='w-24 h-24 rounded-xl'
+            resizeMode='cover'
           />
           {product.isPromo && (
-            <View className="absolute -top-2 -right-2 bg-red-500 w-6 h-6 rounded-full items-center justify-center">
+            <View className='absolute -top-2 -right-2 bg-red-500 w-6 h-6 rounded-full items-center justify-center'>
               <AppText
-                className="text-white text-xs font-bold"
-                style={{ fontFamily: "Ubuntu-Bold" }}
+                className='text-white text-xs font-bold'
+                style={{ fontFamily: 'Ubuntu-Bold' }}
               >
                 %
               </AppText>
@@ -427,69 +428,69 @@ export default function MarketplaceScreen({
           )}
         </View>
 
-        <View className="flex-1 ml-4 justify-between">
+        <View className='flex-1 ml-4 justify-between'>
           <View>
-            <View className="flex-row items-start justify-between mb-1">
+            <View className='flex-row items-start justify-between mb-1'>
               <AppText
-                className="text-gray-800 font-semibold text-base flex-1"
-                style={{ fontFamily: "Ubuntu-Bold" }}
+                className='text-gray-800 font-semibold text-base flex-1'
+                style={{ fontFamily: 'Ubuntu-Bold' }}
               >
                 {product.name}
               </AppText>
               <TouchableOpacity
-                className="bg-red-500 w-7 h-7 rounded-full items-center justify-center ml-2"
+                className='bg-red-500 w-7 h-7 rounded-full items-center justify-center ml-2'
                 onPress={() => addToCart(product)}
               >
-                <Plus size={14} color="white" />
+                <Plus size={14} color='white' />
               </TouchableOpacity>
             </View>
 
-            <View className="flex-row items-center mb-2">
-              <Star size={12} color="#FCD34D" fill="#FCD34D" />
+            <View className='flex-row items-center mb-2'>
+              <Star size={12} color='#FCD34D' fill='#FCD34D' />
               <AppText
-                className="text-gray-600 text-sm ml-1"
-                style={{ fontFamily: "Ubuntu-Medium" }}
+                className='text-gray-600 text-sm ml-1'
+                style={{ fontFamily: 'Ubuntu-Medium' }}
               >
                 {product.rating}
               </AppText>
               <AppText
-                className="text-gray-400 text-sm ml-1"
-                style={{ fontFamily: "Ubuntu-Medium" }}
+                className='text-gray-400 text-sm ml-1'
+                style={{ fontFamily: 'Ubuntu-Medium' }}
               >
                 ({product.reviews})
               </AppText>
             </View>
 
             <AppText
-              className="text-gray-500 text-sm mb-1"
-              style={{ fontFamily: "Ubuntu-Medium" }}
+              className='text-gray-500 text-sm mb-1'
+              style={{ fontFamily: 'Ubuntu-Medium' }}
             >
               {product.restaurant}
             </AppText>
           </View>
 
-          <View className="flex-row items-center justify-between">
-            <View className="flex-row items-center">
+          <View className='flex-row items-center justify-between'>
+            <View className='flex-row items-center'>
               <AppText
-                className="text-red-500 font-bold text-lg"
-                style={{ fontFamily: "Ubuntu-Bold" }}
+                className='text-red-500 font-bold text-lg'
+                style={{ fontFamily: 'Ubuntu-Bold' }}
               >
                 K{product.price}
               </AppText>
               {product.originalPrice && (
                 <AppText
-                  className="text-gray-400 text-sm line-through ml-2"
-                  style={{ fontFamily: "Ubuntu-Medium" }}
+                  className='text-gray-400 text-sm line-through ml-2'
+                  style={{ fontFamily: 'Ubuntu-Medium' }}
                 >
                   K{product.originalPrice}
                 </AppText>
               )}
             </View>
             {product.isPromo && (
-              <View className="bg-red-100 px-2 py-1 rounded-md">
+              <View className='bg-red-100 px-2 py-1 rounded-md'>
                 <AppText
-                  className="text-red-500 text-xs font-medium"
-                  style={{ fontFamily: "Ubuntu-Medium" }}
+                  className='text-red-500 text-xs font-medium'
+                  style={{ fontFamily: 'Ubuntu-Medium' }}
                 >
                   {product.promoText}
                 </AppText>
@@ -502,31 +503,31 @@ export default function MarketplaceScreen({
   );
 
   return (
-    <View className="flex-1 bg-gray-50">
+    <View className='flex-1 bg-gray-50'>
       {/* Header - Following Figma Design */}
-      <View className="pb-6">
-        <View className="bg-gray-50 flex-row items-center justify-between px-4 pt-2 mb-6 shadow-lg">
+      <View className='pb-6'>
+        <View className='bg-gray-50 flex-row items-center justify-between px-4 pt-2 mb-6 shadow-lg'>
           <View>
             <Image
-              source={require("../../assets/green-logo.png")}
-              resizeMode="contain"
+              source={require('../../assets/green-logo.png')}
+              resizeMode='contain'
               style={{ width: 120, height: 100 }}
             />
           </View>
-          <View className="flex-row items-center">
-            <TouchableOpacity className="mr-2 rounded-full bg-primary p-3">
-              <Search size={24} color="white" />
+          <View className='flex-row items-center'>
+            <TouchableOpacity className='mr-2 rounded-full bg-primary p-3'>
+              <Search size={24} color='white' />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Cart")}
-              className="rounded-full bg-primary p-3"
+              onPress={() => navigation.navigate('Cart')}
+              className='rounded-full bg-primary p-3'
             >
-              <ShoppingCart size={24} color="white" />
+              <ShoppingCart size={24} color='white' />
               {cartCount > 0 && (
-                <View className="absolute -top-2 -right-2 bg-red-500 rounded-full w-5 h-5 items-center justify-center">
+                <View className='absolute -top-2 -right-2 bg-red-500 rounded-full w-5 h-5 items-center justify-center'>
                   <AppText
-                    className="text-white text-xs font-bold"
-                    style={{ fontFamily: "Ubuntu-Bold" }}
+                    className='text-white text-xs font-bold'
+                    style={{ fontFamily: 'Ubuntu-Bold' }}
                   >
                     {cartCount}
                   </AppText>
@@ -537,29 +538,29 @@ export default function MarketplaceScreen({
         </View>
 
         {/* User Avatar Row */}
-        <View className="flex-row items-center justify-between mb-6">
+        <View className='flex-row items-center justify-between mb-6'>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            className="flex-row"
+            className='flex-row'
           >
             {[1, 2, 3, 4].map((i) => (
-              <TouchableOpacity key={i} className="mr-4">
+              <TouchableOpacity key={i} className='mr-4'>
                 <Image
                   source={{
                     uri: `https://images.unsplash.com/photo-${
                       1500000000000 + i
                     }?w=50&h=50&fit=crop&crop=face`,
                   }}
-                  className="w-12 h-12 rounded-full border-2 border-white"
+                  className='w-12 h-12 rounded-full border-2 border-white'
                 />
               </TouchableOpacity>
             ))}
           </ScrollView>
           <TouchableOpacity>
             <AppText
-              className="text-white font-semibold"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-white font-semibold'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               View All
             </AppText>
@@ -570,7 +571,7 @@ export default function MarketplaceScreen({
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
-          className="mb-4"
+          className='mb-4'
         >
           {promoCards.map((promo) => (
             <PromoCard key={promo.id} promo={promo} />
@@ -578,71 +579,71 @@ export default function MarketplaceScreen({
         </ScrollView>
       </View>
 
-      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+      <ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
         {/* Trending Section */}
-        <View className="px-4 py-6">
-          <View className="flex-row items-center justify-between mb-4">
+        <View className='px-4 py-6'>
+          <View className='flex-row items-center justify-between mb-4'>
             <AppText
-              className="text-gray-800 text-lg font-bold"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-gray-800 text-lg font-bold'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               Trending
             </AppText>
             <TouchableOpacity>
               <AppText
-                className="text-primary font-medium"
-                style={{ fontFamily: "Ubuntu-Bold" }}
+                className='text-primary font-medium'
+                style={{ fontFamily: 'Ubuntu-Bold' }}
               >
                 See all
               </AppText>
             </TouchableOpacity>
           </View>
 
-          <View className="flex-row flex-wrap justify-between">
+          <View className='flex-row flex-wrap justify-between'>
             {restaurants.slice(0, 4).map((restaurant, index) => (
               <TouchableOpacity
                 key={restaurant.id}
-                className="w-[48%] bg-white rounded-2xl overflow-hidden mb-4 shadow-sm"
+                className='w-[48%] bg-white rounded-2xl overflow-hidden mb-4 shadow-sm'
                 onPress={() =>
-                  navigation.navigate("RestaurantDetail", { restaurant })
+                  navigation.navigate('RestaurantDetail', { restaurant })
                 }
               >
-                <View className="relative">
+                <View className='relative'>
                   <Image
                     source={{ uri: restaurant.image }}
-                    className="w-full h-24"
-                    resizeMode="cover"
+                    className='w-full h-24'
+                    resizeMode='cover'
                   />
                   <TouchableOpacity
-                    className="absolute top-2 right-2 bg-white w-6 h-6 rounded-full items-center justify-center"
+                    className='absolute top-2 right-2 bg-white w-6 h-6 rounded-full items-center justify-center'
                     onPress={() => toggleFollow(restaurant.id)}
                   >
                     <Heart
                       size={12}
                       color={
                         followedRestaurants.includes(restaurant.id)
-                          ? "#EF4444"
-                          : "#9CA3AF"
+                          ? '#EF4444'
+                          : '#9CA3AF'
                       }
                       fill={
                         followedRestaurants.includes(restaurant.id)
-                          ? "#EF4444"
-                          : "none"
+                          ? '#EF4444'
+                          : 'none'
                       }
                     />
                   </TouchableOpacity>
                 </View>
-                <View className="p-3">
+                <View className='p-3'>
                   <AppText
-                    className="font-semibold text-gray-800 text-sm"
+                    className='font-semibold text-gray-800 text-sm'
                     numberOfLines={1}
-                    style={{ fontFamily: "Ubuntu-Bold" }}
+                    style={{ fontFamily: 'Ubuntu-Bold' }}
                   >
                     {restaurant.name}
                   </AppText>
                   <AppText
-                    className="text-red-500 font-bold text-base"
-                    style={{ fontFamily: "Ubuntu-Bold" }}
+                    className='text-red-500 font-bold text-base'
+                    style={{ fontFamily: 'Ubuntu-Bold' }}
                   >
                     K{Math.floor(Math.random() * 50) + 100}
                   </AppText>
@@ -653,41 +654,41 @@ export default function MarketplaceScreen({
         </View>
 
         {/* Search and Filter */}
-        <View className="px-4 mb-4">
-          <View className="bg-white rounded-full px-4 py-3 flex-row items-center shadow-sm">
-            <Search size={18} color="#6B7280" />
+        <View className='px-4 mb-4'>
+          <View className='bg-white rounded-full px-4 py-3 flex-row items-center shadow-sm'>
+            <Search size={18} color='#6B7280' />
             <TextInput
-              placeholder="Search for food..."
-              className="flex-1 ml-3 text-gray-700"
-              placeholderTextColor="#9CA3AF"
+              placeholder='Search for food...'
+              className='flex-1 ml-3 text-gray-700'
+              placeholderTextColor='#9CA3AF'
               value={searchText}
               onChangeText={setSearchText}
             />
             <TouchableOpacity>
-              <Filter size={18} color="#6B7280" />
+              <Filter size={18} color='#6B7280' />
             </TouchableOpacity>
           </View>
         </View>
 
         {/* Categories */}
-        <View className="px-4 mb-6">
+        <View className='px-4 mb-6'>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <View className="flex-row gap-3">
+            <View className='flex-row gap-3'>
               {categories.map((category) => (
                 <TouchableOpacity
                   key={category}
                   onPress={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-full ${
-                    selectedCategory === category ? "bg-primary" : "bg-gray-200"
+                    selectedCategory === category ? 'bg-primary' : 'bg-gray-200'
                   }`}
                 >
                   <AppText
                     className={`text-sm font-medium ${
                       selectedCategory === category
-                        ? "text-white"
-                        : "text-gray-600"
+                        ? 'text-white'
+                        : 'text-gray-600'
                     }`}
-                    style={{ fontFamily: "Ubuntu-Bold" }}
+                    style={{ fontFamily: 'Ubuntu-Bold' }}
                   >
                     {category}
                   </AppText>
@@ -698,19 +699,19 @@ export default function MarketplaceScreen({
         </View>
 
         {/* Featured Restaurants */}
-        <View className="mb-6">
-          <View className="flex-row items-center justify-between px-4 mb-4">
-            <Text className="text-gray-800 text-lg font-bold">
+        <View className='mb-6'>
+          <View className='flex-row items-center justify-between px-4 mb-4'>
+            <Text className='text-gray-800 text-lg font-bold'>
               Featured Restaurants
             </Text>
             <TouchableOpacity>
-              <Text className="text-primary font-medium">See all</Text>
+              <Text className='text-primary font-medium'>See all</Text>
             </TouchableOpacity>
           </View>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            className="px-4"
+            className='px-4'
           >
             {restaurants.map((restaurant) => (
               <RestaurantCard key={restaurant.id} restaurant={restaurant} />
@@ -719,10 +720,10 @@ export default function MarketplaceScreen({
         </View>
 
         {/* Popular Items */}
-        <View className="px-4 pb-20">
+        <View className='px-4 pb-20'>
           <AppText
-            className="text-gray-800 text-lg font-bold mb-4"
-            style={{ fontFamily: "Ubuntu-Bold" }}
+            className='text-gray-800 text-lg font-bold mb-4'
+            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
             Popular Items
           </AppText>
@@ -742,18 +743,18 @@ export function RestaurantDetailScreen({
 }: RestaurantDetailScreenProps) {
   const { restaurant } = route.params;
   const [isFollowing, setIsFollowing] = useState(restaurant.isFollowing);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const restaurantProducts = products.filter(
     (p) => p.restaurantId === restaurant.id
   );
   const categories = [
-    "All",
+    'All',
     ...Array.from(new Set(restaurantProducts.map((p) => p.category))),
   ];
 
   const filteredProducts =
-    selectedCategory === "All"
+    selectedCategory === 'All'
       ? restaurantProducts
       : restaurantProducts.filter((p) => p.category === selectedCategory);
 
@@ -764,49 +765,49 @@ export function RestaurantDetailScreen({
     } else {
       globalCart.push({ ...product, quantity: 1 });
     }
-    Alert.alert("Added to Cart", `${product.name} has been added to your cart`);
+    Alert.alert('Added to Cart', `${product.name} has been added to your cart`);
   };
 
   return (
-    <View className="flex-1 bg-white">
+    <View className='flex-1 bg-white'>
       {/* Header Image */}
-      <View className="relative">
+      <View className='relative'>
         <Image
           source={{ uri: restaurant.image }}
-          className="w-full h-64"
-          resizeMode="cover"
+          className='w-full h-64'
+          resizeMode='cover'
         />
-        <View className="absolute top-12 left-4 right-4 flex-row justify-between">
+        <View className='absolute top-12 left-4 right-4 flex-row justify-between'>
           <TouchableOpacity
-            className="bg-white w-10 h-10 rounded-full items-center justify-center shadow-sm"
+            className='bg-white w-10 h-10 rounded-full items-center justify-center shadow-sm'
             onPress={() => navigation.goBack()}
           >
-            <ArrowLeft size={20} color="#374151" />
+            <ArrowLeft size={20} color='#374151' />
           </TouchableOpacity>
-          <View className="flex-row">
+          <View className='flex-row'>
             <TouchableOpacity
-              className="bg-white w-10 h-10 rounded-full items-center justify-center shadow-sm mr-3"
+              className='bg-white w-10 h-10 rounded-full items-center justify-center shadow-sm mr-3'
               onPress={() => setIsFollowing(!isFollowing)}
             >
               <Heart
                 size={20}
-                color={isFollowing ? "#EF4444" : "#9CA3AF"}
-                fill={isFollowing ? "#EF4444" : "none"}
+                color={isFollowing ? '#EF4444' : '#9CA3AF'}
+                fill={isFollowing ? '#EF4444' : 'none'}
               />
             </TouchableOpacity>
             <TouchableOpacity
-              className="bg-white w-10 h-10 rounded-full items-center justify-center shadow-sm"
-              onPress={() => navigation.navigate("Cart")}
+              className='bg-white w-10 h-10 rounded-full items-center justify-center shadow-sm'
+              onPress={() => navigation.navigate('Cart')}
             >
-              <ShoppingCart size={20} color="#374151" />
+              <ShoppingCart size={20} color='#374151' />
             </TouchableOpacity>
           </View>
         </View>
         {restaurant.promoText && (
-          <View className="absolute bottom-4 left-4 bg-red-500 px-3 py-1 rounded-full">
+          <View className='absolute bottom-4 left-4 bg-red-500 px-3 py-1 rounded-full'>
             <AppText
-              className="text-white text-sm font-semibold"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-white text-sm font-semibold'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               {restaurant.promoText}
             </AppText>
@@ -815,93 +816,93 @@ export function RestaurantDetailScreen({
       </View>
 
       {/* Restaurant Info */}
-      <View className="px-4 py-6 border-b border-gray-100">
+      <View className='px-4 py-6 border-b border-gray-100'>
         <AppText
-          className="text-2xl font-bold text-gray-800 mb-2"
-          style={{ fontFamily: "Ubuntu-Bold" }}
+          className='text-2xl font-bold text-gray-800 mb-2'
+          style={{ fontFamily: 'Ubuntu-Bold' }}
         >
           {restaurant.name}
         </AppText>
 
-        <View className="flex-row items-center mb-3">
-          <Star size={16} color="#FCD34D" fill="#FCD34D" />
+        <View className='flex-row items-center mb-3'>
+          <Star size={16} color='#FCD34D' fill='#FCD34D' />
           <AppText
-            className="text-gray-600 ml-1 font-medium"
-            style={{ fontFamily: "Ubuntu-Bold" }}
+            className='text-gray-600 ml-1 font-medium'
+            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
             {restaurant.rating}
           </AppText>
-          <AppText className="text-gray-400 ml-2">•</AppText>
-          <Clock size={16} color="#9CA3AF" />
-          <AppText className="text-gray-600 ml-1">
+          <AppText className='text-gray-400 ml-2'>•</AppText>
+          <Clock size={16} color='#9CA3AF' />
+          <AppText className='text-gray-600 ml-1'>
             {restaurant.deliveryTime}
           </AppText>
-          <AppText className="text-gray-400 ml-2">•</AppText>
-          <MapPin size={16} color="#9CA3AF" />
-          <AppText className="text-gray-600 ml-1">
+          <AppText className='text-gray-400 ml-2'>•</AppText>
+          <MapPin size={16} color='#9CA3AF' />
+          <AppText className='text-gray-600 ml-1'>
             {restaurant.location}
           </AppText>
         </View>
 
         <AppText
-          className="text-gray-500 mb-4"
-          style={{ fontFamily: "Ubuntu-Bold" }}
+          className='text-gray-500 mb-4'
+          style={{ fontFamily: 'Ubuntu-Bold' }}
         >
           {restaurant.category}
         </AppText>
 
-        <View className="flex-row items-center justify-between">
-          <View className="flex-row items-center">
-            <Truck size={16} color="#10B981" />
+        <View className='flex-row items-center justify-between'>
+          <View className='flex-row items-center'>
+            <Truck size={16} color='#10B981' />
             <AppText
-              className="text-green-600 ml-1 font-medium"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-green-600 ml-1 font-medium'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               {restaurant.deliveryFee === 0
-                ? "Free delivery"
+                ? 'Free delivery'
                 : `K${restaurant.deliveryFee} delivery`}
             </AppText>
-            <AppText className="text-gray-500 ml-3 text-sm">
+            <AppText className='text-gray-500 ml-3 text-sm'>
               Min K{restaurant.minOrder}
             </AppText>
           </View>
           <TouchableOpacity
             className={`px-4 py-2 rounded-full ${
-              isFollowing ? "bg-gray-200" : "bg-primary"
+              isFollowing ? 'bg-gray-200' : 'bg-primary'
             }`}
             onPress={() => setIsFollowing(!isFollowing)}
           >
             <AppText
               className={`font-medium ${
-                isFollowing ? "text-gray-700" : "text-white"
+                isFollowing ? 'text-gray-700' : 'text-white'
               }`}
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
-              {isFollowing ? "Following" : "Follow"}
+              {isFollowing ? 'Following' : 'Follow'}
             </AppText>
           </TouchableOpacity>
         </View>
       </View>
 
       {/* Categories */}
-      <View className="px-4 py-4">
+      <View className='px-4 py-4'>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <View className="flex-row gap-3">
+          <View className='flex-row gap-3'>
             {categories.map((category) => (
               <TouchableOpacity
                 key={category}
                 onPress={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full ${
-                  selectedCategory === category ? "bg-primary" : "bg-gray-200"
+                  selectedCategory === category ? 'bg-primary' : 'bg-gray-200'
                 }`}
               >
                 <AppText
                   className={`text-sm font-medium ${
                     selectedCategory === category
-                      ? "text-white"
-                      : "text-gray-600"
+                      ? 'text-white'
+                      : 'text-gray-600'
                   }`}
-                  style={{ fontFamily: "Ubuntu-Bold" }}
+                  style={{ fontFamily: 'Ubuntu-Bold' }}
                 >
                   {category}
                 </AppText>
@@ -912,69 +913,69 @@ export function RestaurantDetailScreen({
       </View>
 
       {/* Menu Items */}
-      <ScrollView className="flex-1 px-4">
+      <ScrollView className='flex-1 px-4'>
         {filteredProducts.map((product) => (
           <TouchableOpacity
             key={product.id}
-            className="bg-white rounded-2xl mb-4 shadow-sm border border-gray-100"
-            onPress={() => navigation.navigate("ProductDetail", { product })}
+            className='bg-white rounded-2xl mb-4 shadow-sm border border-gray-100'
+            onPress={() => navigation.navigate('ProductDetail', { product })}
           >
-            <View className="flex-row p-4">
-              <View className="flex-1 mr-4">
+            <View className='flex-row p-4'>
+              <View className='flex-1 mr-4'>
                 <AppText
-                  className="text-gray-800 font-semibold text-lg mb-2"
-                  style={{ fontFamily: "Ubuntu-Bold" }}
+                  className='text-gray-800 font-semibold text-lg mb-2'
+                  style={{ fontFamily: 'Ubuntu-Bold' }}
                 >
                   {product.name}
                 </AppText>
                 <AppText
-                  className="text-gray-500 text-sm mb-3"
+                  className='text-gray-500 text-sm mb-3'
                   numberOfLines={2}
-                  style={{ fontFamily: "Ubuntu-Bold" }}
+                  style={{ fontFamily: 'Ubuntu-Bold' }}
                 >
                   {product.description}
                 </AppText>
 
-                <View className="flex-row items-center mb-2">
-                  <Star size={14} color="#FCD34D" fill="#FCD34D" />
+                <View className='flex-row items-center mb-2'>
+                  <Star size={14} color='#FCD34D' fill='#FCD34D' />
                   <AppText
-                    className="text-gray-600 text-sm ml-1"
-                    style={{ fontFamily: "Ubuntu-Bold" }}
+                    className='text-gray-600 text-sm ml-1'
+                    style={{ fontFamily: 'Ubuntu-Bold' }}
                   >
                     {product.rating}
                   </AppText>
                   <AppText
-                    className="text-gray-400 text-sm ml-1"
-                    style={{ fontFamily: "Ubuntu-Bold" }}
+                    className='text-gray-400 text-sm ml-1'
+                    style={{ fontFamily: 'Ubuntu-Bold' }}
                   >
                     ({product.reviews})
                   </AppText>
                 </View>
 
-                <View className="flex-row items-center justify-between">
-                  <View className="flex-row items-center">
+                <View className='flex-row items-center justify-between'>
+                  <View className='flex-row items-center'>
                     <AppText
-                      className="text-primary font-bold text-xl"
-                      style={{ fontFamily: "Ubuntu-Bold" }}
+                      className='text-primary font-bold text-xl'
+                      style={{ fontFamily: 'Ubuntu-Bold' }}
                     >
                       K{product.price}
                     </AppText>
                     {product.originalPrice && (
                       <AppText
-                        className="text-gray-400 text-sm line-through ml-2"
-                        style={{ fontFamily: "Ubuntu-Bold" }}
+                        className='text-gray-400 text-sm line-through ml-2'
+                        style={{ fontFamily: 'Ubuntu-Bold' }}
                       >
                         K{product.originalPrice}
                       </AppText>
                     )}
                   </View>
                   <TouchableOpacity
-                    className="bg-primary px-4 py-2 rounded-full"
+                    className='bg-primary px-4 py-2 rounded-full'
                     onPress={() => addToCart(product)}
                   >
                     <AppText
-                      className="text-white text-sm font-medium"
-                      style={{ fontFamily: "Ubuntu-Bold" }}
+                      className='text-white text-sm font-medium'
+                      style={{ fontFamily: 'Ubuntu-Bold' }}
                     >
                       Add to Cart
                     </AppText>
@@ -982,17 +983,17 @@ export function RestaurantDetailScreen({
                 </View>
               </View>
 
-              <View className="relative">
+              <View className='relative'>
                 <Image
                   source={{ uri: product.image }}
-                  className="w-24 h-24 rounded-xl"
-                  resizeMode="cover"
+                  className='w-24 h-24 rounded-xl'
+                  resizeMode='cover'
                 />
                 {product.isPromo && (
-                  <View className="absolute -top-2 -right-2 bg-red-500 w-6 h-6 rounded-full items-center justify-center">
+                  <View className='absolute -top-2 -right-2 bg-red-500 w-6 h-6 rounded-full items-center justify-center'>
                     <AppText
-                      className="text-white text-xs font-bold"
-                      style={{ fontFamily: "Ubuntu-Bold" }}
+                      className='text-white text-xs font-bold'
+                      style={{ fontFamily: 'Ubuntu-Bold' }}
                     >
                       %
                     </AppText>
@@ -1014,11 +1015,11 @@ export function ProductDetailScreen({
 }: ProductDetailScreenProps) {
   const { product } = route.params;
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState("Medium");
+  const [selectedSize, setSelectedSize] = useState('Medium');
   const [selectedExtras, setSelectedExtras] = useState<string[]>([]);
 
-  const sizes = ["Small", "Medium", "Large"];
-  const extras = ["Extra Cheese", "Bacon", "Avocado", "Extra Sauce"];
+  const sizes = ['Small', 'Medium', 'Large'];
+  const extras = ['Extra Cheese', 'Bacon', 'Avocado', 'Extra Sauce'];
   const sizePrice = { Small: -5, Medium: 0, Large: 10 };
   const extraPrice = 5;
 
@@ -1060,43 +1061,43 @@ export function ProductDetailScreen({
     }
 
     Alert.alert(
-      "Added to Cart",
+      'Added to Cart',
       `${quantity}x ${product.name} has been added to your cart`,
       [
-        { text: "Continue Shopping", style: "cancel" },
-        { text: "View Cart", onPress: () => navigation.navigate("Cart") },
+        { text: 'Continue Shopping', style: 'cancel' },
+        { text: 'View Cart', onPress: () => navigation.navigate('Cart') },
       ]
     );
   };
 
   return (
-    <View className="flex-1 bg-white">
+    <View className='flex-1 bg-white'>
       {/* Header */}
-      <View className="relative">
+      <View className='relative'>
         <Image
           source={{ uri: product.image }}
-          className="w-full h-80"
-          resizeMode="cover"
+          className='w-full h-80'
+          resizeMode='cover'
         />
-        <View className="absolute top-12 left-4 right-4 flex-row justify-between">
+        <View className='absolute top-12 left-4 right-4 flex-row justify-between'>
           <TouchableOpacity
-            className="bg-white w-10 h-10 rounded-full items-center justify-center shadow-sm"
+            className='bg-white w-10 h-10 rounded-full items-center justify-center shadow-sm'
             onPress={() => navigation.goBack()}
           >
-            <ArrowLeft size={20} color="#374151" />
+            <ArrowLeft size={20} color='#374151' />
           </TouchableOpacity>
           <TouchableOpacity
-            className="bg-white w-10 h-10 rounded-full items-center justify-center shadow-sm"
-            onPress={() => navigation.navigate("Cart")}
+            className='bg-white w-10 h-10 rounded-full items-center justify-center shadow-sm'
+            onPress={() => navigation.navigate('Cart')}
           >
-            <ShoppingCart size={20} color="#374151" />
+            <ShoppingCart size={20} color='#374151' />
           </TouchableOpacity>
         </View>
         {product.isPromo && (
-          <View className="absolute bottom-4 left-4 bg-red-500 px-3 py-2 rounded-full">
+          <View className='absolute bottom-4 left-4 bg-red-500 px-3 py-2 rounded-full'>
             <AppText
-              className="text-white font-semibold"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-white font-semibold'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               {product.promoText}
             </AppText>
@@ -1104,85 +1105,85 @@ export function ProductDetailScreen({
         )}
       </View>
 
-      <ScrollView className="flex-1">
+      <ScrollView className='flex-1'>
         {/* Product Info */}
-        <View className="px-4 py-6">
+        <View className='px-4 py-6'>
           <AppText
-            className="text-2xl font-bold text-gray-800 mb-2"
-            style={{ fontFamily: "Ubuntu-Bold" }}
+            className='text-2xl font-bold text-gray-800 mb-2'
+            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
             {product.name}
           </AppText>
 
-          <View className="flex-row items-center mb-4">
-            <Star size={16} color="#FCD34D" fill="#FCD34D" />
+          <View className='flex-row items-center mb-4'>
+            <Star size={16} color='#FCD34D' fill='#FCD34D' />
             <AppText
-              className="text-gray-600 ml-1 font-medium"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-gray-600 ml-1 font-medium'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               {product.rating}
             </AppText>
             <AppText
-              className="text-gray-400 ml-1"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-gray-400 ml-1'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               ({product.reviews} reviews)
             </AppText>
             <AppText
-              className="text-gray-400 ml-4"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-gray-400 ml-4'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               •
             </AppText>
             <AppText
-              className="text-primary ml-2 font-medium"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-primary ml-2 font-medium'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               {product.restaurant}
             </AppText>
           </View>
 
           <AppText
-            className="text-gray-600 text-base mb-6 leading-6"
-            style={{ fontFamily: "Ubuntu-Bold" }}
+            className='text-gray-600 text-base mb-6 leading-6'
+            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
             {product.description}
           </AppText>
 
           {/* Size Selection */}
-          <View className="mb-6">
+          <View className='mb-6'>
             <AppText
-              className="text-gray-800 font-semibold text-lg mb-3"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-gray-800 font-semibold text-lg mb-3'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               Size
             </AppText>
-            <View className="flex-row gap-3">
+            <View className='flex-row gap-3'>
               {sizes.map((size) => (
                 <TouchableOpacity
                   key={size}
                   onPress={() => setSelectedSize(size)}
                   className={`flex-1 py-3 rounded-xl border-2 ${
                     selectedSize === size
-                      ? "border-primary bg-primary"
-                      : "border-gray-200 bg-white"
+                      ? 'border-primary bg-primary'
+                      : 'border-gray-200 bg-white'
                   }`}
                 >
                   <AppText
                     className={`text-center font-medium ${
-                      selectedSize === size ? "text-primary" : "text-gray-600"
+                      selectedSize === size ? 'text-primary' : 'text-gray-600'
                     }`}
-                    style={{ fontFamily: "Ubuntu-Bold" }}
+                    style={{ fontFamily: 'Ubuntu-Bold' }}
                   >
                     {size}
                   </AppText>
                   <AppText
                     className={`text-center text-sm ${
-                      selectedSize === size ? "text-primary" : "text-gray-400"
+                      selectedSize === size ? 'text-primary' : 'text-gray-400'
                     }`}
-                    style={{ fontFamily: "Ubuntu-Bold" }}
+                    style={{ fontFamily: 'Ubuntu-Bold' }}
                   >
-                    {sizePrice[size as keyof typeof sizePrice] >= 0 ? "+" : ""}K
+                    {sizePrice[size as keyof typeof sizePrice] >= 0 ? '+' : ''}K
                     {sizePrice[size as keyof typeof sizePrice]}
                   </AppText>
                 </TouchableOpacity>
@@ -1191,10 +1192,10 @@ export function ProductDetailScreen({
           </View>
 
           {/* Extras */}
-          <View className="mb-6">
+          <View className='mb-6'>
             <AppText
-              className="text-gray-800 font-semibold text-lg mb-3"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-gray-800 font-semibold text-lg mb-3'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               Add Extras
             </AppText>
@@ -1202,32 +1203,32 @@ export function ProductDetailScreen({
               <TouchableOpacity
                 key={extra}
                 onPress={() => toggleExtra(extra)}
-                className="flex-row items-center justify-between py-3 border-b border-gray-100"
+                className='flex-row items-center justify-between py-3 border-b border-gray-100'
               >
                 <AppText
-                  className="text-gray-700 font-medium"
-                  style={{ fontFamily: "Ubuntu-Bold" }}
+                  className='text-gray-700 font-medium'
+                  style={{ fontFamily: 'Ubuntu-Bold' }}
                 >
                   {extra}
                 </AppText>
-                <View className="flex-row items-center">
+                <View className='flex-row items-center'>
                   <AppText
-                    className="text-gray-500 mr-3"
-                    style={{ fontFamily: "Ubuntu-Bold" }}
+                    className='text-gray-500 mr-3'
+                    style={{ fontFamily: 'Ubuntu-Bold' }}
                   >
                     +K{extraPrice}
                   </AppText>
                   <View
                     className={`w-6 h-6 rounded border-2 items-center justify-center ${
                       selectedExtras.includes(extra)
-                        ? "border-primary bg-primary"
-                        : "border-gray-300"
+                        ? 'border-primary bg-primary'
+                        : 'border-gray-300'
                     }`}
                   >
                     {selectedExtras.includes(extra) && (
                       <AppText
-                        className="text-white text-xs"
-                        style={{ fontFamily: "Ubuntu-Bold" }}
+                        className='text-white text-xs'
+                        style={{ fontFamily: 'Ubuntu-Bold' }}
                       >
                         ✓
                       </AppText>
@@ -1239,31 +1240,31 @@ export function ProductDetailScreen({
           </View>
 
           {/* Quantity */}
-          <View className="mb-8">
+          <View className='mb-8'>
             <AppText
-              className="text-gray-800 font-semibold text-lg mb-3"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-gray-800 font-semibold text-lg mb-3'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               Quantity
             </AppText>
-            <View className="flex-row items-center">
+            <View className='flex-row items-center'>
               <TouchableOpacity
                 onPress={() => setQuantity(Math.max(1, quantity - 1))}
-                className="w-12 h-12 rounded-full border-2 border-gray-200 items-center justify-center"
+                className='w-12 h-12 rounded-full border-2 border-gray-200 items-center justify-center'
               >
-                <Minus size={18} color="#6B7280" />
+                <Minus size={18} color='#6B7280' />
               </TouchableOpacity>
               <AppText
-                className="mx-6 text-xl font-semibold text-gray-800"
-                style={{ fontFamily: "Ubuntu-Bold" }}
+                className='mx-6 text-xl font-semibold text-gray-800'
+                style={{ fontFamily: 'Ubuntu-Bold' }}
               >
                 {quantity}
               </AppText>
               <TouchableOpacity
                 onPress={() => setQuantity(quantity + 1)}
-                className="w-12 h-12 rounded-full border-2 border-primary bg-primary items-center justify-center"
+                className='w-12 h-12 rounded-full border-2 border-primary bg-primary items-center justify-center'
               >
-                <Plus size={18} color="white" />
+                <Plus size={18} color='white' />
               </TouchableOpacity>
             </View>
           </View>
@@ -1271,15 +1272,15 @@ export function ProductDetailScreen({
       </ScrollView>
 
       {/* Add to Cart Button */}
-      <View className="px-4 py-6 border-t border-gray-100">
+      <View className='px-4 py-6 border-t border-gray-100'>
         <TouchableOpacity
           onPress={addToCart}
-          className="bg-primary py-4 rounded-2xl flex-row items-center justify-center"
+          className='bg-primary py-4 rounded-2xl flex-row items-center justify-center'
         >
-          <ShoppingCart size={20} color="white" />
+          <ShoppingCart size={20} color='white' />
           <AppText
-            className="text-white font-bold text-lg ml-2"
-            style={{ fontFamily: "Ubuntu-Bold" }}
+            className='text-white font-bold text-lg ml-2'
+            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
             Add to Cart • K{calculateTotal()}
           </AppText>
@@ -1322,40 +1323,40 @@ export function CartScreen({ navigation }: CartScreenProps) {
 
   if (cartItems.length === 0) {
     return (
-      <View className="flex-1 bg-white py-4 mt-5">
-        <View className="flex-row items-center px-4 py-6 border-b border-gray-100">
+      <View className='flex-1 bg-white py-4 mt-5'>
+        <View className='flex-row items-center px-4 py-6 border-b border-gray-100'>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <ArrowLeft size={24} color="#374151" />
+            <ArrowLeft size={24} color='#374151' />
           </TouchableOpacity>
           <AppText
-            className="text-xl font-bold text-gray-800 ml-4"
-            style={{ fontFamily: "Ubuntu-Bold" }}
+            className='text-xl font-bold text-gray-800 ml-4'
+            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
             Cart
           </AppText>
         </View>
 
-        <View className="flex-1 items-center justify-center px-4">
-          <ShoppingCart size={80} color="#D1D5DB" />
+        <View className='flex-1 items-center justify-center px-4'>
+          <ShoppingCart size={80} color='#D1D5DB' />
           <AppText
-            className="text-xl font-semibold text-gray-800 mt-4 mb-2"
-            style={{ fontFamily: "Ubuntu-Bold" }}
+            className='text-xl font-semibold text-gray-800 mt-4 mb-2'
+            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
             Your cart is empty
           </AppText>
           <AppText
-            className="text-gray-500 text-center mb-8"
-            style={{ fontFamily: "Ubuntu-Bold" }}
+            className='text-gray-500 text-center mb-8'
+            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
             Add some delicious items to get started
           </AppText>
           <TouchableOpacity
             onPress={() => navigation.goBack()}
-            className="bg-primary px-6 py-3 rounded-full"
+            className='bg-primary px-6 py-3 rounded-full'
           >
             <AppText
-              className="text-white font-semibold"
-              style={{ fontFamily: "Ubuntu-Bold" }}
+              className='text-white font-semibold'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
             >
               Continue Shopping
             </AppText>
@@ -1366,96 +1367,107 @@ export function CartScreen({ navigation }: CartScreenProps) {
   }
 
   return (
-    <View className="flex-1 bg-gray-50 mt-5 py-4">
-      {/* Header */}
-      <View className="bg-white flex-row items-center px-4 py-6 border-b border-gray-100">
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <ArrowLeft size={24} color="#374151" />
-        </TouchableOpacity>
-        <AppText
-          className="text-xl font-bold text-gray-800 ml-4"
-          style={{ fontFamily: "Ubuntu-Bold" }}
-        >
-          Cart ({cartItems.length})
-        </AppText>
-      </View>
+    <View className='flex-1 bg-gray-50'>
+      <TouchableOpacity
+        className='flex-row items-center px-4 py-3 bg-primary'
+        onPress={() => {
+          // If using react-navigation, you can use navigation.goBack()
+          // Otherwise, replace with your go back logic
+          if (typeof navigation !== 'undefined' && navigation.goBack) {
+            navigation.goBack();
+          }
+        }}
+        activeOpacity={0.7}
+      >
+        <Ionicons
+          name='arrow-back'
+          size={24}
+          color='white'
+          style={{ marginRight: 12 }}
+        />
+        <AppText className='text-white text-lg font-semibold'>Back</AppText>
+      </TouchableOpacity>
 
-      <ScrollView className="flex-1">
-        {/* Cart Items */}
-        <View className="px-4 py-4">
+      <ScrollView className='flex-1'>
+        <View className='px-4 py-4'>
           {cartItems.map((item, index) => (
             <View
               key={`${item.id}-${index}`}
-              className="bg-white rounded-2xl mb-4 p-4 shadow-sm"
+              className='bg-white rounded-2xl mb-4 p-4 shadow-sm'
             >
-              <View className="flex-row">
-                <Image
-                  source={{ uri: item.image }}
-                  className="w-20 h-20 rounded-xl"
-                  resizeMode="cover"
-                />
+              <View className='flex-row items-center'>
+                {/* Selection Indicator - Pink checkmark */}
+                <View className='w-6 h-6 rounded-full bg-pink-500 items-center justify-center mr-3'>
+                  <View className='w-3 h-3 border-2 border-white rounded-full' />
+                </View>
 
-                <View className="flex-1 ml-4">
-                  <View className="flex-row items-start justify-between mb-2">
-                    <AppText
-                      className="text-gray-800 font-semibold text-base flex-1"
-                      numberOfLines={1}
-                      style={{ fontFamily: "Ubuntu-Bold" }}
-                    >
-                      {item.name}
-                    </AppText>
-                    <TouchableOpacity onPress={() => removeItem(item.id)}>
-                      <X size={16} color="#9CA3AF" />
-                    </TouchableOpacity>
+                {/* Product Image with teal background */}
+                <View className='relative'>
+                  <View className='w-20 h-20 rounded-2xl bg-teal-400 items-center justify-center mr-4'>
+                    <Image
+                      source={{
+                        uri:
+                          item.image ||
+                          'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&h=400&fit=crop',
+                      }}
+                      className='w-16 h-16 rounded-xl'
+                      resizeMode='cover'
+                    />
                   </View>
+                  {/* Heart Icon */}
+                  <TouchableOpacity className='absolute top-1 right-5'>
+                    <View className='w-5 h-5 rounded-full bg-pink-500 items-center justify-center'>
+                      <View
+                        className='w-2.5 h-2.5 bg-white'
+                        style={{
+                          transform: [{ rotate: '45deg' }],
+                          borderTopLeftRadius: 2,
+                          borderTopRightRadius: 2,
+                          borderBottomLeftRadius: 2,
+                        }}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                </View>
+
+                {/* Product Information */}
+                <View className='flex-1'>
+                  <AppText
+                    className='text-gray-900 font-bold text-lg mb-1'
+                    numberOfLines={1}
+                    style={{ fontFamily: 'Ubuntu-Bold' }}
+                  >
+                    {item.name}
+                  </AppText>
 
                   <AppText
-                    className="text-gray-500 text-sm mb-2"
-                    style={{ fontFamily: "Ubuntu-Bold" }}
+                    className='text-gray-500 text-sm mb-3'
+                    style={{ fontFamily: 'Ubuntu-Regular' }}
                   >
                     {item.restaurant}
                   </AppText>
 
-                  {(item as any).customizations && (
-                    <View className="mb-2">
-                      <AppText
-                        className="text-gray-500 text-xs"
-                        style={{ fontFamily: "Ubuntu-Bold" }}
-                      >
-                        Size: {(item as any).customizations.size}
-                      </AppText>
-                      {(item as any).customizations.extras.length > 0 && (
-                        <AppText
-                          className="text-gray-500 text-xs"
-                          style={{ fontFamily: "Ubuntu-Bold" }}
-                        >
-                          Extras:{" "}
-                          {(item as any).customizations.extras.join(", ")}
-                        </AppText>
-                      )}
-                    </View>
-                  )}
-
-                  <View className="flex-row items-center justify-between">
+                  <View className='flex-row items-center justify-between'>
                     <AppText
-                      className="text-primary font-bold text-lg"
-                      style={{ fontFamily: "Ubuntu-Bold" }}
+                      className='text-gray-900 font-bold text-xl'
+                      style={{ fontFamily: 'Ubuntu-Bold' }}
                     >
-                      K{item.price}
+                      ${item.price}
                     </AppText>
 
-                    <View className="flex-row items-center">
+                    {/* Quantity Selector with gray background and pink plus */}
+                    <View className='flex-row items-center'>
                       <TouchableOpacity
                         onPress={() =>
                           updateQuantity(item.id, item.quantity - 1)
                         }
-                        className="w-8 h-8 rounded-full border border-gray-300 items-center justify-center"
+                        className='w-8 h-8 rounded-full bg-gray-200 items-center justify-center'
                       >
-                        <Minus size={14} color="#6B7280" />
+                        <Minus size={16} color='#EF4444' strokeWidth={2} />
                       </TouchableOpacity>
                       <AppText
-                        className="mx-3 font-semibold text-gray-800"
-                        style={{ fontFamily: "Ubuntu-Bold" }}
+                        className='mx-4 font-bold text-gray-900 text-lg'
+                        style={{ fontFamily: 'Ubuntu-Bold' }}
                       >
                         {item.quantity}
                       </AppText>
@@ -1463,9 +1475,9 @@ export function CartScreen({ navigation }: CartScreenProps) {
                         onPress={() =>
                           updateQuantity(item.id, item.quantity + 1)
                         }
-                        className="w-8 h-8 rounded-full bg-primary items-center justify-center"
+                        className='w-8 h-8 rounded-full bg-pink-500 items-center justify-center'
                       >
-                        <Plus size={14} color="white" />
+                        <Plus size={16} color='white' strokeWidth={2} />
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -1475,77 +1487,159 @@ export function CartScreen({ navigation }: CartScreenProps) {
           ))}
         </View>
 
-        {/* Order Summary */}
-        <View className="bg-white mx-4 mb-4 p-4 rounded-2xl shadow-sm">
+        {/* Add Other Items */}
+        <View className='mx-4 mb-6'>
+          <TouchableOpacity className='flex-row items-center mb-6'>
+            <View className='w-8 h-8 rounded-full bg-pink-500 items-center justify-center mr-3'>
+              <Plus size={16} color='white' strokeWidth={2} />
+            </View>
+            <AppText
+              className='text-gray-900 font-bold text-lg'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
+            >
+              Add other items
+            </AppText>
+          </TouchableOpacity>
+
+          {/* Apply Discount Code */}
+          <TouchableOpacity className='border-2 border-dashed border-pink-400 rounded-2xl p-4 mb-6'>
+            <AppText
+              className='text-pink-500 font-bold text-center text-lg'
+              style={{ fontFamily: 'Ubuntu-Bold' }}
+            >
+              Apply Discount Code
+            </AppText>
+          </TouchableOpacity>
+        </View>
+
+        {/* Payment Info */}
+        <View className='mx-4 mb-6'>
           <AppText
-            className="text-gray-800 font-semibold text-lg mb-4"
-            style={{ fontFamily: "Ubuntu-Bold" }}
+            className='text-gray-900 font-bold text-xl mb-4'
+            style={{ fontFamily: 'Ubuntu-Bold' }}
           >
-            Order Summary
+            Payment Info
           </AppText>
 
-          <View className="flex-row justify-between mb-2">
-            <AppText
-              className="text-gray-600"
-              style={{ fontFamily: "Ubuntu-Bold" }}
-            >
-              Subtotal
-            </AppText>
-            <AppText
-              className="text-gray-800 font-medium"
-              style={{ fontFamily: "Ubuntu-Bold" }}
-            >
-              K{subtotal.toFixed(2)}
-            </AppText>
-          </View>
+          <View className='border-b border-gray-200 mb-4' />
 
-          <View className="flex-row justify-between mb-2">
-            <AppText
-              className="text-gray-600"
-              style={{ fontFamily: "Ubuntu-Bold" }}
-            >
-              Delivery Fee
-            </AppText>
-            <AppText
-              className="text-gray-800 font-medium"
-              style={{ fontFamily: "Ubuntu-Bold" }}
-            >
-              K{deliveryFee}
-            </AppText>
-          </View>
-
-          <View className="border-t border-gray-200 pt-2 mt-2">
-            <View className="flex-row justify-between">
+          {/* Payment Details */}
+          <View className='space-y-3'>
+            <View className='flex-row justify-between items-center mb-3'>
               <AppText
-                className="text-gray-800 font-bold text-lg"
-                style={{ fontFamily: "Ubuntu-Bold" }}
+                className='text-gray-500 text-base'
+                style={{ fontFamily: 'Ubuntu-Regular' }}
               >
-                Total
+                Total:
               </AppText>
               <AppText
-                className="text-primary font-bold text-lg"
-                style={{ fontFamily: "Ubuntu-Bold" }}
+                className='text-gray-500 text-base'
+                style={{ fontFamily: 'Ubuntu-Regular' }}
               >
-                K{total.toFixed(2)}
+                $ 300.00
+              </AppText>
+            </View>
+
+            <View className='flex-row justify-between items-center mb-3'>
+              <AppText
+                className='text-gray-500 text-base'
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+              >
+                Discount:
+              </AppText>
+              <AppText
+                className='text-gray-500 text-base'
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+              >
+                $ 0.00
+              </AppText>
+            </View>
+
+            <View className='flex-row justify-between items-center mb-3'>
+              <AppText
+                className='text-gray-500 text-base'
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+              >
+                Delivery:
+              </AppText>
+              <AppText
+                className='text-gray-500 text-base'
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+              >
+                FREE
+              </AppText>
+            </View>
+
+            <View className='flex-row justify-between items-center mb-3'>
+              <AppText
+                className='text-gray-500 text-base'
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+              >
+                VAT:
+              </AppText>
+              <AppText
+                className='text-gray-500 text-base'
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+              >
+                $ 5.30
+              </AppText>
+            </View>
+
+            <View className='flex-row justify-between items-center mb-6'>
+              <AppText
+                className='text-gray-500 text-base'
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+              >
+                Wallet Discount:
+              </AppText>
+              <AppText
+                className='text-gray-500 text-base'
+                style={{ fontFamily: 'Ubuntu-Regular' }}
+              >
+                $ 5.30
+              </AppText>
+            </View>
+
+            <View className='border-b border-gray-200 mb-4' />
+
+            {/* Grand Total */}
+            <View className='flex-row justify-between items-center'>
+              <AppText
+                className='text-gray-500 font-bold text-lg'
+                style={{ fontFamily: 'Ubuntu-Bold' }}
+              >
+                Grand Total:
+              </AppText>
+              <AppText
+                className='text-gray-900 font-bold text-lg'
+                style={{ fontFamily: 'Ubuntu-Bold' }}
+              >
+                $ 300.00
               </AppText>
             </View>
           </View>
         </View>
       </ScrollView>
 
-      {/* Checkout Button */}
-      <View className="px-4 py-6 bg-white border-t border-gray-100">
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Checkout")}
-          className="bg-primary py-4 rounded-2xl"
-        >
-          <AppText
-            className="text-white font-bold text-lg text-center"
-            style={{ fontFamily: "Ubuntu-Bold" }}
+      <View className='absolute w-full left-0 right-0 bottom-0 bg-primary rounded-t-3xl px-6 py-6'>
+        <View className='flex-row items-center justify-between'>
+          {/* Total Amount */}
+          <View>
+            <AppText className='text-white text-sm mb-1'>
+              Total (incl. VAT)
+            </AppText>
+            <AppText className='text-white text-2xl font-bold'>$2.00</AppText>
+          </View>
+
+          {/* Process Next Button */}
+          <TouchableOpacity
+            className='bg-white rounded-full px-8 py-4'
+            onPress={() => navigation.navigate('Checkout')}
+            activeOpacity={0.8}
           >
-            Proceed to Checkout • K{total.toFixed(2)}
-          </AppText>
-        </TouchableOpacity>
+            <AppText className='text-primary font-bold text-lg'>Proceed to Checkout</AppText>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
