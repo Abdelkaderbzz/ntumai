@@ -146,7 +146,7 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
             >
               Shipping
             </AppText>
-            <TouchableOpacity onPress={() => setShowAddressModal(true)}>
+            <TouchableOpacity onPress={() => navigation.navigate('AddLocation')}>
               <AppText
                 className='text-pink-500 font-medium text-base'
                 style={{ fontFamily: 'Ubuntu-Medium' }}
