@@ -38,10 +38,6 @@
       "edgeToEdgeEnabled": true,
       "versionCode": 1,
       "minSdkVersion": 21,
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/ntumai_logo.png",
-        "backgroundColor": "#ffffff"
-      },
       "fonts": [
         {
           "path": "./assets/fonts/Ubuntu-Regular.ttf",
@@ -65,9 +61,6 @@
         }
       ],
       "package": "com.dannydc.NTUMAI"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     },
     "plugins": ["expo-build-properties"],
     "extra": {
