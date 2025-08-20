@@ -26,7 +26,7 @@ export default function HomeTabs() {
         tabBarInactiveTintColor: "#000000",
         headerShown: false,
         tabBarStyle: {
-          height: "8%",
+          height: "10%",
         },
       })}
     >
