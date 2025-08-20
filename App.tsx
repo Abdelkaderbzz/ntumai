@@ -112,6 +112,7 @@ export default function App() {
               initialRouteName='Splash'
               screenOptions={{ headerShown: false }}
             >
+              <Stack.Screen name='Home' component={HomeTabs} />
               <Stack.Screen name='Splash' component={SplashScreenComponent} />
               <Stack.Screen name='Onboarding' component={OnboardingScreen} />
               <Stack.Screen
@@ -128,7 +129,6 @@ export default function App() {
                 component={ContinueBoardingScreen}
               />
               <Stack.Screen name='Login' component={LoginScreen} />
-              <Stack.Screen name='Home' component={HomeTabs} />
 
               {/* Driver Navigation Stack */}
               <Stack.Screen

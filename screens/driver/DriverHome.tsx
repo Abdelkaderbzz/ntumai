@@ -7,8 +7,8 @@ import { Ionicons } from '@expo/vector-icons';
 import DriverOrders from './DriverOrders';
 import DriverRoutes from './DriverRoutes';
 import DriverEarnings from './DriverEarnings';
-import DriverSettings from './DriverProfile';
 import DriverDashboard from './DriverDashboard';
+import DriverSetting from './DriverSetting';
 
 
 
@@ -53,7 +53,7 @@ const DriverHome = () => {
         <Tab.Screen name='Orders' component={DriverOrders} />
         <Tab.Screen name='Routes' component={DriverRoutes} />
         <Tab.Screen name='Earnings' component={DriverEarnings} />
-        <Tab.Screen name='Settings' component={DriverSettings} />
+        <Tab.Screen name='Settings' component={DriverSetting} />
       </Tab.Navigator>
     </SafeAreaView>
   );

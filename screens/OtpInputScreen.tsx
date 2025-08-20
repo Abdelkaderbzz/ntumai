@@ -7,6 +7,9 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   Text,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
@@ -90,9 +93,9 @@ const OtpInputScreen = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View className='flex-1 bg-white px-6'>
+      <View className='flex-1 bg-white'>
         {/* Header Section */}
-        <View className='pt-20 pb-8'>
+        <View className='pt-20 pb-8 px-6'>
           <Text
             className='text-primary text-5xl font-bold mb-2 font-ubuntu'
             style={{ fontFamily: 'Ubuntu-Bold' }}
@@ -107,93 +110,104 @@ const OtpInputScreen = () => {
           </Text>
         </View>
 
-        <View className='flex-1'>
-          {/* Instructions */}
-          <Text
-            className='text-gray-700 text-base mb-8 leading-6'
-            style={{ fontFamily: 'Ubuntu-Regular' }}
+        <KeyboardAvoidingView
+          className='flex-1'
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
+        >
+          <ScrollView
+            className='flex-1 px-6'
+            contentContainerStyle={{ flexGrow: 1 }}
+            keyboardShouldPersistTaps='handled'
+            showsVerticalScrollIndicator={false}
           >
-            Enter the code from the SMS we sent to{'\n'}
+            {/* Instructions */}
             <Text
-              className='font-semibold text-black'
-              style={{ fontFamily: 'Ubuntu-Medium' }}
+              className='text-gray-700 text-base mb-8 leading-6'
+              style={{ fontFamily: 'Ubuntu-Regular' }}
             >
-              {isNaN(Number(value))
-                ? value
-                : `+260 ${value.replace(/^\+?260\s*/, '')}`}
-            </Text>
-            .
-          </Text>
-
-          {/* Countdown Timer */}
-          <View className='flex justify-start mb-8'>
-            <Text
-              className='text-primary text-2xl font-medium'
-              style={{ fontFamily: 'Ubuntu-Bold' }}
-            >
-              {formatCountdown(countdown)}
-            </Text>
-          </View>
-
-          {/* OTP Input Fields */}
-          <View className='flex-row justify-between mb-20'>
-            {otp.map((digit, index) => (
-              <TextInput
-                key={index}
-                ref={(ref) => {
-                  inputRefs.current[index] = ref;
-                }}
-                className='w-20 h-20 bg-white border border-primary shadow-xl shadow-primary rounded-2xl text-center text-primary text-2xl font-semibold box-shadow: 0px 4px 8px 0px #08AF9729;'
-                maxLength={1}
-                keyboardType='number-pad'
-                value={digit}
-                onChangeText={(text) => handleOtpChange(text, index)}
-                onKeyPress={(e) => handleKeyPress(e, index)}
-                selectTextOnFocus
-                autoFocus={index === 0}
-              />
-            ))}
-          </View>
-
-          {/* Resend Section */}
-          <View className='items-center mb-12'>
-            <Pressable onPress={handleResendOtp} disabled={isResendDisabled}>
-              <View className='flex-row gap-2'>
-                <Text
-                  className='text-base font-medium text-gray-400'
-                  style={{ fontFamily: 'Ubuntu-Medium' }}
-                >
-                  {isResendDisabled && `Didn't Receive OTP?`}
-                </Text>
-                <Text
-                  className={`text-base font-medium text-primary
-                  `}
-                  style={{ fontFamily: 'Ubuntu-Medium' }}
-                >
-                  Resend
-                </Text>
-              </View>
-            </Pressable>
-          </View>
-
-          {/* Verify Button */}
-          <View className='flex-1 justify-end pb-12'>
-            <Pressable
-              className={`w-full py-5 rounded-2xl shadow-sm ${
-                otp.join('').length === 4 ? 'bg-primary' : 'bg-gray-300'
-              }`}
-              onPress={handleVerifyOtp}
-              disabled={otp.join('').length < 4}
-            >
+              Enter the code from the SMS we sent to{'\n'}
               <Text
-                className='text-white text-center text-lg font-semibold'
+                className='font-semibold text-black'
+                style={{ fontFamily: 'Ubuntu-Medium' }}
+              >
+                {isNaN(Number(value))
+                  ? value
+                  : `+260 ${value.replace(/^\+?260\s*/, '')}`}
+              </Text>
+              .
+            </Text>
+
+            {/* Countdown Timer */}
+            <View className='flex justify-start mb-8'>
+              <Text
+                className='text-primary text-2xl font-medium'
                 style={{ fontFamily: 'Ubuntu-Bold' }}
               >
-                Verify & Continue
+                {formatCountdown(countdown)}
               </Text>
-            </Pressable>
-          </View>
-        </View>
+            </View>
+
+            {/* OTP Input Fields */}
+            <View className='flex-row justify-between mb-20'>
+              {otp.map((digit, index) => (
+                <TextInput
+                  key={index}
+                  ref={(ref) => {
+                    inputRefs.current[index] = ref;
+                  }}
+                  className='w-20 h-20 bg-white border border-primary shadow-xl shadow-primary rounded-2xl text-center text-primary text-2xl font-semibold box-shadow: 0px 4px 8px 0px #08AF9729;'
+                  maxLength={1}
+                  keyboardType='number-pad'
+                  value={digit}
+                  onChangeText={(text) => handleOtpChange(text, index)}
+                  onKeyPress={(e) => handleKeyPress(e, index)}
+                  selectTextOnFocus
+                  autoFocus={index === 0}
+                />
+              ))}
+            </View>
+
+            {/* Resend Section */}
+            <View className='items-center mb-12'>
+              <Pressable onPress={handleResendOtp} disabled={isResendDisabled}>
+                <View className='flex-row gap-2'>
+                  <Text
+                    className='text-base font-medium text-gray-400'
+                    style={{ fontFamily: 'Ubuntu-Medium' }}
+                  >
+                    {isResendDisabled && `Didn't Receive OTP?`}
+                  </Text>
+                  <Text
+                    className={`text-base font-medium text-primary
+                  `}
+                    style={{ fontFamily: 'Ubuntu-Medium' }}
+                  >
+                    Resend
+                  </Text>
+                </View>
+              </Pressable>
+            </View>
+
+            {/* Verify Button */}
+            <View className='flex-1 justify-end pb-12'>
+              <Pressable
+                className={`w-full py-5 rounded-2xl shadow-sm ${
+                  otp.join('').length === 4 ? 'bg-primary' : 'bg-gray-300'
+                }`}
+                onPress={handleVerifyOtp}
+                disabled={otp.join('').length < 4}
+              >
+                <Text
+                  className='text-white text-center text-lg font-semibold'
+                  style={{ fontFamily: 'Ubuntu-Bold' }}
+                >
+                  Verify & Continue
+                </Text>
+              </Pressable>
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
 
         <StatusBar style='dark' />
       </View>

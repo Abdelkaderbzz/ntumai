@@ -54,7 +54,7 @@ const LoginScreen = () => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View className='flex-1 bg-white'>
         <StatusBar style='dark' />
-        <View className='w-full flex justify-center items-center mt-16'>
+        <View className='w-full flex justify-center items-center mt-12'>
           <Image
             source={require('../assets/green-logo.png')}
             style={{ height: 44, width: 170 }}
