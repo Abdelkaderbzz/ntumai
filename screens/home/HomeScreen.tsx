@@ -163,7 +163,7 @@ const HomeScreen = () => {
       </View>
 
       {/* Track your Order */}
-      <View className='px-4 mb-20'>
+      <View className='px-4 '>
         <AppText
           className='text-gray-500 text-lg font-semibold mb-4 ml-4'
           style={{ fontFamily: 'Ubuntu-Medium' }}

@@ -11,11 +11,11 @@ import { Ionicons } from '@expo/vector-icons';
 import AppText from '../../components/AppText';
 import { LinearGradient } from 'expo-linear-gradient';
 
-interface DriverSettingsProps {
+interface DriverProfileProps {
   navigation: any;
 }
 
-const DriverSettings: React.FC<DriverSettingsProps> = ({ navigation }) => {
+const DriverProfile: React.FC<DriverProfileProps> = ({ navigation }) => {
   // Dummy data for summary cards
   const summaryCards = [
     {
@@ -184,4 +184,4 @@ const DriverSettings: React.FC<DriverSettingsProps> = ({ navigation }) => {
   );
 };
 
-export default DriverSettings;
+export default DriverProfile;

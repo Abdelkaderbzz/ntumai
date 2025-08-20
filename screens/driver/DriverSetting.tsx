@@ -14,7 +14,6 @@ interface DriverSettingsProps {
 }
 
 const DriverSetting: React.FC<DriverSettingsProps> = ({ navigation }) => {
-
   return (
     <SafeAreaView className='flex-1 flex-col bg-white'>
       <StatusBar barStyle='light-content' backgroundColor='#14b8a6' />
