@@ -14,7 +14,7 @@ const AuthHeader: React.FC<AuthHeaderProps> = ({
   description,
 }) => {
   return (
-    <View className='px-6 pt-12 pb-6 font-ubuntu'>
+    <View className='px-6 pt-8 pb-4 font-ubuntu'>
       <AppText
         className='text-primary text-5xl font-ubuntu-bold mb-1 leading-tight'
         style={{ fontFamily: 'Ubuntu-Bold' }}
