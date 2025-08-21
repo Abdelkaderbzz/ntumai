@@ -38,7 +38,7 @@ const DeliveryEarningsDetails = () => {
               <Text className='text-white text-xl font-bold'>Today</Text>
               <Text className='text-white text-sm'>22 January 2025</Text>
             </View>
-            <Text className='text-white text-2xl font-bold'>$22.60 +</Text>
+            <Text className='text-white text-2xl font-bold'>K 22.60 +</Text>
           </View>
 
           <View className='h-px bg-gray-200 ' />
@@ -49,7 +49,7 @@ const DeliveryEarningsDetails = () => {
               <Text className='text-white text-xl font-bold'>Last Week</Text>
               <Text className='text-white text-sm'>12 - 19 Jan 2025</Text>
             </View>
-            <Text className='text-white text-2xl font-bold'>$100</Text>
+            <Text className='text-white text-2xl font-bold'>K 100</Text>
           </View>
 
           <View className='h-px bg-gray-200 ' />
@@ -60,7 +60,7 @@ const DeliveryEarningsDetails = () => {
               <Text className='text-white text-xl font-bold'>Last Month</Text>
               <Text className='text-white text-sm'>December 2024</Text>
             </View>
-            <Text className='text-white text-2xl font-bold'>$2,000</Text>
+            <Text className='text-white text-2xl font-bold'>K 2,000</Text>
           </View>
         </View>
       </ScrollView>

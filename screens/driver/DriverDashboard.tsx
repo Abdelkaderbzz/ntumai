@@ -96,7 +96,7 @@ const DriverDashboard: React.FC<DriverDashboardProps> = ({ navigation }) => {
               className='text-sm font-semibold text-gray-900'
               style={{ fontFamily: 'Ubuntu-Medium' }}
             >
-              Today's Income $ 578
+              Today's IncomeK578
             </AppText>
           </View>
         </View>

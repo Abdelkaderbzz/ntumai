@@ -1,12 +1,5 @@
-
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
 
 const DeliveryTaskDetails = () => {
   const handleAccept = () => {
@@ -81,7 +74,7 @@ const DeliveryTaskDetails = () => {
         <View className=' flex-row items-center justify-between '>
           <Text className='text-gray-500 text-sm'>Total</Text>
           <View className='flex-row justify-center items-center w-[210px]'>
-            <Text className='text-gray-900 text-3xl font-bold'>$ 22.60</Text>
+            <Text className='text-gray-900 text-3xl font-bold'>K 22.60</Text>
           </View>
         </View>
       </ScrollView>
