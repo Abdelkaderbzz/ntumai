@@ -15,15 +15,15 @@ export function VendorDashboard() {
   
   const stats = [
     { title: 'Total Orders', value: '125', change: '+12%', color: '#10B981' },
-    { title: 'Revenue', value: '$2,540', change: '+8%', color: '#3B82F6' },
+    { title: 'Revenue', value: 'K2,540', change: '+8%', color: '#3B82F6' },
     { title: 'Active Products', value: '47', change: '+3', color: '#F59E0B' },
     { title: 'Pending Orders', value: '8', change: '-2', color: '#EF4444' },
   ];
 
   const recentOrders = [
-    { id: '#ORD001', customer: 'John Doe', amount: '$25.50', status: 'Preparing', time: '2 min ago' },
-    { id: '#ORD002', customer: 'Jane Smith', amount: '$18.75', status: 'Ready', time: '5 min ago' },
-    { id: '#ORD003', customer: 'Mike Johnson', amount: '$32.25', status: 'Delivered', time: '12 min ago' },
+    { id: '#ORD001', customer: 'John Doe', amount: 'K25.50', status: 'Preparing', time: '2 min ago' },
+    { id: '#ORD002', customer: 'Jane Smith', amount: 'K18.75', status: 'Ready', time: '5 min ago' },
+    { id: '#ORD003', customer: 'Mike Johnson', amount: 'K32.25', status: 'Delivered', time: '12 min ago' },
   ];
 
   return (

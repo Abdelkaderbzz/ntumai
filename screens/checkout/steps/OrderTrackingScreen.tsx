@@ -302,7 +302,7 @@ export function OrderTrackingScreen({
                   style={{ fontFamily: 'Ubuntu-Bold' }}
                   className='text-gray-800 font-bold text-2xl text-center'
                 >
-                  $20
+                  K20
                 </Text>
               </View>
             </View>
