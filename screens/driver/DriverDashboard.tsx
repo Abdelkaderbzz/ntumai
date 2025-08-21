@@ -85,7 +85,6 @@ const DriverDashboard: React.FC<DriverDashboardProps> = ({ navigation }) => {
     <View className='flex-1'>
       <StatusBar barStyle='dark-content' backgroundColor='white' />
 
-      {/* Header */}
       <View className='flex-row items-center justify-between px-6 py-3 bg-white '>
         <View className='flex-row items-center'>
           <Image
@@ -112,7 +111,6 @@ const DriverDashboard: React.FC<DriverDashboardProps> = ({ navigation }) => {
       </View>
 
       <ScrollView className='flex-1 bg-white pb-32'>
-        {/* Income Cards Carousel */}
         <View className='mt-4'>
           <ScrollView
             horizontal
@@ -161,7 +159,6 @@ const DriverDashboard: React.FC<DriverDashboardProps> = ({ navigation }) => {
             ))}
           </ScrollView>
 
-          {/* Pagination Dots */}
           <View className='flex-row justify-center items-center'>
             <View className='w-2 h-2 bg-teal-300 rounded-full mx-1' />
             <View className='w-2 h-2 bg-teal-300 rounded-full mx-1' />
@@ -171,7 +168,6 @@ const DriverDashboard: React.FC<DriverDashboardProps> = ({ navigation }) => {
           </View>
         </View>
 
-        {/* Online Status Toggle */}
         <View className='mx-4 bg-white rounded-2xl p-4 pb-0'>
           <AppText className='text-lg font-semibold text-[#9d9c9c] mb-3'>
             What's new on Ntumai
@@ -191,7 +187,6 @@ const DriverDashboard: React.FC<DriverDashboardProps> = ({ navigation }) => {
           </View>
         </View>
 
-        {/* Next Orders */}
         <View className='mx-4  bg-white rounded-2xl p-4'>
           <AppText className='text-lg font-semibold text-gray-600 mb-4'>
             Next Orders:
@@ -232,7 +227,6 @@ const DriverDashboard: React.FC<DriverDashboardProps> = ({ navigation }) => {
         </View>
       </ScrollView>
 
-      {/* Fixed Action Buttons */}
       <View className='absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-4 py-4'>
         <TouchableOpacity
           className='bg-primary py-4 rounded-xl mb-3'
