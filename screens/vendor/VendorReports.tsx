@@ -57,7 +57,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       orderId: '01218327BSJ93D',
       date: 'Jan 27, 2025',
       time: '10:35 AM',
-      price: '$9.50',
+      price: 'K9.50',
       status: 'Unpaid',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -68,7 +68,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       orderId: '01218327BSJ93D',
       date: 'Jan 27, 2025',
       time: '10:35 AM',
-      price: '$9.50',
+      price: 'K9.50',
       status: 'Paid',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -79,7 +79,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       orderId: '01218327BSJ93D',
       date: 'Jan 27, 2025',
       time: '10:35 AM',
-      price: '$9.50',
+      price: 'K9.50',
       status: 'Unpaid',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -90,7 +90,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       orderId: '01218327BSJ93D',
       date: 'Jan 27, 2025',
       time: '10:35 AM',
-      price: '$9.50',
+      price: 'K9.50',
       status: 'Paid',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -101,7 +101,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       orderId: '01218327BSJ94E',
       date: 'Feb 1, 2025',
       time: '11:45 AM',
-      price: '$12.00',
+      price: 'K22.00',
       status: 'Paid',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -112,7 +112,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       orderId: '01218327BSJ94E',
       date: 'Feb 1, 2025',
       time: '11:45 AM',
-      price: '$12.00',
+      price: 'K22.00',
       status: 'Paid',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -123,7 +123,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       orderId: '01218327BSJ94E',
       date: 'Feb 1, 2025',
       time: '11:45 AM',
-      price: '$12.00',
+      price: 'K22.00',
       status: 'Paid',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -134,7 +134,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       orderId: '01218327BSJ94E',
       date: 'Feb 1, 2025',
       time: '11:45 AM',
-      price: '$12.00',
+      price: 'K22.00',
       status: 'Paid',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -147,7 +147,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       id: '1',
       restaurantName: 'Madindigo Restaurant',
       description: 'Top up for UDM',
-      amount: '$ 9.50',
+      amount: 'K 9.50',
       date: 'Jan 25, 2021',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -156,7 +156,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       id: '2',
       restaurantName: 'Madindigo Restaurant',
       description: 'Top up for UDM',
-      amount: '$ 9.50',
+      amount: 'K 9.50',
       date: 'Jan 25, 2021',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -165,7 +165,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       id: '3',
       restaurantName: 'Izoniq 1 Stop',
       description: 'Amanda foodpoint',
-      amount: '$ 9.50',
+      amount: 'K 9.50',
       date: 'Feb 25, 2021',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -174,7 +174,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       id: '4',
       restaurantName: 'Izoniq 1 Stop',
       description: 'Amanda foodpoint',
-      amount: '$ 9.50',
+      amount: 'K 9.50',
       date: 'Feb 25, 2021',
       image:
         'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
@@ -292,7 +292,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
         <View className='w-[48%] bg-[#eeeeee] rounded-xl p-4 mb-3'>
           <Text className='text-primary font-medium text-xl mb-1'>Today</Text>
           <Text className='text-black font-bold text-2xl text-right pt-7'>
-            $ 14,592.00
+            K14,592.00
           </Text>
         </View>
         <View className='w-[48%] bg-[#eeeeee] rounded-xl p-4 mb-3'>
@@ -300,7 +300,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
             Yesterday
           </Text>
           <Text className='text-black font-bold text-2xl text-right pt-7'>
-            $ 2,374.10
+            K2,374.10
           </Text>
         </View>
         <View className='flex-row justify-between'>
@@ -309,7 +309,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
               This Week
             </Text>
             <Text className='text-black font-bold text-2xl text-right pt-7'>
-              $ 14,592.00
+              K14,592.00
             </Text>
           </View>
           <View className='w-[32%] bg-[#eeeeee] rounded-xl p-4 mb-3'>
@@ -317,7 +317,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
               This Month
             </Text>
             <Text className='text-black font-bold text-2xl text-right pt-7'>
-              $ 14,592.00
+              K14,592.00
             </Text>
           </View>
           <View className='w-[32%] bg-[#eeeeee] rounded-xl p-4 mb-3'>
@@ -325,7 +325,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
               This Year
             </Text>
             <Text className='text-black font-bold text-2xl text-right pt-7'>
-              $ 14,592.00
+              K14,592.00
             </Text>
           </View>
         </View>
@@ -448,7 +448,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
           <View className='flex-row justify-between items-end'>
             <View>
               <Text className='text-white text-sm opacity-90'>Balance:</Text>
-              <Text className='text-white text-2xl font-bold'>$ 250.00</Text>
+              <Text className='text-white text-2xl font-bold'>K 250.00</Text>
             </View>
             <View className='items-end'>
               <Text className='text-white text-sm opacity-90'>
@@ -575,7 +575,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
                     <CreditCard size={24} color='#0aaf97' />
                   </View>
                   <Text className='text-[#495057] font-bold text-2xl'>
-                    $ 1500
+                    K1500
                   </Text>
                 </View>
                 <TouchableOpacity className='bg-[#0aaf97] rounded-full px-5 py-4'>
@@ -607,7 +607,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
                 Total Paid
               </Text>
             </View>
-            <Text className='text-white font-bold text-xl'>$ 253.95</Text>
+            <Text className='text-white font-bold text-xl'>K 253.95</Text>
           </View>
         </View>
       )}

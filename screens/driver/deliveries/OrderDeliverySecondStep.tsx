@@ -175,14 +175,14 @@ const OrderDeliverySecondStep: React.FC = () => {
             <AppText className='text-white text-sm mb-1'>
               Total (incl. VAT)
             </AppText>
-            <AppText className='text-white text-2xl font-bold'>$2.00</AppText>
+            <AppText className='text-white text-2xl font-bold'>K2.00</AppText>
           </View>
 
           {/* Process Next Button */}
           <TouchableOpacity
             className='bg-white rounded-full px-8 py-4'
             onPress={() => {
-              navigation.navigate('OrderDeliveryLastStep')
+              navigation.navigate('OrderDeliveryLastStep');
             }}
             activeOpacity={0.8}
           >

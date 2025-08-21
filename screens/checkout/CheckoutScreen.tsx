@@ -1,6 +1,6 @@
 // screens/checkout/CheckoutScreen.tsx
 import { useState } from 'react';
-import { View, ScrollView, TouchableOpacity, Modal ,Image} from 'react-native';
+import { View, ScrollView, TouchableOpacity, Modal, Image } from 'react-native';
 import {
   MapPin,
   Edit,
@@ -146,7 +146,9 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
             >
               Shipping
             </AppText>
-            <TouchableOpacity onPress={() => navigation.navigate('AddLocation')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('AddLocation')}
+            >
               <AppText
                 className='text-pink-500 font-medium text-base'
                 style={{ fontFamily: 'Ubuntu-Medium' }}
@@ -276,11 +278,11 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
               onPress={() => setSelectedPayment(mockPaymentMethods[0])}
             >
               <View className='w-8 h-8 rounded-lg bg-teal-500 items-center justify-center mr-3'>
-              <Image
-                source={require('../../assets/pay-pal1.png')}
-                className='w-10 h-10'
-                // resizeMode='contain'
-              />
+                <Image
+                  source={require('../../assets/pay-pal1.png')}
+                  className='w-10 h-10'
+                  // resizeMode='contain'
+                />
               </View>
               <AppText
                 className='flex-1 text-gray-900 font-medium text-base'
@@ -314,7 +316,7 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
                 className='text-gray-500 text-base'
                 style={{ fontFamily: 'Ubuntu-Regular' }}
               >
-                $ 300.00
+                K300.00
               </AppText>
             </View>
 
@@ -329,7 +331,7 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
                 className='text-gray-500 text-base'
                 style={{ fontFamily: 'Ubuntu-Regular' }}
               >
-                $ 0.00
+                K0.00
               </AppText>
             </View>
 
@@ -359,7 +361,7 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
                 className='text-gray-500 text-base'
                 style={{ fontFamily: 'Ubuntu-Regular' }}
               >
-                $ 5.30
+                K5.30
               </AppText>
             </View>
 
@@ -374,7 +376,7 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
                 className='text-gray-500 text-base'
                 style={{ fontFamily: 'Ubuntu-Regular' }}
               >
-                $ 5.30
+                K5.30
               </AppText>
             </View>
 
@@ -385,7 +387,7 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
                 Grand Total:
               </AppText>
               <AppText className='text-gray-900 font-bold text-lg'>
-                $ 300.00
+                K300.00
               </AppText>
             </View>
           </View>
@@ -399,7 +401,7 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
             <AppText className='text-white text-sm mb-1'>
               Total (incl. VAT)
             </AppText>
-            <AppText className='text-white text-2xl font-bold'>$2.00</AppText>
+            <AppText className='text-white text-2xl font-bold'>K2.00</AppText>
           </View>
 
           {/* Process Next Button */}

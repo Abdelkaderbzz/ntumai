@@ -112,11 +112,9 @@ const OrderDeliveryLastStep: React.FC = () => {
 
         {/* Payment Method Section */}
         <AppText className='text-2xl font-bold text-[#919190] mb-6'>
-          
-            Payment method
-          </AppText>
+          Payment method
+        </AppText>
         <View className='rounded-2xl p-6 mb-6'>
-
           <View className='space-y-4 flex-col gap-4'>
             {/* Cash on Delivery - Selected */}
             <TouchableOpacity className='flex-row gap-4 items-center justify-between'>
@@ -152,7 +150,9 @@ const OrderDeliveryLastStep: React.FC = () => {
                 <View className='w-10 h-10 bg-primary rounded-full items-center justify-center mr-3'>
                   <AppText className='text-white font-bold text-lg'>P</AppText>
                 </View>
-                <AppText className='text-black text-lg font-bold'>PayPal</AppText>
+                <AppText className='text-black text-lg font-bold'>
+                  PayPal
+                </AppText>
               </View>
               <View className='w-6 h-6 border-2 border-primary rounded-full' />
             </TouchableOpacity>
@@ -161,18 +161,14 @@ const OrderDeliveryLastStep: React.FC = () => {
 
         {/* Order Summary Section */}
         <AppText className='text-2xl font-bold text-[#919190] mb-6'>
-          
-            Order summary
-          </AppText>
+          Order summary
+        </AppText>
         <View className='mb-[80px] rounded-2xl p-6'>
-
           <View className='space-y-3'>
             {/* Size */}
             <View className='flex-row justify-between items-center'>
               <AppText className='text-black text-base'>Size</AppText>
-              <AppText className='text-black font-bold text-lg'>
-                20 cm
-              </AppText>
+              <AppText className='text-black font-bold text-lg'>20 cm</AppText>
             </View>
 
             {/* Type */}
@@ -195,10 +191,10 @@ const OrderDeliveryLastStep: React.FC = () => {
 
             {/* Delivery */}
             <View className='flex-row justify-between items-center'>
-              <AppText className='text-black text-lg font-bold'>Delivery</AppText>
-              <AppText className='text-black font-bold text-lg'>
-                $2.00
+              <AppText className='text-black text-lg font-bold'>
+                Delivery
               </AppText>
+              <AppText className='text-black font-bold text-lg'>$2.00</AppText>
             </View>
           </View>
         </View>
@@ -213,7 +209,7 @@ const OrderDeliveryLastStep: React.FC = () => {
             <AppText className='text-white text-sm mb-1'>
               Total (incl. VAT)
             </AppText>
-            <AppText className='text-white text-2xl font-bold'>$2.00</AppText>
+            <AppText className='text-white text-2xl font-bold'>K2.00</AppText>
           </View>
 
           {/* Process Next Button */}

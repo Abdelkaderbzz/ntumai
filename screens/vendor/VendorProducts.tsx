@@ -385,7 +385,7 @@ export default function VenderProducts() {
                 {product.name}
               </Text>
               <Text className='text-gray-700 text-sm mb-1'>
-                Price ${product.price.toFixed(2)}
+                Price K{product.price.toFixed(2)}
               </Text>
               <Text className='text-gray-700 text-sm'>
                 Rating: {product.rating}/5 ★
