@@ -174,7 +174,7 @@ const DriverDashboard: React.FC<DriverDashboardProps> = ({ navigation }) => {
         {/* Online Status Toggle */}
         <View className='mx-4 bg-white rounded-2xl p-4 pb-0'>
           <AppText className='text-lg font-semibold text-[#9d9c9c] mb-3'>
-            What's new on Hizzmat
+            What's new on Ntumai
           </AppText>
 
           <Image
