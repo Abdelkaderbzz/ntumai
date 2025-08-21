@@ -162,7 +162,7 @@ const restaurants: Restaurant[] = [
       'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=400&h=250&fit=crop',
     rating: 4.3,
     deliveryTime: '15-25 min',
-    category: 'Healthy • $ • 0.8km',
+    category: 'Healthy •K• 0.8km',
     location: 'Ndola, Zambia',
     followers: 890,
     isFollowing: false,
@@ -1556,7 +1556,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
                 className='text-gray-500 text-base'
                 style={{ fontFamily: 'Ubuntu-Regular' }}
               >
-                $ 300.00
+                K300.00
               </AppText>
             </View>
 
@@ -1571,7 +1571,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
                 className='text-gray-500 text-base'
                 style={{ fontFamily: 'Ubuntu-Regular' }}
               >
-                $ 0.00
+                K0.00
               </AppText>
             </View>
 
@@ -1601,7 +1601,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
                 className='text-gray-500 text-base'
                 style={{ fontFamily: 'Ubuntu-Regular' }}
               >
-                $ 5.30
+                K5.30
               </AppText>
             </View>
 
@@ -1616,7 +1616,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
                 className='text-gray-500 text-base'
                 style={{ fontFamily: 'Ubuntu-Regular' }}
               >
-                $ 5.30
+                K5.30
               </AppText>
             </View>
 
@@ -1634,7 +1634,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
                 className='text-gray-900 font-bold text-lg'
                 style={{ fontFamily: 'Ubuntu-Bold' }}
               >
-                $ 300.00
+                K300.00
               </AppText>
             </View>
           </View>
@@ -1648,7 +1648,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
             <AppText className='text-white text-sm mb-1'>
               Total (incl. VAT)
             </AppText>
-            <AppText className='text-white text-2xl font-bold'>$2.00</AppText>
+            <AppText className='text-white text-2xl font-bold'>K2.00</AppText>
           </View>
 
           {/* Process Next Button */}
