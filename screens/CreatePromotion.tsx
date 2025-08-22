@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   View,
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Image,
   Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -41,12 +40,11 @@ const CreatePromotion = () => {
       Alert.alert('Error', 'Fixed Price is required');
       return;
     }
-    // Handle save logic here
+
     Alert.alert('Success', 'Promotion created successfully!');
   };
 
   const handleImageUpload = () => {
-    // Handle image upload logic here
     Alert.alert('Image Upload', 'Image upload functionality would go here');
   };
 
@@ -54,7 +52,6 @@ const CreatePromotion = () => {
     <View className='flex-1 bg-white'>
       <StatusBar style='light' />
 
-      {/* Header */}
       <View className='bg-primary pt-12 pb-4'>
         <View className='flex-row items-center px-4'>
           <TouchableOpacity
@@ -68,14 +65,12 @@ const CreatePromotion = () => {
       </View>
 
       <ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
-        {/* Title */}
         <View className='items-center mt-6 mb-6'>
           <AppText className='text-2xl font-bold text-[#909090]'>
             Create Promotion
           </AppText>
         </View>
 
-        {/* Promotion Type Selector */}
         <View className='px-6 mb-6'>
           <View className='flex-row gap-3 rounded-full p-1'>
             <TouchableOpacity
@@ -113,10 +108,8 @@ const CreatePromotion = () => {
           </View>
         </View>
 
-        {/* Main Content Card */}
         <View className='mx-6 mb-6 '>
           <View className='bg-[#ededed] rounded-2xl p-6 shadow-sm'>
-            {/* Discount Type */}
             <View className='mb-4'>
               <AppText className='text-sm text-gray-600 mb-2'>
                 Discount Type
@@ -132,7 +125,6 @@ const CreatePromotion = () => {
               </TouchableOpacity>
             </View>
 
-            {/* Fixed Price */}
             <View className='mb-4'>
               <View className='flex-row items-center mb-2'>
                 <AppText className='text-sm text-gray-600'>Fixed Price</AppText>
@@ -150,7 +142,6 @@ const CreatePromotion = () => {
               </View>
             </View>
 
-            {/* Code */}
             <View className='mb-4'>
               <AppText className='text-sm text-gray-600 mb-2'>Code</AppText>
               <View className='flex-row bg-white items-center rounded-full  py-1 px-2 border border-gray-200'>
@@ -164,7 +155,6 @@ const CreatePromotion = () => {
               </View>
             </View>
 
-            {/* Start Date */}
             <View className='mb-4'>
               <AppText className='text-sm text-gray-600 mb-2'>
                 Start Date
@@ -180,7 +170,6 @@ const CreatePromotion = () => {
               </View>
             </View>
 
-            {/* End Date */}
             <View className='mb-4'>
               <AppText className='text-sm text-gray-600 mb-2'>End Date</AppText>
               <View className='flex-row items-center bg-white rounded-full  py-1 px-2 border border-gray-200'>
@@ -194,7 +183,6 @@ const CreatePromotion = () => {
               </View>
             </View>
 
-            {/* Add Promo Image */}
             <View className='mb-4'>
               <AppText className='text-sm text-gray-600 mb-2'>
                 Add Promo Image
@@ -215,11 +203,9 @@ const CreatePromotion = () => {
           </View>
         </View>
 
-        {/* Bottom Spacing */}
         <View className='h-20' />
       </ScrollView>
 
-      {/* Save Button */}
       <View className='absolute bottom-6 right-6'>
         <TouchableOpacity
           onPress={handleSave}

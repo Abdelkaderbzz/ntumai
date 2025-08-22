@@ -29,7 +29,7 @@ const SplashScreen = () => {
         style={{ opacity: 0.1 }}
       />
       <View className='flex-1 justify-center items-center'>
-        {/* Logo removed - clean splash screen */}
+    
       </View>
       <StatusBar style='light' />
     </View>

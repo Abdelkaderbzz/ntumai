@@ -15,7 +15,6 @@ const OrderDeliveryFirstStep: React.FC = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView className='flex-1 bg-white'>
-      {/* Header */}
       <TouchableOpacity
         className='flex-row items-center px-4 py-3 bg-primary'
         onPress={() => {
@@ -36,7 +35,6 @@ const OrderDeliveryFirstStep: React.FC = () => {
         <AppText className='text-white text-lg font-semibold'>Back</AppText>
       </TouchableOpacity>
 
-      {/* Progress Tracker */}
       <View className='px-6 py-6'>
         <Image
           source={require('./../../../assets/order-first-step.png')}
@@ -44,14 +42,11 @@ const OrderDeliveryFirstStep: React.FC = () => {
         />
       </View>
 
-      {/* Main Content - Scrollable */}
       <ScrollView className='flex-1 px-6' showsVerticalScrollIndicator={false}>
         <AppText className='text-2xl font-bold text-[#919190] mb-6'>
           Select location
         </AppText>
-        {/* Location Card */}
         <View className='bg-primary rounded-2xl p-6 mb-6'>
-          {/* Collect From Section */}
           <View className='flex-row items-start mb-6'>
             <View className='mr-4 mt-1'>
               <Ionicons name='location' size={24} color='white' />
@@ -75,10 +70,8 @@ const OrderDeliveryFirstStep: React.FC = () => {
             </View>
           </View>
 
-          {/* Vertical Line */}
           <View className='absolute left-7 top-20 w-0.5 h-16 border-l border-dashed border-white/30' />
 
-          {/* Delivery To Section */}
           <View className='flex-row items-start'>
             <View className='mr-4 mt-1'>
               <Ionicons name='location' size={24} color='white' />
@@ -115,15 +108,12 @@ const OrderDeliveryFirstStep: React.FC = () => {
             </TouchableOpacity>
           </View>
         </View>
-        {/* Delivery Options Section */}
         <View className='mb-6'>
-          {/* Collect Time Section */}
           <AppText className='text-xl font-bold text-[#919190] mb-4'>
             Collect time
           </AppText>
 
           <View className='flex-row space-x-3 mb-6 gap-4'>
-            {/* Express Option - Selected */}
             <TouchableOpacity className='flex-1 bg-primary rounded-2xl p-4'>
               <View className='flex-row items-center justify-between'>
                 <AppText className='text-white font-bold text-lg mb-1'>
@@ -141,7 +131,6 @@ const OrderDeliveryFirstStep: React.FC = () => {
               </AppText>
             </TouchableOpacity>
 
-            {/* Schedule Option - Unselected */}
             <TouchableOpacity className='flex-1 bg-lime-100 rounded-2xl p-4'>
               <View className='flex-row items-center justify-between'>
                 <AppText className='text-primary font-bold text-lg mb-1'>
@@ -177,7 +166,6 @@ const OrderDeliveryFirstStep: React.FC = () => {
             </TouchableOpacity>
           </View>
 
-          {/* Package Type Section */}
           <AppText className='text-xl font-bold text-[#919190] mb-4'>
             Choose package type
           </AppText>
@@ -220,9 +208,7 @@ const OrderDeliveryFirstStep: React.FC = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* dimension */}
         </View>
-        {/* Dimension Section */}
         <View className='mb-[90px]'>
           <AppText className='text-xl font-bold text-[#919190] mb-4'>
             Dimension
@@ -257,7 +243,6 @@ const OrderDeliveryFirstStep: React.FC = () => {
       </ScrollView>
       <View className='absolute w-full left-0 right-0 bottom-0 bg-primary rounded-t-3xl px-6 py-6'>
         <View className='flex-row items-center justify-between'>
-          {/* Total Amount */}
           <View>
             <AppText className='text-white text-sm mb-1'>
               Total (incl. VAT)
@@ -265,7 +250,6 @@ const OrderDeliveryFirstStep: React.FC = () => {
             <AppText className='text-white text-2xl font-bold'>K2.00</AppText>
           </View>
 
-          {/* Process Next Button */}
           <TouchableOpacity
             className='bg-white rounded-full px-8 py-4'
             onPress={() => {

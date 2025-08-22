@@ -21,24 +21,24 @@ export default function HeaderBar({
         className='px-6 py-4 bg-white'
         style={{
           backgroundColor: 'white',
-          shadowColor: '#000', // iOS shadow
-          shadowOffset: { width: 0, height: 30 }, // larger bottom shadow for clarity
-          shadowOpacity: 0.9, // increased opacity for visibility
-          shadowRadius: 8, // increased radius for a more pronounced shadow
-          elevation: 8, // increased elevation for a more pronounced shadow on Android
-          zIndex: 20, // increased zIndex to ensure it stands out above other views
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 30 },
+          shadowOpacity: 0.9,
+          shadowRadius: 8,
+          elevation: 8,
+          zIndex: 20,
         }}
       >
         <View className='flex-row items-center h-12 '>
-          {/* User Profile Icon */}
+    
           <View>
             <LinearGradient
               colors={['#08AF97', 'rgba(8, 175, 151, 0.02)']}
               start={{ x: 0.5, y: 0 }}
               end={{ x: 0.5, y: 1 }}
               style={{
-                padding: 3, // thickness of border
-                borderRadius: 999, // fully round
+                padding: 3,
+                borderRadius: 999,
               }}
             >
               <Image
@@ -52,7 +52,6 @@ export default function HeaderBar({
             </LinearGradient>
           </View>
 
-          {/* Brand Logo */}
           <View className='flex-1 items-center '>
             <Image
               source={require('../assets/logo_green.png')}
@@ -61,9 +60,7 @@ export default function HeaderBar({
             />
           </View>
 
-          {/* Right Side Icons */}
           <View className='flex-row items-center ml-auto'>
-            {/* Search Icon */}
             <Pressable
               onPress={onSearch}
               className='w-12 h-12 rounded-full bg-primary items-center justify-center'
@@ -71,7 +68,6 @@ export default function HeaderBar({
               <Search size={35} color='white' />
             </Pressable>
 
-            {/* Shopping Cart with Download Arrow */}
             <View className='flex-row items-center ml-3'>
               <Pressable
                 onPress={onCartClick}

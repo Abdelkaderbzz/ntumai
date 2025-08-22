@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   View,
   TextInput,
@@ -47,14 +47,12 @@ const OtpInputScreen = () => {
     setCountdown(30);
     setIsResendDisabled(true);
     setOtp(['', '', '', '']);
-    // TODO: Implement resend OTP logic
   };
 
   const handleVerifyOtp = () => {
     const otpValue = otp.join('');
     if (otpValue.length === 4) {
       if (otpValue === '0000') {
-        // OTP verified successfully, navigate to Login page directly
         navigation.navigate('ContinueBoarding');
       } else {
         Alert.alert('Error', 'Invalid OTP. Please try again.');
@@ -70,7 +68,6 @@ const OtpInputScreen = () => {
       newOtp[index] = text;
       setOtp(newOtp);
 
-      // Auto focus next input
       if (text && index < 4) {
         inputRefs.current[index + 1]?.focus();
       }
@@ -94,7 +91,7 @@ const OtpInputScreen = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View className='flex-1 bg-white'>
-        {/* Header Section */}
+
         <View className='pt-20 pb-8 px-6'>
           <Text
             className='text-primary text-5xl font-bold mb-2 font-ubuntu'
@@ -121,7 +118,6 @@ const OtpInputScreen = () => {
             keyboardShouldPersistTaps='handled'
             showsVerticalScrollIndicator={false}
           >
-            {/* Instructions */}
             <Text
               className='text-gray-700 text-base mb-8 leading-6'
               style={{ fontFamily: 'Ubuntu-Regular' }}
@@ -138,7 +134,6 @@ const OtpInputScreen = () => {
               .
             </Text>
 
-            {/* Countdown Timer */}
             <View className='flex justify-start mb-8'>
               <Text
                 className='text-primary text-2xl font-medium'
@@ -148,7 +143,6 @@ const OtpInputScreen = () => {
               </Text>
             </View>
 
-            {/* OTP Input Fields */}
             <View className='flex-row justify-between mb-20'>
               {otp.map((digit, index) => (
                 <TextInput
@@ -168,7 +162,6 @@ const OtpInputScreen = () => {
               ))}
             </View>
 
-            {/* Resend Section */}
             <View className='items-center mb-12'>
               <Pressable onPress={handleResendOtp} disabled={isResendDisabled}>
                 <View className='flex-row gap-2'>
@@ -189,7 +182,6 @@ const OtpInputScreen = () => {
               </Pressable>
             </View>
 
-            {/* Verify Button */}
             <View className='flex-1 justify-end pb-12'>
               <Pressable
                 className={`w-full py-5 rounded-2xl shadow-sm ${

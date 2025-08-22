@@ -43,13 +43,12 @@ const thinkingCards = [
   },
 ];
 
-// Home Screen Component
+
 const HomeScreen = () => {
   const navigation = useNavigation();
 
   return (
     <ScrollView className='flex-1 bg-gray-50'>
-      {/* Header */}
       <View className='pt-5 pb-4 px-4'>
         <View className='flex-row items-center justify-between mb-8'>
           <View className='flex-row items-center flex-1'>
@@ -78,7 +77,7 @@ const HomeScreen = () => {
           </View>
         </View>
 
-        {/* Search Bar */}
+
         <View className='bg-primary rounded-full px-4 py-3 flex-row items-center shadow-sm'>
           <Search size={25} color='white' />
           <TextInput
@@ -89,7 +88,7 @@ const HomeScreen = () => {
         </View>
       </View>
 
-      {/* Get Ready Section */}
+
       <View className='mx-4 my-4'>
         <View className='bg-primary rounded-2xl p-6 flex-row justify-between shadow-sm'>
           <View className='items-center' style={{ flex: 0.3 }}>
@@ -145,7 +144,7 @@ const HomeScreen = () => {
         </View>
       </View>
 
-      {/* What are you thinking? */}
+
       <View className='px-4 mb-6'>
         <AppText
           className='text-gray-500 text-lg font-semibold mb-4 ml-4'
@@ -162,7 +161,7 @@ const HomeScreen = () => {
         </View>
       </View>
 
-      {/* Track your Order */}
+
       <View className='px-4 '>
         <AppText
           className='text-gray-500 text-lg font-semibold mb-4 ml-4'
@@ -221,17 +220,17 @@ const HomeScreen = () => {
             </View>
             <View className='flex-1 bg-white p-4 items-center justify-center'>
               <View className='w-full h-24 bg-gray-100 rounded-lg items-center justify-center mb-2 relative overflow-hidden'>
-                {/* Map-like background */}
+
                 <View className='absolute inset-0 bg-primary'>
                   <View className='absolute top-2 left-2 w-8 h-4 bg-primary rounded opacity-60' />
                   <View className='absolute top-4 right-3 w-6 h-3 bg-primary rounded opacity-40' />
                   <View className='absolute bottom-3 left-4 w-10 h-2 bg-primary rounded opacity-50' />
                   <View className='absolute bottom-2 right-2 w-4 h-4 bg-primary rounded opacity-30' />
                 </View>
-                {/* Route line */}
+
                 <View className='absolute top-6 left-8 w-16 h-0.5 bg-primary transform rotate-12' />
                 <View className='absolute top-8 left-16 w-12 h-0.5 bg-primary transform -rotate-12' />
-                {/* Delivery pin */}
+
                 <View className='bg-red-500 w-4 h-4 rounded-full items-center justify-center'>
                   <View className='bg-white w-2 h-2 rounded-full' />
                 </View>
@@ -250,7 +249,7 @@ const HomeScreen = () => {
         </View>
       </View>
 
-      {/* Bottom Tab Space */}
+
       <View className='h-20' />
     </ScrollView>
   );

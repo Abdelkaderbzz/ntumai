@@ -6,7 +6,7 @@ import Svg, { Path } from 'react-native-svg';
 const SocialAuth: React.FC = () => {
   return (
     <>
-      {/* Divider */}
+
       <View className='flex-row items-center mb-10 w-full'>
         <Image
           source={require('../../../assets/divider.png')}
@@ -15,12 +15,10 @@ const SocialAuth: React.FC = () => {
         />
       </View>
 
-      {/* Social Icons */}
       <View
         className='flex-row justify-center items-center mb-6'
         style={{ gap: 20 }}
       >
-        {/* Google */}
         <Pressable
           className='w-14 h-14 items-center justify-center rounded-full'
           style={{
@@ -47,7 +45,6 @@ const SocialAuth: React.FC = () => {
           </Svg>
         </Pressable>
 
-        {/* Apple */}
         <Pressable
           className='w-14 h-14 items-center justify-center rounded-full'
           style={{
@@ -59,7 +56,6 @@ const SocialAuth: React.FC = () => {
           </Svg>
         </Pressable>
 
-        {/* Facebook */}
         <Pressable
           className='w-14 h-14 items-center justify-center rounded-full'
           style={{

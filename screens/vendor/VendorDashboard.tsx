@@ -1,5 +1,5 @@
-// VendorDashboard.js
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import {
   View,
   ScrollView,
@@ -30,8 +30,7 @@ export function VendorDashboard() {
     <View className='flex-1'>
       <VendorHeader />
       <StatusBar barStyle="dark-content" />
-      
-      {/* Header */}
+
       <View className="bg-white px-4 py-4 border-b border-gray-200">
         <View className="flex-row items-center justify-between">
           <View>
@@ -43,7 +42,6 @@ export function VendorDashboard() {
           </TouchableOpacity>
         </View>
         
-        {/* Period Selector */}
         <View className="flex-row mt-4 bg-gray-100 rounded-lg p-1">
           {['Today', 'Week', 'Month'].map((period) => (
             <TouchableOpacity
@@ -64,7 +62,6 @@ export function VendorDashboard() {
       </View>
 
       <ScrollView className="flex-1">
-        {/* Stats Grid */}
         <View className="px-4 py-6">
           <View className="flex-row flex-wrap -mx-2">
             {stats.map((stat, index) => (
@@ -91,7 +88,6 @@ export function VendorDashboard() {
           </View>
         </View>
 
-        {/* Quick Actions */}
         <View className="px-4 mb-6">
           <Text style={{fontFamily:'Ubuntu-Bold'}} className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</Text>
           <View className="flex-row justify-between">
@@ -112,7 +108,6 @@ export function VendorDashboard() {
           </View>
         </View>
 
-        {/* Recent Orders */}
         <View className="px-4 mb-6">
           <View className="flex-row items-center justify-between mb-4">
             <Text style={{fontFamily:'Ubuntu-Bold'}} className="text-lg font-semibold text-gray-900">Recent Orders</Text>

@@ -138,7 +138,7 @@ export default function VendorProfile({ navigation }: { navigation: any }) {
 
   return (
     <SafeAreaView className='flex-1 bg-white'>
-      {/* Header */}
+
       <View className='bg-[#0aaf97] px-4 py-3 flex-row items-center'>
         <TouchableOpacity onPress={() => navigation.goBack()} className='mr-4'>
           <Ionicons name='arrow-back' size={24} color='white' />
@@ -147,7 +147,7 @@ export default function VendorProfile({ navigation }: { navigation: any }) {
       </View>
 
       <ScrollView className='flex-1'>
-        {/* Main Image Section */}
+        
         <View className='relative'>
           <Image
             source={{
@@ -157,7 +157,7 @@ export default function VendorProfile({ navigation }: { navigation: any }) {
             resizeMode='cover'
           />
 
-          {/* Overlapping Profile Image */}
+          
           <View className='absolute bottom-0 left-7 transform translate-y-1/2'>
             <View className='w-20 h-20 rounded-full overflow-hidden border-4 border-white'>
               <Image
@@ -171,7 +171,7 @@ export default function VendorProfile({ navigation }: { navigation: any }) {
           </View>
         </View>
 
-        {/* Restaurant Information */}
+        
         <View className='flex-row items-start '>
           <View className='pt-[50px]'>
             <TouchableOpacity className='bg-[#ed4877] rounded-full ml-4 px-3 py-3'>
@@ -193,7 +193,6 @@ export default function VendorProfile({ navigation }: { navigation: any }) {
           </View>
         </View>
 
-        {/* Reviews Section */}
         <View className='px-4 pb-6'>
           <View className='flex-row items-center justify-between mb-4'>
             <Text className='text-black font-bold text-xl'>Reviews</Text>

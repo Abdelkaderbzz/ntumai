@@ -79,7 +79,6 @@ export default function EditProductScreen() {
 
   const renderGeneralInfo = () => (
     <View className='space-y-4'>
-      {/* Product Name */}
       <View>
         <Text
           style={{ fontFamily: 'Ubuntu-Regular' }}
@@ -98,7 +97,6 @@ export default function EditProductScreen() {
         </View>
       </View>
 
-      {/* Categories */}
       <View>
         <Text
           style={{ fontFamily: 'Ubuntu-Regular' }}
@@ -117,7 +115,6 @@ export default function EditProductScreen() {
         </View>
       </View>
 
-      {/* Brand */}
       <View>
         <Text
           style={{ fontFamily: 'Ubuntu-Regular' }}
@@ -136,7 +133,6 @@ export default function EditProductScreen() {
         </View>
       </View>
 
-      {/* Warranty */}
       <View className='flex-row items-center justify-between'>
         <View className='flex-row items-center'>
           <Tag size={20} color='#6B7280' />
@@ -156,7 +152,6 @@ export default function EditProductScreen() {
         />
       </View>
 
-      {/* Refundable */}
       <View className='flex-row items-center justify-between'>
         <View className='flex-row items-center'>
           <CornerDownLeft size={20} color='#6B7280' />
@@ -176,7 +171,6 @@ export default function EditProductScreen() {
         />
       </View>
 
-      {/* Description */}
       <View>
         <Text
           style={{ fontFamily: 'Ubuntu-Regular' }}
@@ -194,7 +188,6 @@ export default function EditProductScreen() {
         />
       </View>
 
-      {/* Price */}
       <View>
         <Text
           style={{ fontFamily: 'Ubuntu-Regular' }}
@@ -220,13 +213,11 @@ export default function EditProductScreen() {
 
   const renderMedia = () => (
     <View className='space-y-4'>
-      {/* Add Cover */}
       <View className='bg-gray-100 rounded-lg p-6 items-center'>
         <ImageIcon size={40} color='#08AF97' />
         <Text className='text-gray-900 mt-2'>Add Cover</Text>
       </View>
 
-      {/* Add Product */}
       <View className='bg-gray-100 rounded-lg p-6 items-center'>
         <ImageIcon size={40} color='#08AF97' />
         <Text className='text-gray-900 mt-2'>Add Product</Text>
@@ -242,7 +233,6 @@ export default function EditProductScreen() {
 
   const renderVariant = () => (
     <View className='space-y-4'>
-      {/* Variant Name */}
       <View>
         <Text className='text-gray-600 text-sm'>Variant name</Text>
         <View className='bg-[#f8f9fa] rounded-[40px] py-2 px-[9px] flex-row items-center justify-between'>
@@ -258,7 +248,6 @@ export default function EditProductScreen() {
         </View>
       </View>
 
-      {/* Fixed Price */}
       <View>
         <Text className='text-gray-600 text-sm'>Fixed Price</Text>
         <View className='bg-[#f8f9fa] rounded-[40px] py-2 px-[9px] flex-row items-center justify-between'>
@@ -272,7 +261,6 @@ export default function EditProductScreen() {
         </View>
       </View>
 
-      {/* Informational Text */}
       <View className='items-center pt-2'>
         <Text className='text-gray-500 text-sm text-center'>
           The product price will be the same for all variants
@@ -283,12 +271,10 @@ export default function EditProductScreen() {
 
   const renderOption = () => (
     <View className='space-y-4'>
-      {/* Copy from other product button */}
       <TouchableOpacity className='bg-white border-2 border-[#40af97] rounded-full py-4 px-6 items-center'>
         <Text className='text-[#40af97] text-lg'>Copy from other product</Text>
       </TouchableOpacity>
 
-      {/* Create New option label */}
       <View className='mt-4'>
         <Text
           style={{ fontFamily: 'Ubuntu-Regular' }}
@@ -298,7 +284,6 @@ export default function EditProductScreen() {
         </Text>
       </View>
 
-      {/* Option Name Input */}
       <View>
         <View className='bg-white rounded-full px-3 py-3 flex-row items-center justify-between'>
           <Package size={20} color='#6B7280' />
@@ -319,7 +304,6 @@ export default function EditProductScreen() {
     <SafeAreaView className='flex-1 bg-gray-50'>
       <StatusBar barStyle='light-content' />
 
-      {/* Header */}
       <View className='bg-[#08AF97] px-4 py-4'>
         <TouchableOpacity
           className='flex-row items-center'
@@ -331,7 +315,6 @@ export default function EditProductScreen() {
       </View>
 
       <ScrollView className='flex-1 px-4 py-6'>
-        {/* Title */}
         <Text
           style={{ fontFamily: 'Ubuntu-Bold' }}
           className='text-[#909090] text-2xl text-center mb-6'
@@ -339,9 +322,7 @@ export default function EditProductScreen() {
           Edit Product
         </Text>
 
-        {/* Main Form Container */}
         <View className='bg-gray-100 rounded-xl p-6 space-y-4'>
-          {/* General Info Section */}
           <View>
             <TouchableOpacity
               className='flex-row items-center justify-between py-3'
@@ -361,7 +342,6 @@ export default function EditProductScreen() {
 
           <View className='border-t border-gray-200' />
 
-          {/* Media Section */}
           <View>
             <TouchableOpacity
               className='flex-row items-center justify-between py-3'
@@ -381,7 +361,6 @@ export default function EditProductScreen() {
 
           <View className='border-t border-gray-200' />
 
-          {/* Variant Section */}
           <View>
             <TouchableOpacity
               className='flex-row items-center justify-between py-3'
@@ -401,7 +380,6 @@ export default function EditProductScreen() {
 
           <View className='border-t border-gray-200' />
 
-          {/* Option Section */}
           <View>
             <TouchableOpacity
               className='flex-row items-center justify-between py-3'
@@ -419,7 +397,6 @@ export default function EditProductScreen() {
             )}
           </View>
 
-          {/* Delete this item section */}
           <View>
             <TouchableOpacity
               className='bg-gray-100 rounded-lg pt-4 flex-row items-center justify-between border-t border-gray-200'
@@ -434,14 +411,12 @@ export default function EditProductScreen() {
         </View>
       </ScrollView>
 
-      {/* Save Button - Fixed at bottom right */}
       <View className='absolute bottom-4 right-4'>
         <TouchableOpacity className='bg-[#08AF97] rounded-full py-3 px-6 items-center'>
           <Text className='text-white text-base font-medium'>Save</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Delete Confirmation Modal */}
       <Modal
         visible={showDeleteModal}
         animationType='fade'

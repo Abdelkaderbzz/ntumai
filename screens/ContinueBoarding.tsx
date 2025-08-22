@@ -4,7 +4,7 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
-  ScrollView, // <-- Add ScrollView for better content experience
+  ScrollView,
 } from "react-native";
 import AppText from "../components/AppText";
 import { Circle, CircleCheckBig } from "lucide-react-native";
@@ -20,12 +20,12 @@ const ContinueBoardingScreen = ({ navigation }: any) => {
       resizeMode='cover'
     >
       <View className='flex-1 bg-white justify-between'>
-        {/* Main Content - put in a ScrollView if you want it to be scrollable */}
+
         <ScrollView
           contentContainerStyle={{ paddingBottom: 32 }}
           showsVerticalScrollIndicator={false}
         >
-          {/* Header with logo */}
+
           <View className='items-center mt-2'>
             <Image
               source={require('../assets/logo_green.png')}
@@ -34,7 +34,7 @@ const ContinueBoardingScreen = ({ navigation }: any) => {
             />
           </View>
 
-          {/* Congratulations text */}
+
           <View className='px-6 mb-8'>
             <AppText
               className='text-primary text-3xl font-bold text-left mb-2'
@@ -50,7 +50,7 @@ const ContinueBoardingScreen = ({ navigation }: any) => {
             </AppText>
           </View>
 
-          {/* Sanka che section */}
+
           <View className='mb-6 h-32 overflow-hidden'>
             <ImageBackground
               source={require('../assets/splash_style.png')}
@@ -84,9 +84,9 @@ const ContinueBoardingScreen = ({ navigation }: any) => {
             </ImageBackground>
           </View>
 
-          {/* Two option buttons */}
+
           <View className='flex-row mx-6 mb-8 mt-20 gap-2 space-x-3'>
-            {/* Order Deliveries Option */}
+
             <TouchableOpacity
               className='flex-1  bg-primary rounded-xl p-4 flex-row justify-center items-center '
               onPress={() => handleOptionSelect('order')}
@@ -116,7 +116,7 @@ const ContinueBoardingScreen = ({ navigation }: any) => {
               </View>
             </TouchableOpacity>
 
-            {/* Register as a Biker Option */}
+
             <TouchableOpacity
               className='flex-1 bg-yellow-100 rounded-xl p-8 px-4'
               onPress={() => handleOptionSelect('register')}
@@ -149,7 +149,7 @@ const ContinueBoardingScreen = ({ navigation }: any) => {
           </View>
         </ScrollView>
 
-        {/* Continue button fixed at the bottom */}
+
         <View className='mx-6 mb-12'>
           <TouchableOpacity
             className='bg-primary rounded-xl py-4 items-center'

@@ -52,7 +52,7 @@ const PreviewPromotion = () => {
 
   return (
     <SafeAreaView className='flex-1 bg-white'>
-      {/* Header */}
+
       <View className='bg-primary px-4 py-3 flex-row items-center'>
         <TouchableOpacity
           onPress={handleBackPress}
@@ -64,7 +64,7 @@ const PreviewPromotion = () => {
       </View>
 
       <ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
-        {/* Promotion Image */}
+
         <View className='w-full h-64 relative'>
           <Image
             source={{ uri: promotion.imageUrl }}
@@ -75,7 +75,7 @@ const PreviewPromotion = () => {
           <View className='absolute w-full h-full bg-green-500 opacity-25' />
         </View>
 
-        {/* Discount Section */}
+
         <View className='px-4 py-5'>
           <Text className='text-lg font-semibold text-black mb-3'>
             Discount
@@ -87,7 +87,7 @@ const PreviewPromotion = () => {
           </View>
         </View>
 
-        {/* Specifications Section */}
+
         <View className='px-4 py-5'>
           <Text className='text-lg font-semibold text-black mb-3'>
             Specifications
@@ -116,7 +116,7 @@ const PreviewPromotion = () => {
         </View>
         </View>
 
-        {/* Date Expire Section */}
+              
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,4 +1,4 @@
-// screens/checkout/CheckoutScreen.tsx
+
 import { useState } from 'react';
 import {
   View,
@@ -11,7 +11,6 @@ import Text from '../../../components/Text';
 import AppText from '../../../components/AppText';
 import { Ionicons } from '@expo/vector-icons';
 
-// Add Location Screen
 export function AddLocation({ navigation }) {
   const [locationName, setLocationName] = useState('Home');
   const [country, setCountry] = useState('Zambia');
@@ -40,7 +39,7 @@ export function AddLocation({ navigation }) {
       </TouchableOpacity>
 
       <ScrollView className='flex-1 px-4 py-6 mb-[120px] '>
-        {/* Header */}
+
         <View className='items-center mb-8'>
           <Text
             className='text-gray-500 text-lg font-medium mb-6'
@@ -59,7 +58,6 @@ export function AddLocation({ navigation }) {
           </Text>
         </View>
 
-        {/* Location Name */}
         <View className='mb-6'>
           <Text
             className='text-gray-500 text-sm mb-2'
@@ -91,7 +89,6 @@ export function AddLocation({ navigation }) {
           </View>
         </View>
 
-        {/* Country */}
         <View className='mb-6'>
           <Text
             className='text-gray-500 text-sm mb-2'
@@ -109,7 +106,6 @@ export function AddLocation({ navigation }) {
           </View>
         </View>
 
-        {/* City/Town */}
         <View className='mb-6'>
           <Text
             className='text-gray-500 text-sm mb-2'
@@ -127,7 +123,6 @@ export function AddLocation({ navigation }) {
           </View>
         </View>
 
-        {/* Street */}
         <View className='mb-6'>
           <Text
             className='text-gray-500 text-sm mb-2'
@@ -145,7 +140,6 @@ export function AddLocation({ navigation }) {
           </View>
         </View>
 
-        {/* Block Number */}
         <View className='mb-8'>
           <Text
             className='text-gray-500 text-sm mb-2'
@@ -163,7 +157,6 @@ export function AddLocation({ navigation }) {
           </View>
         </View>
 
-        {/* Save Button */}
         <View className='items-end w-full mb-8'>
           <TouchableOpacity
             className='rounded-full px-6 py-2'
@@ -180,7 +173,6 @@ export function AddLocation({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        {/* Footer Text */}
         <View className='items-center pb-12 '>
           <Text
             className='text-gray-500 text-center text-base leading-6'
