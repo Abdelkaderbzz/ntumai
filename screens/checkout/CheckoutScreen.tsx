@@ -127,7 +127,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
       </TouchableOpacity>
 
       <ScrollView className='flex-1'>
-        {/* Header */}
         <View className='px-4 py-6'>
           <AppText
             className='text-gray-600 font-bold text-xl text-center'
@@ -137,7 +136,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
           </AppText>
         </View>
 
-        {/* Shipping Section */}
         <View className='px-4 mb-4'>
           <View className='flex-row items-center justify-between'>
             <AppText
@@ -158,7 +156,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
             </TouchableOpacity>
           </View>
 
-          {/* Address Options */}
           <View className='rounded-2xl p-4  space-y-3 gap-4'>
             <TouchableOpacity
               className='flex-row items-center p-3 bg-[#eeefef] rounded-2xl'
@@ -218,7 +215,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
           </View>
         </View>
 
-        {/* Payment Section */}
         <View className='px-4 mb-6'>
           <View className='flex-row items-center justify-between mb-4'>
             <AppText
@@ -237,7 +233,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
             </TouchableOpacity>
           </View>
 
-          {/* Payment Methods */}
           <View className='bg-[#eeefef] rounded-3xl p-4 '>
             <TouchableOpacity
               className='flex-row items-center py-3 px-1 rounded-xl'
@@ -295,7 +290,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
           </View>
         </View>
 
-        {/* Payment Summary */}
         <View className='px-4 mb-36'>
           <AppText
             className='text-gray-900 font-bold text-lg mb-4'
@@ -396,7 +390,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
 
       <View className='absolute w-full left-0 right-0 bottom-0 bg-primary rounded-t-3xl px-6 py-6'>
         <View className='flex-row items-center justify-between'>
-          {/* Total Amount */}
           <View>
             <AppText className='text-white text-sm mb-1'>
               Total (incl. VAT)
@@ -404,7 +397,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
             <AppText className='text-white text-2xl font-bold'>K2.00</AppText>
           </View>
 
-          {/* Process Next Button */}
           <TouchableOpacity
             className='bg-white rounded-full px-8 py-4'
             onPress={() =>
@@ -421,7 +413,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
         </View>
       </View>
 
-      {/* Address Selection Modal */}
       <Modal visible={showAddressModal} transparent animationType='slide'>
         <View className='flex-1 bg-black bg-opacity-50 justify-end'>
           <View className='bg-white rounded-t-3xl p-4 max-h-96'>
@@ -466,7 +457,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
         </View>
       </Modal>
 
-      {/* Payment Method Modal */}
       <Modal visible={showPaymentModal} transparent animationType='slide'>
         <View className='flex-1 bg-black bg-opacity-50 justify-end'>
           <View className='bg-white rounded-t-3xl p-4 max-h-96'>

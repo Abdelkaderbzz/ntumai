@@ -63,7 +63,7 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
     <SafeAreaView className='flex-1 bg-white'>
       <StatusBar barStyle='dark-content' backgroundColor='white' />
 
-      {/* Header */}
+
       <View className='flex-row items-center justify-between px-6 py-3 bg-white '>
         <View className='flex-row items-center'>
           <AppText className='text-4xl font-bold text-primary'>Orders</AppText>
@@ -78,7 +78,7 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
         </View>
       </View>
 
-      {/* Tab Navigation */}
+
       <View className='flex-row bg-white m-4 rounded-full p-2 shadow-xl'>
         <TouchableOpacity
           onPress={() => setActiveTab('upcoming')}
@@ -118,7 +118,7 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
             className='mx-4 mb-3 bg-white rounded-xl p-4 border border-gray-100 shadow-xl'
           >
             <View className='flex-row items-center'>
-              {/* Left Section - Icon */}
+
               <View className='w-[100px] h-24 bg-primary rounded-2xl mr-4 items-center justify-center'>
                 <Image
                   source={require('../../assets/order.png')}
@@ -126,7 +126,7 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
                 />
               </View>
 
-              {/* Right Section - Text and Navigation */}
+
               <View className='flex-1'>
                 <View className='flex-row items-center mb-1'>
                   <AppText
@@ -152,7 +152,6 @@ const DriverOrders: React.FC<DriverOrdersProps> = ({ navigation }) => {
                 </AppText>
               </View>
 
-              {/* Navigation Arrow */}
               <View className='ml-2'>
                 {order.status === 'canceled' ? (
                   <ChevronLeft size={24} color='#999595' />

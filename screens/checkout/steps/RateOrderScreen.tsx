@@ -88,7 +88,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
       </TouchableOpacity>
 
       <ScrollView className='flex-1 px-4 py-6'>
-        {/* Rate Items Header */}
         <View className='items-center mb-8'>
           <Text
             style={{ fontFamily: 'Ubuntu-Bold' }}
@@ -97,9 +96,7 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
             Rate Items
           </Text>
 
-          {/* Product Images */}
           <View className='flex-row items-center justify-center mb-8'>
-            {/* Left Side Image */}
             <View className='w-24 h-24 rounded-full overflow-hidden mr-4'>
               <Image
                 source={{
@@ -110,7 +107,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
               />
             </View>
 
-            {/* Center Main Image */}
             <View
               className='w-32 h-32 rounded-full overflow-hidden mx-4 border-4'
               style={{ borderColor: '#08AF97' }}
@@ -124,7 +120,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
               />
             </View>
 
-            {/* Right Side Image */}
             <View className='w-24 h-24 rounded-full overflow-hidden ml-4'>
               <Image
                 source={{
@@ -136,7 +131,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
             </View>
           </View>
 
-          {/* Restaurant Name */}
           <Text
             style={{ fontFamily: 'Ubuntu-Bold' }}
             className='text-gray-800 font-bold text-3xl mb-4'
@@ -144,7 +138,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
             Devante Restaurant
           </Text>
 
-          {/* Rating Question */}
           <Text
             style={{ fontFamily: 'Ubuntu-Regular' }}
             className='text-gray-500 text-lg mb-6'
@@ -152,7 +145,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
             What did you like about the product?
           </Text>
 
-          {/* Star Rating */}
           <View className='flex-row mb-8'>
             {[1, 2, 3, 4, 5].map((star) => (
               <TouchableOpacity
@@ -169,7 +161,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
             ))}
           </View>
 
-          {/* Rating Tags */}
           <View className='flex-row w-full flex-wrap gap-3 mb-4 justify-start'>
             <TouchableOpacity className='px-6 py-3 rounded-full border border-gray-300'>
               <Text className='text-gray-600'>Yummy!</Text>
@@ -201,7 +192,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
           </View>
         </View>
         <View className='px-4 py-6 bg-white'>
-          {/* Suggestions Text Area */}
           <View className='mb-6'>
             <TextInput
               placeholder='Any suggestions?'
@@ -218,7 +208,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
             />
           </View>
 
-          {/* Upload Image Button */}
           <TouchableOpacity className='flex-row items-center mb-8'>
             <View className='w-16 h-16 rounded-2xl border-2 border-gray-300 items-center justify-center mr-4'>
               <Text className='text-gray-400 text-2xl'>+</Text>
@@ -231,7 +220,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
             </Text>
           </TouchableOpacity>
 
-          {/* App Version Footer */}
           <View className='items-center mt-8'>
             <Text
               className='text-gray-400 text-base mb-2'
@@ -252,9 +240,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
         </View>
       </ScrollView>
 
-      {/* Feedback Section */}
-
-      {/* Submit Button */}
       <View className='px-12 py-6 bg-white border-t border-gray-100'>
         <TouchableOpacity
           onPress={handleSubmitRating}

@@ -34,12 +34,12 @@ const CreateBrand = () => {
       Alert.alert('Error', 'Fixed Price is required');
       return;
     }
-    // Handle save logic here
+    // TODO: Implement save functionality
     Alert.alert('Success', 'Promotion created successfully!');
   };
 
   const handleImageUpload = () => {
-    // Handle image upload logic here
+    // TODO: Implement image upload functionality
     Alert.alert('Image Upload', 'Image upload functionality would go here');
   };
 
@@ -47,7 +47,6 @@ const CreateBrand = () => {
     <View className='flex-1 bg-white'>
       <StatusBar style='light' />
 
-      {/* Header */}
       <View className='bg-primary pt-12 pb-4'>
         <View className='flex-row items-center px-4'>
           <TouchableOpacity
@@ -61,17 +60,14 @@ const CreateBrand = () => {
       </View>
 
       <ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
-        {/* Title */}
         <View className='items-center mt-6 mb-6'>
           <AppText className='text-2xl font-bold text-[#909090]'>
             Create Brand
           </AppText>
         </View>
 
-        {/* Main Content Card */}
         <View className='mx-6 mb-6 '>
           <View className='bg-[#ededed] rounded-2xl p-6 shadow-sm'>
-            {/* Discount Type */}
             <View className='mb-4'>
               <AppText className='text-sm text-gray-600 '>name</AppText>
               <TouchableOpacity className='flex-row bg-white items-center justify-between rounded-full p-4 border border-gray-200'>
@@ -82,7 +78,6 @@ const CreateBrand = () => {
               </TouchableOpacity>
             </View>
 
-            {/* Code */}
             <View className='mb-4'>
               <AppText className='text-sm text-gray-600 '>description</AppText>
               <View className='flex-row bg-white items-center rounded-2xl  py-1 px-2 border border-gray-200'>
@@ -93,7 +88,6 @@ const CreateBrand = () => {
                 />
               </View>
             </View>
-            {/* Add Promo Image */}
             <View className='mb-4'>
               <TouchableOpacity
                 onPress={handleImageUpload}
@@ -111,11 +105,9 @@ const CreateBrand = () => {
           </View>
         </View>
 
-        {/* Bottom Spacing */}
         <View className='h-20' />
       </ScrollView>
 
-      {/* Save Button */}
       <View className='absolute bottom-6 right-6'>
         <TouchableOpacity
           onPress={handleSave}
