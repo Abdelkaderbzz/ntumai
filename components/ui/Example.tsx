@@ -26,7 +26,7 @@ export default function Example() {
     <ScrollView className="flex-1 bg-gray-50 p-4">
       <Text className="text-2xl font-bold mb-6">UI Components Example</Text>
       
-      {/* Buttons */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Buttons</Text>
         <View className="space-y-2">
@@ -37,7 +37,7 @@ export default function Example() {
         </View>
       </Card>
 
-      {/* Input */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Input</Text>
         <Input
@@ -49,7 +49,7 @@ export default function Example() {
         />
       </Card>
 
-      {/* Badges */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Badges</Text>
         <View className="flex-row space-x-2">
@@ -60,7 +60,7 @@ export default function Example() {
         </View>
       </Card>
 
-      {/* Alert */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Alerts</Text>
         <View className="space-y-3">
@@ -69,7 +69,7 @@ export default function Example() {
         </View>
       </Card>
 
-      {/* Avatar */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Avatars</Text>
         <View className="flex-row space-x-3">
@@ -79,7 +79,7 @@ export default function Example() {
         </View>
       </Card>
 
-      {/* Switch */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Switch</Text>
         <Switch
@@ -89,7 +89,7 @@ export default function Example() {
         />
       </Card>
 
-      {/* Progress */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Progress</Text>
         <View className="space-y-3">
@@ -99,7 +99,7 @@ export default function Example() {
         </View>
       </Card>
 
-      {/* Spinner */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Spinner</Text>
         <View className="flex-row space-x-4">
@@ -108,7 +108,7 @@ export default function Example() {
         </View>
       </Card>
 
-      {/* Skeleton */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Skeleton</Text>
         <View className="space-y-2">
@@ -118,7 +118,7 @@ export default function Example() {
         </View>
       </Card>
 
-      {/* Divider */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Divider</Text>
         <Divider />
@@ -127,7 +127,7 @@ export default function Example() {
         <Text className="text-center py-2">Divider with text</Text>
       </Card>
 
-      {/* Checkbox */}
+
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Checkbox</Text>
         <Checkbox
@@ -137,7 +137,7 @@ export default function Example() {
         />
       </Card>
 
-      {/* Radio Button */}
+      
       <Card className="mb-4">
         <Text className="text-lg font-semibold mb-3">Radio Button</Text>
         <View className="space-y-2">

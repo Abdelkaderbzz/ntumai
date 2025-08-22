@@ -118,7 +118,7 @@ export function VendorNotifications() {
       <VendorHeader />
       <StatusBar barStyle="dark-content" />
       
-      {/* Header */}
+
       <View className="bg-white px-4 py-4 border-b border-gray-200">
         <View className="flex-row items-center justify-between">
           <Text style={{fontFamily:'Ubuntu-Bold'}} className="text-2xl font-bold text-gray-900">Notifications</Text>
@@ -132,7 +132,7 @@ export function VendorNotifications() {
           )}
         </View>
         
-        {/* Filter Tabs */}
+        
         <View className="flex-row mt-4 bg-gray-100 rounded-lg p-1">
           <TouchableOpacity 
             onPress={() => setFilter('all')}

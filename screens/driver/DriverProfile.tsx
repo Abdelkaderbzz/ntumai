@@ -16,7 +16,6 @@ interface DriverProfileProps {
 }
 
 const DriverProfile: React.FC<DriverProfileProps> = ({ navigation }) => {
-  // Dummy data for summary cards
   const summaryCards = [
     {
       id: 1,
@@ -44,7 +43,6 @@ const DriverProfile: React.FC<DriverProfileProps> = ({ navigation }) => {
     },
   ];
 
-  // Dummy data for overviews menu
   const overviewsMenu = [
     { icon: 'people-outline' as const, title: 'Account', screen: 'Account' },
     { icon: 'map-outline' as const, title: 'Routes', screen: 'Routes' },
@@ -62,7 +60,6 @@ const DriverProfile: React.FC<DriverProfileProps> = ({ navigation }) => {
     <SafeAreaView className='flex-1 bg-white'>
       <StatusBar barStyle='light-content' backgroundColor='#14b8a6' />
 
-      {/* Top Navigation Bar */}
       <View className='bg-teal-500 px-4 py-3'>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
@@ -74,7 +71,6 @@ const DriverProfile: React.FC<DriverProfileProps> = ({ navigation }) => {
       </View>
 
       <ScrollView className='flex-1'>
-        {/* Profile Section */}
         <View className='items-center py-8'>
           <View className='relative'>
             <LinearGradient
@@ -82,8 +78,8 @@ const DriverProfile: React.FC<DriverProfileProps> = ({ navigation }) => {
               start={{ x: 0.5, y: 0 }}
               end={{ x: 0.5, y: 1 }}
               style={{
-                padding: 3, // thickness of border
-                borderRadius: 999, // fully round
+                padding: 3,
+                borderRadius: 999,
               }}
             >
               <Image
@@ -118,7 +114,6 @@ const DriverProfile: React.FC<DriverProfileProps> = ({ navigation }) => {
           </View>
         </View>
 
-        {/* Summary Cards */}
         <View className='px-4 mb-8'>
           <View className='flex-row justify-between'>
             {summaryCards.map((card) => (
@@ -142,7 +137,6 @@ const DriverProfile: React.FC<DriverProfileProps> = ({ navigation }) => {
           </View>
         </View>
 
-        {/* Overviews Section */}
         <View className='px-4 mb-8'>
           <AppText className='text-xl font-bold text-[#919091] mb-4'>
             Overviews
@@ -167,7 +161,6 @@ const DriverProfile: React.FC<DriverProfileProps> = ({ navigation }) => {
           ))}
         </View>
 
-        {/* Footer */}
         <View className='items-center py-8'>
           <AppText
             className='text-gray-400 text-sm mb-2'

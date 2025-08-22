@@ -33,7 +33,6 @@ export function OrderTrackingScreen({
         <AppText className='text-white text-lg font-semibold'>Back</AppText>
       </TouchableOpacity>
       <ScrollView className='flex-1 px-4 py-6'>
-        {/* Order Header */}
         <View className='mb-6'>
           <Text className='text-gray-500 text-sm mb-2'>
             February 08, 2025 | 12:58PM
@@ -59,7 +58,6 @@ export function OrderTrackingScreen({
           </View>
         </View>
 
-        {/* Order Status */}
         <View className='rounded-2xl p-4 mb-6 '>
           <Text
             style={{ fontFamily: 'Ubuntu-Bold' }}
@@ -69,9 +67,7 @@ export function OrderTrackingScreen({
           </Text>
 
           <View className='mb-6'>
-            {/* Progress Line and Circles */}
             <View className='flex-row items-center justify-between mb-4 relative'>
-              {/* Pending */}
               <View className='items-center z-10'>
                 <View
                   className='w-16 h-16 rounded-full items-center justify-center'
@@ -81,13 +77,11 @@ export function OrderTrackingScreen({
                 </View>
               </View>
 
-              {/* Progress Line from Pending to On the Way */}
               <View
                 className='flex-1 h-1 mx-2'
                 style={{ backgroundColor: '#08AF97' }}
               />
 
-              {/* On the Way */}
               <View className='items-center z-10'>
                 <View
                   className='w-16 h-16 rounded-full items-center justify-center'
@@ -97,13 +91,11 @@ export function OrderTrackingScreen({
                 </View>
               </View>
 
-              {/* Progress Line from On the Way to Delivered */}
               <View
                 className='flex-1 h-1 mx-2'
                 style={{ backgroundColor: '#08AF97' }}
               />
 
-              {/* Delivered */}
               <View className='items-center z-10'>
                 <View
                   className='w-16 h-16 rounded-full items-center justify-center'
@@ -114,7 +106,6 @@ export function OrderTrackingScreen({
               </View>
             </View>
 
-            {/* Labels */}
             <View className='flex-row justify-between'>
               <Text className='text-gray-800 font-medium text-start flex-1 '>
                 Pending
@@ -128,7 +119,6 @@ export function OrderTrackingScreen({
             </View>
           </View>
 
-          {/* Action Buttons */}
           <View className='flex-row gap-4 space-x-4'>
             <TouchableOpacity
               className='flex-1 py-3 rounded-2xl flex-row items-center justify-center'
@@ -182,7 +172,6 @@ export function OrderTrackingScreen({
           </View>
         </View>
 
-        {/* Driver's Information */}
         <View className='bg-white rounded-2xl p-4'>
           <Text
             style={{ fontFamily: 'Ubuntu-Bold' }}
@@ -210,7 +199,6 @@ export function OrderTrackingScreen({
           </View>
         </View>
 
-        {/* Buyer's Information */}
         <View className='bg-white rounded-2xl px-4'>
           <Text
             style={{ fontFamily: 'Ubuntu-Bold' }}
@@ -238,7 +226,6 @@ export function OrderTrackingScreen({
           </View>
         </View>
 
-        {/* Store and Product Information */}
         <View className='bg-white rounded-2xl p-4 mb-6'>
           <Text
             style={{ fontFamily: 'Ubuntu-Bold' }}
@@ -247,7 +234,6 @@ export function OrderTrackingScreen({
             Store and Product Information
           </Text>
 
-          {/* Restaurant Info */}
           <View className='flex-row items-center mb-6'>
             <Image
               source={{
@@ -263,7 +249,6 @@ export function OrderTrackingScreen({
             </Text>
           </View>
 
-          {/* Product Info */}
           <View className='w-full flex-row justify-center'>
             <View className='items-center flex-row'>
               <View className='relative mr-6'>
@@ -274,7 +259,6 @@ export function OrderTrackingScreen({
                   className='w-24 h-24 rounded-2xl'
                   resizeMode='cover'
                 />
-                {/* Heart Icon */}
                 <TouchableOpacity className='absolute top-1 right-1'>
                   <View
                     className='w-6 h-6 rounded-full items-center justify-center'
@@ -309,7 +293,6 @@ export function OrderTrackingScreen({
           </View>
         </View>
 
-        {/* App Version Footer */}
         <View className='items-center mt-8 mb-12'>
           <Text className='text-gray-400 text-base mb-2'>
             App version 1.0.0

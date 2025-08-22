@@ -504,7 +504,6 @@ export default function MarketplaceScreen({
 
   return (
     <View className='flex-1 bg-gray-50'>
-      {/* Header - Following Figma Design */}
       <View className='pb-6'>
         <View className='bg-gray-50 flex-row items-center justify-between px-4 pt-2 mb-6 shadow-lg'>
           <View>
@@ -537,7 +536,6 @@ export default function MarketplaceScreen({
           </View>
         </View>
 
-        {/* User Avatar Row */}
         <View className='flex-row items-center justify-between mb-6'>
           <ScrollView
             horizontal
@@ -567,7 +565,6 @@ export default function MarketplaceScreen({
           </TouchableOpacity>
         </View>
 
-        {/* Promo Cards */}
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -580,7 +577,6 @@ export default function MarketplaceScreen({
       </View>
 
       <ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
-        {/* Trending Section */}
         <View className='px-4 py-6'>
           <View className='flex-row items-center justify-between mb-4'>
             <AppText
@@ -653,7 +649,6 @@ export default function MarketplaceScreen({
           </View>
         </View>
 
-        {/* Search and Filter */}
         <View className='px-4 mb-4'>
           <View className='bg-white rounded-full px-4 py-3 flex-row items-center shadow-sm'>
             <Search size={18} color='#6B7280' />
@@ -670,7 +665,6 @@ export default function MarketplaceScreen({
           </View>
         </View>
 
-        {/* Categories */}
         <View className='px-4 mb-6'>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View className='flex-row gap-3'>
@@ -698,7 +692,6 @@ export default function MarketplaceScreen({
           </ScrollView>
         </View>
 
-        {/* Featured Restaurants */}
         <View className='mb-6'>
           <View className='flex-row items-center justify-between px-4 mb-4'>
             <Text className='text-gray-800 text-lg font-bold'>
@@ -719,7 +712,6 @@ export default function MarketplaceScreen({
           </ScrollView>
         </View>
 
-        {/* Popular Items */}
         <View className='px-4 pb-20'>
           <AppText
             className='text-gray-800 text-lg font-bold mb-4'
@@ -770,7 +762,6 @@ export function RestaurantDetailScreen({
 
   return (
     <View className='flex-1 bg-white'>
-      {/* Header Image */}
       <View className='relative'>
         <Image
           source={{ uri: restaurant.image }}
@@ -815,7 +806,6 @@ export function RestaurantDetailScreen({
         )}
       </View>
 
-      {/* Restaurant Info */}
       <View className='px-4 py-6 border-b border-gray-100'>
         <AppText
           className='text-2xl font-bold text-gray-800 mb-2'
@@ -884,7 +874,6 @@ export function RestaurantDetailScreen({
         </View>
       </View>
 
-      {/* Categories */}
       <View className='px-4 py-4'>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View className='flex-row gap-3'>
@@ -912,7 +901,6 @@ export function RestaurantDetailScreen({
         </ScrollView>
       </View>
 
-      {/* Menu Items */}
       <ScrollView className='flex-1 px-4'>
         {filteredProducts.map((product) => (
           <TouchableOpacity
@@ -1072,7 +1060,6 @@ export function ProductDetailScreen({
 
   return (
     <View className='flex-1 bg-white'>
-      {/* Header */}
       <View className='relative'>
         <Image
           source={{ uri: product.image }}
@@ -1106,7 +1093,6 @@ export function ProductDetailScreen({
       </View>
 
       <ScrollView className='flex-1'>
-        {/* Product Info */}
         <View className='px-4 py-6'>
           <AppText
             className='text-2xl font-bold text-gray-800 mb-2'
@@ -1150,7 +1136,6 @@ export function ProductDetailScreen({
             {product.description}
           </AppText>
 
-          {/* Size Selection */}
           <View className='mb-6'>
             <AppText
               className='text-gray-800 font-semibold text-lg mb-3'
@@ -1191,7 +1176,6 @@ export function ProductDetailScreen({
             </View>
           </View>
 
-          {/* Extras */}
           <View className='mb-6'>
             <AppText
               className='text-gray-800 font-semibold text-lg mb-3'
@@ -1239,7 +1223,6 @@ export function ProductDetailScreen({
             ))}
           </View>
 
-          {/* Quantity */}
           <View className='mb-8'>
             <AppText
               className='text-gray-800 font-semibold text-lg mb-3'
@@ -1271,7 +1254,6 @@ export function ProductDetailScreen({
         </View>
       </ScrollView>
 
-      {/* Add to Cart Button */}
       <View className='px-4 py-6 border-t border-gray-100'>
         <TouchableOpacity
           onPress={addToCart}
@@ -1389,7 +1371,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
       </TouchableOpacity>
 
       <ScrollView className='flex-1'>
-        {/* Cart Header */}
         <View className='px-4 pt-4'>
           <Text className='text-center text-[#929292] font-bold text-2xl  mb-4'>
             Cart
@@ -1417,7 +1398,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
               className='bg-white rounded-2xl p-2 shadow-sm'
             >
               <View className='flex-row items-center'>
-                {/* Selection Indicator - Pink checkmark */}
                 <View
                   className='w-6 h-6 rounded-full items-center justify-center mr-3'
                   style={{ backgroundColor: '#ec4876' }}
@@ -1425,7 +1405,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
                   <Ionicons name='checkmark' size={16} color='white' />
                 </View>
 
-                {/* Product Image with teal background */}
                 <View className='relative'>
                   <View className='w-28 h-28 rounded-3xl bg-primary items-center justify-center mr-4'>
                     <Image
@@ -1438,7 +1417,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
                       resizeMode='cover'
                     />
                   </View>
-                  {/* Heart Icon */}
                   <TouchableOpacity className='absolute top-1 right-5'>
                     <View
                       className='w-6 h-6 rounded-full items-center justify-center'
@@ -1449,7 +1427,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
                   </TouchableOpacity>
                 </View>
 
-                {/* Product Information */}
                 <View className='flex-1'>
                   <AppText
                     className='text-gray-900 font-bold text-lg'
@@ -1474,7 +1451,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
                       $300
                     </AppText>
 
-                    {/* Quantity Selector with gray background and pink plus */}
                     <View className='flex-row  items-center'>
                       <TouchableOpacity
                         onPress={() =>
@@ -1507,7 +1483,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
           ))}
         </View>
 
-        {/* Add Other Items */}
         <View className='mx-4 mb-2'>
           <TouchableOpacity className='flex-row items-center mb-6'>
             <View className='w-8 h-8 rounded-full bg-pink-500 items-center justify-center mr-3'>
@@ -1521,7 +1496,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
             </AppText>
           </TouchableOpacity>
 
-          {/* Apply Discount Code */}
           <TouchableOpacity className='border-2 border-dashed bg-[#eeefef] border-pink-400 rounded-full p-2 py-1 mb-6'>
             <AppText
               className='text-pink-500 font-bold text-center text-lg'
@@ -1532,7 +1506,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
           </TouchableOpacity>
         </View>
 
-        {/* Payment Info */}
         <View className='mx-4 pb-[100px]'>
           <AppText
             className='text-gray-900 font-bold text-xl mb-4'
@@ -1543,7 +1516,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
 
           <View className='border-b border-gray-200 mb-4' />
 
-          {/* Payment Details */}
           <View className='space-y-3'>
             <View className='flex-row justify-between items-center mb-3'>
               <AppText
@@ -1622,7 +1594,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
 
             <View className='border-b border-gray-200 mb-4' />
 
-            {/* Grand Total */}
             <View className='flex-row justify-between items-center'>
               <AppText
                 className='text-gray-500 font-bold text-lg'
@@ -1643,7 +1614,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
 
       <View className='absolute w-full left-0 right-0 bottom-0 bg-primary rounded-t-3xl px-6 py-6'>
         <View className='flex-row items-center justify-between'>
-          {/* Total Amount */}
           <View>
             <AppText className='text-white text-sm mb-1'>
               Total (incl. VAT)
@@ -1651,7 +1621,6 @@ export function CartScreen({ navigation }: CartScreenProps) {
             <AppText className='text-white text-2xl font-bold'>K2.00</AppText>
           </View>
 
-          {/* Process Next Button */}
           <TouchableOpacity
             className='bg-white rounded-full px-8 py-4'
             onPress={() => navigation.navigate('Checkout')}

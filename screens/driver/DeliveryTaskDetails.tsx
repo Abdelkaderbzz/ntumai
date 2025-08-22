@@ -3,21 +3,17 @@ import { Ionicons } from '@expo/vector-icons';
 
 const DeliveryTaskDetails = () => {
   const handleAccept = () => {
-    // Handle accept delivery logic
     console.log('Delivery accepted');
-    // Navigate to next screen or show success message
   };
 
   const handleReject = () => {
-    // Handle reject delivery logic
     console.log('Delivery rejected');
-    // Navigate back or show rejection message
   };
 
   return (
     <View className='absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl'>
       <ScrollView className='px-4 py-6' showsVerticalScrollIndicator={false}>
-        {/* Pick Up and Delivery Section */}
+
         <View className='flex-row justify-between items-center pb-4'>
           <Text className='text-primary text-2xl mb-2 font-bold'>
             23 January 2025
@@ -55,7 +51,6 @@ const DeliveryTaskDetails = () => {
 
         <View className='h-px bg-gray-200 mb-4' />
 
-        {/* Item Details Section */}
         <View className='flex-row items-center justify-between mb-4'>
           <View>
             <Text className='text-gray-500 text-sm mb-2'>Sending</Text>
@@ -70,7 +65,6 @@ const DeliveryTaskDetails = () => {
 
         <View className='h-px bg-gray-200 mb-4' />
 
-        {/* Total Cost Section */}
         <View className=' flex-row items-center justify-between '>
           <Text className='text-gray-500 text-sm'>Total</Text>
           <View className='flex-row justify-center items-center w-[210px]'>
@@ -79,7 +73,6 @@ const DeliveryTaskDetails = () => {
         </View>
       </ScrollView>
 
-      {/* Action Buttons */}
       <View className='px-4 pb-6'>
         <View
           className='flex-row space-x-4 p-2 rounded-full bg-white'
@@ -112,7 +105,6 @@ const DeliveryTaskDetails = () => {
         </View>
       </View>
 
-      {/* Footer */}
       <View className='px-4 pb-4'>
         <View className='flex-row items-center justify-center space-x-4 gap-2'>
           <Text className='text-gray-400 text-l'>App version 1.0.0</Text>

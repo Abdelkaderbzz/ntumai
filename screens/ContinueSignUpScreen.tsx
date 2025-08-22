@@ -51,7 +51,6 @@ const ContinueSignUpScreen = () => {
           behavior={Platform.OS === "ios" ? "padding" : undefined}
           className="flex-1"
         >
-          {/* Header Section */}
           <View className="items-center px-6 pt-20 pb-8">
             <Image
               source={require("../assets/logo_green.png")}
@@ -71,9 +70,7 @@ const ContinueSignUpScreen = () => {
             </Text>
           </View>
 
-          {/* Form Section */}
           <View className="flex-1 px-6">
-            {/* Phone Number Input */}
             <View className="mb-6">
               <View className="flex-row items-center border border-gray-200 rounded-2xl px-5 py-5 bg-gray-50">
                 <Svg
@@ -104,7 +101,6 @@ const ContinueSignUpScreen = () => {
               </View>
             </View>
 
-            {/* Password Input */}
             <View className="mb-6">
               <View className="flex-row items-center border border-gray-200 rounded-2xl px-5 py-5 bg-gray-50">
                 <Svg
@@ -181,7 +177,6 @@ const ContinueSignUpScreen = () => {
               </View>
             </View>
 
-            {/* Confirm Password Input */}
             <View className="mb-8">
               <View className="flex-row items-center border border-gray-200 rounded-2xl px-5 py-5 bg-gray-50">
                 <Svg
@@ -261,7 +256,6 @@ const ContinueSignUpScreen = () => {
               </View>
             </View>
 
-            {/* Sign Up Button */}
             <Pressable
               className="w-full py-5 rounded-2xl mb-8 bg-primary "
               onPress={handleSignUp}
@@ -302,16 +296,13 @@ const ContinueSignUpScreen = () => {
               </View>
             </Pressable>
 
-            {/* Divider */}
             <View className="flex-row items-center mb-8">
               <View className="flex-1 h-px bg-gray-200" />
               <Text className="mx-6 text-gray-400 text-sm font-medium">OR</Text>
               <View className="flex-1 h-px bg-gray-200" />
             </View>
 
-            {/* Social Icons */}
             <View className="flex-row justify-center gap-6 mb-8">
-              {/* Google */}
               <Pressable className="w-12 h-12 items-center justify-center rounded-2xl bg-white border border-gray-200">
                 <Svg width={24} height={24} viewBox="0 0 533.5 544.3">
                   <Path
@@ -333,14 +324,12 @@ const ContinueSignUpScreen = () => {
                 </Svg>
               </Pressable>
 
-              {/* Facebook */}
               <Pressable className="w-12 h-12 items-center justify-center rounded-2xl bg-white border border-gray-200">
                 <Svg width={24} height={24} viewBox="0 0 24 24" fill="#1877F2">
                   <Path d="M22.675 0h-21.35C.597 0 0 .6 0 1.33v21.34C0 23.4.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.127V8.413c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.464.099 2.795.144v3.24h-1.918c-1.506 0-1.797.716-1.797 1.766v2.315h3.59l-.467 3.622h-3.123V24h6.116C23.403 24 24 23.4 24 22.67V1.33C24 .6 23.403 0 22.675 0z" />
                 </Svg>
               </Pressable>
 
-              {/* Apple */}
               <Pressable className="w-12 h-12 items-center justify-center rounded-2xl bg-white border border-gray-200">
                 <Svg width={24} height={24} viewBox="0 0 24 24" fill="black">
                   <Path d="M16.365 1.43c0 1.14-.467 2.23-1.26 3.04-.78.82-2.06 1.45-3.15 1.34a3.26 3.26 0 0 1-.03-.4c0-1.12.51-2.28 1.29-3.07.78-.79 2.07-1.36 3.15-1.37.02.13.04.26.04.4zm2.91 16.14c-.25.57-.51 1.13-.84 1.64-.66 1.01-1.45 2.01-2.57 2.02-1 .01-1.3-.65-2.71-.64-1.4.01-1.74.65-2.74.64-1.12-.01-1.96-1.1-2.62-2.1-1.79-2.61-3.16-7.39-1.32-10.63.91-1.59 2.54-2.6 4.3-2.62 1.05-.02 2.05.7 2.71.7.66 0 1.88-.86 3.17-.73.54.02 2.07.22 3.06 1.67-.08.05-1.82 1.06-1.81 3.15 0 2.49 2.23 3.33 2.28 3.35-.03.09-.36 1.27-1.17 2.53z" />
@@ -350,7 +339,6 @@ const ContinueSignUpScreen = () => {
           </View>
         </KeyboardAvoidingView>
 
-        {/* Footer */}
         <View className="items-center pb-8">
           <Pressable onPress={() => navigation.navigate("Login")}>
             <Text className="text-gray-600 text-base text-center">

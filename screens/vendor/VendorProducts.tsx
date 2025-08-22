@@ -370,7 +370,6 @@ export default function VenderProducts() {
       {products.map((product) => (
         <View key={product.id} className='bg-[#eeeeee] rounded-3xl p-4 mb-3'>
           <View className='flex-row items-center'>
-            {/* Product Image */}
             <View className='w-16 h-16 rounded-full overflow-hidden mr-4'>
               <Image
                 source={{ uri: product.image }}
@@ -379,7 +378,6 @@ export default function VenderProducts() {
               />
             </View>
 
-            {/* Product Details */}
             <View className='flex-1'>
               <Text className='font-semibold text-gray-900 text-lg mb-1'>
                 {product.name}
@@ -392,7 +390,6 @@ export default function VenderProducts() {
               </Text>
             </View>
 
-            {/* Controls */}
             <View className='items-end'>
               <TouchableOpacity
                 className='p-2 mb-2'
@@ -423,7 +420,6 @@ export default function VenderProducts() {
           onPress={() => navigation.navigate('PreviewPromotion' as never)}
         >
           <View className='h-[140px] flex-row justify-between items-start'>
-            {/* Promotion Image */}
             <View className='w-[140px] mr-3 h-full relative'>
               <Image
                 source={{ uri: promo.image }}
@@ -441,7 +437,6 @@ export default function VenderProducts() {
               </View>
             </View>
 
-            {/* Promotion Details */}
             <View className='flex-1 h-full pt-2'>
               <Text className='font-semibold text-gray-900 text-lg mb-1'>
                 {promo.name}
@@ -460,7 +455,6 @@ export default function VenderProducts() {
               </Text>
             </View>
 
-            {/* Action Menu */}
             <View className='h-full flex-col align-center justify-center pr-3'>
               <TouchableOpacity
                 onPress={() => openActionModalPromotion(promo)}
@@ -484,7 +478,6 @@ export default function VenderProducts() {
             key={category.id}
             className='w-[48%] bg-[#eeeeee] rounded-2xl p-4 mb-4 relative'
           >
-            {/* Status Tag */}
             <View
               className={`absolute top-8 z-20 left-0 px-3 py-1 rounded-tr-full rounded-br-full shadow-lg ${
                 category.status === 'Active' ? 'bg-[#0aaf97]' : 'bg-[#909090]'
@@ -494,7 +487,6 @@ export default function VenderProducts() {
                 {category.status}
               </Text>
             </View>
-            {/* Ellipsis Menu */}
 
             <TouchableOpacity
               onPress={() => openActionModalCategory(category)}
@@ -502,7 +494,6 @@ export default function VenderProducts() {
             >
               <Text className='color-primary text-2xl font-bold'>⋮</Text>
             </TouchableOpacity>
-            {/* Category Image */}
             <View className='items-center mt-6 mb-3'>
               <View className='w-32 h-32 rounded-3xl overflow-hidden relative'>
                 <Image
@@ -513,7 +504,6 @@ export default function VenderProducts() {
                 <View className='w-full h-full absolute opacity-25 bg-green-500 bg-opacity-50'></View>
               </View>
             </View>
-            {/* Category Label */}
             <Text className='text-center text-black font-medium text-base'>
               {category.name}
             </Text>
@@ -537,7 +527,6 @@ export default function VenderProducts() {
             >
               <Text className='color-primary text-2xl font-bold'>⋮</Text>
             </TouchableOpacity>
-            {/* Brand Image */}
             <View className='items-center mt-6 mb-3'>
               <View className='w-32 h-32 rounded-3xl overflow-hidden relative'>
                 <Image
@@ -548,7 +537,6 @@ export default function VenderProducts() {
                 <View className='w-full h-full absolute opacity-25 bg-green-500 bg-opacity-50'></View>
               </View>
             </View>
-            {/* Brand Label */}
             <Text className='text-center text-black font-medium text-base'>
               {brand.name}
             </Text>
@@ -563,7 +551,6 @@ export default function VenderProducts() {
       <StatusBar barStyle='dark-content' />
       <HeaderBar />
       <View className='bg-white px-4 py-4 border-b border-gray-200'>
-        {/* Navigation Tabs */}
         <FlatList
           horizontal
           data={['Products', 'Promotions', 'Categories', 'Brands']}
@@ -590,7 +577,6 @@ export default function VenderProducts() {
           )}
         />
 
-        {/* Search Bar */}
         <View className='flex-row items-center mb-4'>
           <View className='flex-row items-center bg-gray-100 rounded-full px-3 py-2 flex-1 mr-2'>
             <Search size={20} color='#9CA3AF' />
@@ -604,7 +590,6 @@ export default function VenderProducts() {
           </View>
         </View>
 
-        {/* Action Buttons */}
         <View className='flex-row items-center justify-between'>
           <TouchableOpacity className='p-2'>
             <SlidersHorizontal size={20} color='#08AF97' />
@@ -636,7 +621,6 @@ export default function VenderProducts() {
         {activeTab === 'Brands' && renderBrands()}
       </ScrollView>
 
-      {/* Action Modal */}
       <Modal
         visible={showActionModal}
         transparent={true}
@@ -649,7 +633,6 @@ export default function VenderProducts() {
         >
           <View className='flex-1 justify-end'>
             <Pressable className='bg-white rounded-t-3xl p-6'>
-              {/* Edit Option */}
               <TouchableOpacity
                 className='flex-row items-center py-4 '
                 onPress={() =>
@@ -660,7 +643,6 @@ export default function VenderProducts() {
                 <Text className='text-gray-600 ml-3 flex-1'>Edit</Text>
               </TouchableOpacity>
 
-              {/* Public Toggle Option */}
               {selectedPromotion || selectedCategory ? (
                 <TouchableOpacity
                   className='flex-row items-center py-4 '
@@ -702,7 +684,6 @@ export default function VenderProducts() {
                 </View>
               )}
 
-              {/* Delete Option */}
               <TouchableOpacity
                 className='flex-row items-center py-4'
                 onPress={() =>

@@ -9,7 +9,6 @@ const OrderDeliveryLastStep: React.FC = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView className='flex-1 bg-white'>
-      {/* Header */}
       <TouchableOpacity
         className='flex-row items-center px-4 py-3 bg-primary'
         onPress={() => {
@@ -30,7 +29,6 @@ const OrderDeliveryLastStep: React.FC = () => {
         <AppText className='text-white text-lg font-semibold'>Back</AppText>
       </TouchableOpacity>
 
-      {/* Progress Tracker */}
       <View className='px-6 py-6'>
         <Image
           source={require('./../../../assets/order-last-step.png')}
@@ -38,14 +36,11 @@ const OrderDeliveryLastStep: React.FC = () => {
         />
       </View>
 
-      {/* Main Content - Scrollable */}
       <ScrollView className='flex-1 px-6' showsVerticalScrollIndicator={false}>
         <AppText className='text-2xl font-bold text-[#919190] mb-6'>
           Adress Details
         </AppText>
-        {/* Location Card */}
         <View className='bg-primary rounded-2xl p-6 mb-6'>
-          {/* Collect From Section */}
           <View className='flex-row items-start mb-6'>
             <View className='mr-4 mt-1'>
               <Ionicons name='location' size={24} color='white' />
@@ -69,10 +64,8 @@ const OrderDeliveryLastStep: React.FC = () => {
             </View>
           </View>
 
-          {/* Vertical Line */}
           <View className='absolute left-7 top-20 w-0.5 h-16 border-l border-dashed border-white/30' />
 
-          {/* Delivery To Section */}
           <View className='flex-row items-start'>
             <View className='mr-4 mt-1'>
               <Ionicons name='location' size={24} color='white' />
@@ -110,13 +103,11 @@ const OrderDeliveryLastStep: React.FC = () => {
           </View>
         </View>
 
-        {/* Payment Method Section */}
         <AppText className='text-2xl font-bold text-[#919190] mb-6'>
           Payment method
         </AppText>
         <View className='rounded-2xl p-6 mb-6'>
           <View className='space-y-4 flex-col gap-4'>
-            {/* Cash on Delivery - Selected */}
             <TouchableOpacity className='flex-row gap-4 items-center justify-between'>
               <View className='flex-row items-center'>
                 <View className='w-10 h-10 bg-primary rounded-full items-center justify-center mr-3'>
@@ -131,7 +122,6 @@ const OrderDeliveryLastStep: React.FC = () => {
               </View>
             </TouchableOpacity>
 
-            {/* Visa/Mastercard/JCB - Unselected */}
             <TouchableOpacity className='flex-row items-center justify-between'>
               <View className='flex-row items-center'>
                 <View className='w-10 h-10 bg-primary rounded-full items-center justify-center mr-3'>
@@ -144,7 +134,6 @@ const OrderDeliveryLastStep: React.FC = () => {
               <View className='w-6 h-6 border-2 border-primary rounded-full' />
             </TouchableOpacity>
 
-            {/* PayPal - Unselected */}
             <TouchableOpacity className='flex-row items-center justify-between'>
               <View className='flex-row items-center'>
                 <View className='w-10 h-10 bg-primary rounded-full items-center justify-center mr-3'>
@@ -159,19 +148,16 @@ const OrderDeliveryLastStep: React.FC = () => {
           </View>
         </View>
 
-        {/* Order Summary Section */}
         <AppText className='text-2xl font-bold text-[#919190] mb-6'>
           Order summary
         </AppText>
         <View className='mb-[80px] rounded-2xl p-6'>
           <View className='space-y-3'>
-            {/* Size */}
             <View className='flex-row justify-between items-center'>
               <AppText className='text-black text-base'>Size</AppText>
               <AppText className='text-black font-bold text-lg'>20 cm</AppText>
             </View>
 
-            {/* Type */}
             <View className='flex-row justify-between items-center'>
               <AppText className='text-black text-lg'>Type</AppText>
               <AppText className='text-black font-bold text-lg'>
@@ -179,7 +165,6 @@ const OrderDeliveryLastStep: React.FC = () => {
               </AppText>
             </View>
 
-            {/* Collect time */}
             <View className='flex-row justify-between items-center'>
               <AppText className='text-black text-lg font-bold'>
                 Collect time
@@ -189,7 +174,6 @@ const OrderDeliveryLastStep: React.FC = () => {
               </AppText>
             </View>
 
-            {/* Delivery */}
             <View className='flex-row justify-between items-center'>
               <AppText className='text-black text-lg font-bold'>
                 Delivery
@@ -199,12 +183,10 @@ const OrderDeliveryLastStep: React.FC = () => {
           </View>
         </View>
 
-        {/* // other */}
         <View className='h-8' />
       </ScrollView>
       <View className='absolute w-full left-0 right-0 bottom-0 bg-primary rounded-t-3xl px-6 py-6'>
         <View className='flex-row items-center justify-between'>
-          {/* Total Amount */}
           <View>
             <AppText className='text-white text-sm mb-1'>
               Total (incl. VAT)
@@ -212,7 +194,6 @@ const OrderDeliveryLastStep: React.FC = () => {
             <AppText className='text-white text-2xl font-bold'>K2.00</AppText>
           </View>
 
-          {/* Process Next Button */}
           <TouchableOpacity
             className='bg-white rounded-full px-8 py-4'
             onPress={() => {

@@ -130,7 +130,6 @@ export default function App() {
               />
               <Stack.Screen name='Login' component={LoginScreen} />
 
-              {/* Driver Navigation Stack */}
               <Stack.Screen
                 name='DriverHome'
                 component={DriverHome}
@@ -180,7 +179,6 @@ export default function App() {
                 }}
               />
 
-              {/* Marketplace Screens */}
               <Stack.Screen
                 name='RestaurantDetail'
                 component={RestaurantDetailScreen}
@@ -238,7 +236,6 @@ export default function App() {
                 }}
               />
 
-              {/* Products Navigation Stack */}
               <Stack.Screen
                 name='EditProduct'
                 component={EditProductScreen}
@@ -311,7 +308,6 @@ export default function App() {
                   animation: 'slide_from_bottom',
                 }}
               />
-              {/* Vendor Navigation Stack */}
               <Stack.Screen
                 name='VendorDashboard'
                 component={VendorTabs}
