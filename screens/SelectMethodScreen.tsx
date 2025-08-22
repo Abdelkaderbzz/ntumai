@@ -55,7 +55,6 @@ const SelectMethodScreen = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={{ flex: 1, backgroundColor: "white" }}>
-        {/* Keyboard Avoiding View wraps ONLY the form, not the footer */}
         <KeyboardAvoidingView
           style={{ flex: 1 }}
           behavior={Platform.OS === "ios" ? "padding" : "height"}

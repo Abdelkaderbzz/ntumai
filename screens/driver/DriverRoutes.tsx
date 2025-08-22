@@ -19,7 +19,6 @@ const DriverRoutes: React.FC<DriverRoutesProps> = ({ navigation }) => {
     <SafeAreaView className='flex-1 bg-white'>
       <StatusBar barStyle='dark-content' backgroundColor='white' />
 
-      {/* Header */}
       <View className='flex-row items-center px-4 py-3 bg-primary border-b border-gray-100'>
         <TouchableOpacity onPress={() => navigation.goBack()} className='mr-3'>
           <Ionicons name='arrow-back' size={24} color='#fff' />
@@ -27,7 +26,6 @@ const DriverRoutes: React.FC<DriverRoutesProps> = ({ navigation }) => {
         <AppText className='text-xl font-semibold text-white'>back</AppText>
       </View>
 
-      {/* Map Placeholder */}
       <View className='flex-1 bg-gray-100 rounded-xl relative'>
         <Image
           source={require('../../assets/routes-map.png')}

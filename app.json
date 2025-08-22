@@ -8,8 +8,18 @@
     "icon": "./assets/ntumai_logo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/box1.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "ios": {
       "supportsTablet": true,
+      "splash": {
+        "image": "./assets/splash_logo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff"
+      },
       "fonts": [
         {
           "path": "./assets/fonts/Ubuntu-Regular.ttf",
@@ -30,14 +40,40 @@
           "path": "./assets/fonts/Ubuntu-Medium.ttf",
           "weight": "medium",
           "style": "normal"
+        },
+        {
+          "path": "./assets/fonts/Ubuntu-Regular.ttf",
+          "weight": "normal",
+          "style": "normal"
+        },
+        {
+          "path": "./assets/fonts/Ubuntu-Bold.ttf",
+          "weight": "bold",
+          "style": "normal"
+        },
+        {
+          "path": "./assets/fonts/Ubuntu-Light.ttf",
+          "weight": "normal",
+          "style": "italic"
+        },
+        {
+          "path": "./assets/fonts/Ubuntu-Medium.ttf",
+          "weight": "medium",
+          "style": "normal"
         }
-      ]
+      ],
+      "bundleIdentifier": "com.dannydc.NTUMAI"
     },
     "android": {
       "icon": "./assets/ntumai_logo.png",
       "edgeToEdgeEnabled": true,
       "versionCode": 1,
       "minSdkVersion": 21,
+      "splash": {
+        "image": "./assets/splash_logo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff"
+      },
       "fonts": [
         {
           "path": "./assets/fonts/Ubuntu-Regular.ttf",

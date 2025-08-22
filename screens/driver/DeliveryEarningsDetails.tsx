@@ -3,21 +3,17 @@ import { Ionicons } from '@expo/vector-icons';
 
 const DeliveryEarningsDetails = () => {
   const handleAccept = () => {
-    // Handle accept delivery logic
     console.log('Delivery accepted');
-    // Navigate to next screen or show success message
   };
 
   const handleReject = () => {
-    // Handle reject delivery logic
     console.log('Delivery rejected');
-    // Navigate back or show rejection message
   };
 
   return (
     <View className='absolute bottom-0 left-0 right-0 bg-primary rounded-t-3xl'>
       <ScrollView className='px-4 py-6' showsVerticalScrollIndicator={false}>
-        {/* Pick Up and Delivery Section */}
+
         <View className='flex-row justify-between items-center pb-4'>
           <Text className='text-white text-2xl mb-2 font-bold'>
             My Earnings
@@ -32,7 +28,6 @@ const DeliveryEarningsDetails = () => {
           </TouchableOpacity>
         </View>
         <View>
-          {/* Today's Earnings */}
           <View className=' rounded-2xl p-4  flex-row justify-between items-center'>
             <View>
               <Text className='text-white text-xl font-bold'>Today</Text>
@@ -43,7 +38,6 @@ const DeliveryEarningsDetails = () => {
 
           <View className='h-px bg-gray-200 ' />
 
-          {/* Last Week's Earnings */}
           <View className=' rounded-2xl p-4  flex-row justify-between items-center'>
             <View>
               <Text className='text-white text-xl font-bold'>Last Week</Text>
@@ -54,7 +48,6 @@ const DeliveryEarningsDetails = () => {
 
           <View className='h-px bg-gray-200 ' />
 
-          {/* Last Month's Earnings */}
           <View className=' rounded-2xl p-4  flex-row justify-between items-center'>
             <View>
               <Text className='text-white text-xl font-bold'>Last Month</Text>
@@ -65,7 +58,6 @@ const DeliveryEarningsDetails = () => {
         </View>
       </ScrollView>
 
-      {/* Footer */}
       <View className='px-4 pb-4'>
         <View className='flex-row items-center justify-center space-x-4 gap-2'>
           <Text className='text-white text-l'>App version 1.0.0</Text>

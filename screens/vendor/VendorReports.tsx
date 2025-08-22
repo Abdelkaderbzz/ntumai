@@ -201,7 +201,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       <Pressable className='flex-1 bg-opacity-50' onPress={handleCloseModal}>
         <View className='flex-1 justify-end'>
           <Pressable className='bg-white rounded-t-3xl p-6'>
-            {/* Price Section */}
             <View className='flex-row items-center mb-6'>
               <View className='rounded-full p-3'>
                 <DollarSign size={32} color='#0aaf97' />
@@ -211,7 +210,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
               </Text>
             </View>
 
-            {/* Order Details Section */}
             <View className='space-y-4'>
               <View className='flex-row justify-between items-center'>
                 <Text className='text-gray-500 text-base'>Name</Text>
@@ -335,7 +333,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
 
   const renderOrderList = () => (
     <View className='flex-1'>
-      {/* Search Bar */}
       <View className='flex-row items-center mb-4'>
         <View className='flex-row items-center bg-gray-100 rounded-full px-3 py-2 flex-1 mr-2'>
           <Search size={20} color='#9CA3AF' />
@@ -348,7 +345,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
           <SlidersHorizontal size={20} color='#9CA3AF' />
         </View>
       </View>
-      {/* Order List */}
       <ScrollView className='flex-1'>
         {orders.map((order) => (
           <TouchableOpacity
@@ -357,7 +353,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
             onPress={() => handleOrderPress(order)}
           >
             <View className='flex-row items-start'>
-              {/* Order Image */}
               <View className='w-16 h-16 rounded-lg overflow-hidden mr-3'>
                 <Image
                   source={{ uri: order.image }}
@@ -366,7 +361,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
                 />
               </View>
 
-              {/* Order Details */}
               <View className='flex-1'>
                 <Text className='font-bold text-black text-base mb-1'>
                   {order.restaurantName}
@@ -379,7 +373,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
                 </Text>
               </View>
 
-              {/* Price and Status */}
               <View className='items-end'>
                 <Text
                   className={`font-bold text-lg mb-2 ${
@@ -420,7 +413,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
 
     return (
       <View className='flex-1'>
-        {/* Account Header Section */}
         <View className='bg-[#0aaf97] p-6 mb-6'>
           <View className='flex-row items-center justify-between mb-4'>
             <View className='flex-row items-center'>
@@ -461,14 +453,12 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
           </View>
         </View>
 
-        {/* Terms & Conditions Link */}
         <View className='flex-row justify-end mb-4'>
           <TouchableOpacity>
             <Text className='text-[#55c2fd] text-sm'>Terms & Conditions</Text>
           </TouchableOpacity>
         </View>
 
-        {/* Recent Transactions Section */}
         <View className='flex-1'>
           <Text className='text-black font-bold text-xl mb-2'>
             Recent Transactions
@@ -526,8 +516,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
   return (
     <SafeAreaView className='flex-1 bg-white'>
       <HeaderBar />
-      {/* Header */}
-      {/* <View className='bg-white px-4 py-3 flex-row items-center border-b border-gray-200'>
         <TouchableOpacity onPress={handleBackPress} className='mr-4'>
           <Ionicons name='arrow-back' size={24} color='#000' />
         </TouchableOpacity>
@@ -535,7 +523,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
       </View> */}
 
       <ScrollView className='flex-1 p-4'>
-        {/* Navigation Tabs */}
         <FlatList
           horizontal
           data={['All', 'Order report', 'Payment report']}
@@ -564,10 +551,8 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
           )}
         />
 
-        {/* Content based on active tab */}
         {activeTab === 'All' && (
           <>
-            {/* Summary Card */}
             <View className='bg-[#eeeeee] rounded-full p-2 mb-6 shadow-sm'>
               <View className='flex-row items-center justify-between'>
                 <View className='flex-row items-center'>
@@ -584,10 +569,8 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
               </View>
             </View>
 
-            {/* Order Report Section */}
             {renderOrderReport()}
 
-            {/* Income Report Section */}
             {renderIncomeReport()}
           </>
         )}
@@ -597,7 +580,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
         {activeTab === 'Payment report' && renderPaymentReport()}
       </ScrollView>
 
-      {/* Total Paid Bottom Bar - Only show for All tab */}
       {activeTab === 'All' && (
         <View className='bg-[#0aaf97] rounded-xl p-8 mx-4 mb-4'>
           <View className='flex-row items-center justify-between'>
@@ -612,7 +594,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
         </View>
       )}
 
-      {/* Order Details Modal */}
       {renderOrderModal()}
     </SafeAreaView>
   );
