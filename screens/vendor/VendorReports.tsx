@@ -49,7 +49,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
   const [showOrderModal, setShowOrderModal] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
 
-  // Mock order data
   const orders: Order[] = [
     {
       id: '1',
@@ -141,7 +140,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
     },
   ];
 
-  // Mock transaction data for Payment report
   const transactions: Transaction[] = [
     {
       id: '1',
@@ -401,7 +399,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
   );
 
   const renderPaymentReport = () => {
-    // Group transactions by date
     const groupedTransactions = transactions.reduce((groups, transaction) => {
       const date = transaction.date;
       if (!groups[date]) {
@@ -516,6 +513,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
   return (
     <SafeAreaView className='flex-1 bg-white'>
       <HeaderBar />
+      {/* <View className='bg-white px-4 py-3 flex-row items-center border-b border-gray-200'>
         <TouchableOpacity onPress={handleBackPress} className='mr-4'>
           <Ionicons name='arrow-back' size={24} color='#000' />
         </TouchableOpacity>
@@ -593,6 +591,7 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
           </View>
         </View>
       )}
+
 
       {renderOrderModal()}
     </SafeAreaView>
