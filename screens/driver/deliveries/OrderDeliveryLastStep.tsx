@@ -178,7 +178,7 @@ const OrderDeliveryLastStep: React.FC = () => {
               <AppText className='text-black text-lg font-bold'>
                 Delivery
               </AppText>
-              <AppText className='text-black font-bold text-lg'>$2.00</AppText>
+              <AppText className='text-black font-bold text-lg'>K2.00</AppText>
             </View>
           </View>
         </View>
