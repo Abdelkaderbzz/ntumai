@@ -1,4 +1,3 @@
-// ContinueSignUpScreen.tsx
 import React, { useState } from "react";
 import {
   View,
@@ -31,8 +30,6 @@ const ContinueSignUpScreen = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSignUp = () => {
-    // TODO: Implement sign up logic
-    console.log("Sign up with:", { phoneNumber, password, confirmPassword });
     navigation.navigate("Login");
   };
 

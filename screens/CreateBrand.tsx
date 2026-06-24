@@ -34,12 +34,10 @@ const CreateBrand = () => {
       Alert.alert('Error', 'Fixed Price is required');
       return;
     }
-    // TODO: Implement save functionality
     Alert.alert('Success', 'Promotion created successfully!');
   };
 
   const handleImageUpload = () => {
-    // TODO: Implement image upload functionality
     Alert.alert('Image Upload', 'Image upload functionality would go here');
   };
 

@@ -73,7 +73,6 @@ export default function VenderProducts() {
     null
   );
 
-  // Mock data for products
   const [products, setProducts] = useState<Product[]>([
     {
       id: '1',
@@ -131,7 +130,6 @@ export default function VenderProducts() {
     },
   ]);
 
-  // Mock data for promotions
   const [promotions, setPromotions] = useState<Promotion[]>([
     {
       id: '1',
@@ -213,7 +211,6 @@ export default function VenderProducts() {
     },
   ]);
 
-  // Mock data for categories
   const [categories, setCategories] = useState<Category[]>([
     {
       id: '1',
@@ -301,8 +298,6 @@ export default function VenderProducts() {
   };
 
   const handleEditProduct = (product: Product) => {
-    // Navigate to edit screen
-    console.log('Navigate to edit screen for product:', product.id);
     navigation.navigate('EditProduct' as never);
     setShowActionModal(false);
     setSelectedProduct(null);
@@ -321,8 +316,6 @@ export default function VenderProducts() {
   };
 
   const handleEditPromotion = (promotion: Promotion) => {
-    // Navigate to edit screen
-    console.log('Navigate to edit screen for promotion:', promotion.id);
     navigation.navigate('EditPromotion' as never);
     setShowActionModal(false);
     setSelectedPromotion(null);
@@ -343,8 +336,6 @@ export default function VenderProducts() {
   };
 
   const handleEditCategory = (category: Category) => {
-    // Navigate to edit screen
-    console.log('Navigate to edit screen for category:', category.id);
     navigation.navigate('EditCategory' as never);
     setShowActionModal(false);
     setSelectedCategory(null);

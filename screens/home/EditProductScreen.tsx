@@ -67,8 +67,6 @@ export default function EditProductScreen() {
   };
 
   const handleDeleteProduct = () => {
-    // Handle product deletion logic here
-    console.log('Product deleted');
     setShowDeleteModal(false);
     navigation.goBack();
   };

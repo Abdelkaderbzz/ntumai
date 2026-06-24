@@ -1,27 +1,14 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 
 const DeliveryEarningsDetails = () => {
-  const handleAccept = () => {
-    console.log('Delivery accepted');
-  };
-
-  const handleReject = () => {
-    console.log('Delivery rejected');
-  };
-
   return (
     <View className='absolute bottom-0 left-0 right-0 bg-primary rounded-t-3xl'>
       <ScrollView className='px-4 py-6' showsVerticalScrollIndicator={false}>
-
         <View className='flex-row justify-between items-center pb-4'>
           <Text className='text-white text-2xl mb-2 font-bold'>
             My Earnings
           </Text>
-          <TouchableOpacity
-            onPress={handleAccept}
-            className=' bg-white py-[12px] px-6 rounded-full'
-          >
+          <TouchableOpacity className=' bg-white py-[12px] px-6 rounded-full'>
             <Text className='text-primary text-center font-semibold text-lg'>
               View All
             </Text>

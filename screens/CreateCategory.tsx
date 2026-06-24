@@ -42,12 +42,10 @@ const CreateCategory = () => {
       return;
     }
 
-    // TODO: Implement save functionality
     Alert.alert('Success', 'Promotion created successfully!');
   };
 
   const handleImageUpload = () => {
-    // TODO: Implement image upload functionality
     Alert.alert('Image Upload', 'Image upload functionality would go here');
   };
 

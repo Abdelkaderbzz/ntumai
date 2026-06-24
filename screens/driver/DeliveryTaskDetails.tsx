@@ -2,26 +2,14 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const DeliveryTaskDetails = () => {
-  const handleAccept = () => {
-    console.log('Delivery accepted');
-  };
-
-  const handleReject = () => {
-    console.log('Delivery rejected');
-  };
-
   return (
     <View className='absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl'>
       <ScrollView className='px-4 py-6' showsVerticalScrollIndicator={false}>
-
         <View className='flex-row justify-between items-center pb-4'>
           <Text className='text-primary text-2xl mb-2 font-bold'>
             23 January 2025
           </Text>
-          <TouchableOpacity
-            onPress={handleAccept}
-            className=' bg-primary py-4 px-6 rounded-full'
-          >
+          <TouchableOpacity className=' bg-primary py-4 px-6 rounded-full'>
             <Text className='text-white text-center font-semibold text-lg'>
               Local
             </Text>
@@ -82,22 +70,16 @@ const DeliveryTaskDetails = () => {
             shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 0.3,
             shadowRadius: 2,
-            elevation: 2, // for Android
+            elevation: 2,
           }}
         >
-          <TouchableOpacity
-            onPress={handleAccept}
-            className='flex-1 bg-primary py-2 rounded-full'
-          >
+          <TouchableOpacity className='flex-1 bg-primary py-2 rounded-full'>
             <Text className='text-white text-center font-semibold text-lg'>
               Accept
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={handleReject}
-            className='flex-1 py-2 rounded-full'
-          >
+          <TouchableOpacity className='flex-1 py-2 rounded-full'>
             <Text className='text-primary text-center font-semibold text-lg'>
               Reject
             </Text>
