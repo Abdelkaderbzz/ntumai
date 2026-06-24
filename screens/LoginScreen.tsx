@@ -40,14 +40,13 @@ const LoginScreen = () => {
   const handleNext = () => {
     if (!inputValue) return;
 
-    // Redirect to home after login
-    navigation.navigate('Home');
-
     if (selectedMethod === 'phone') {
       if (inputValue === '0000') return navigation.navigate('Home');
       if (inputValue === '1111') return navigation.navigate('DriverHome');
       if (inputValue === '3333') return navigation.navigate('VendorDashboard');
     }
+
+    navigation.navigate('Home');
   };
 
   return (
