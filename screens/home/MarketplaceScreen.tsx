@@ -1,4 +1,3 @@
-// screens/marketplace/MarketplaceScreen.tsx
 import React, { useState } from 'react';
 import {
   View,
@@ -33,7 +32,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
 
-// Navigation Types
 type RootStackParamList = {
   Home: undefined;
   RestaurantDetail: { restaurant: Restaurant };
@@ -53,7 +51,6 @@ type ProductDetailScreenProps = NativeStackScreenProps<
 >;
 type CartScreenProps = NativeStackScreenProps<RootStackParamList, 'Cart'>;
 
-// Types
 interface Product {
   id: string;
   name: string;
@@ -100,7 +97,6 @@ interface CartItem extends Product {
   quantity: number;
 }
 
-// Enhanced Mock Data
 const promoCards: PromoCard[] = [
   {
     id: '1',
@@ -234,7 +230,6 @@ const products: Product[] = [
   },
 ];
 
-// Global cart state (in a real app, you'd use Context or Redux)
 let globalCart: CartItem[] = [];
 
 export default function MarketplaceScreen({
@@ -728,7 +723,6 @@ export default function MarketplaceScreen({
   );
 }
 
-// Restaurant Detail Screen
 export function RestaurantDetailScreen({
   route,
   navigation,
@@ -996,7 +990,6 @@ export function RestaurantDetailScreen({
   );
 }
 
-// Product Detail Screen
 export function ProductDetailScreen({
   route,
   navigation,
@@ -1272,7 +1265,6 @@ export function ProductDetailScreen({
   );
 }
 
-// Cart Screen
 export function CartScreen({ navigation }: CartScreenProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>(globalCart);
 
@@ -1352,13 +1344,7 @@ export function CartScreen({ navigation }: CartScreenProps) {
     <View className='flex-1 bg-white'>
       <TouchableOpacity
         className='flex-row items-center px-4 py-3 bg-primary'
-        onPress={() => {
-          // If using react-navigation, you can use navigation.goBack()
-          // Otherwise, replace with your go back logic
-          if (typeof navigation !== 'undefined' && navigation.goBack) {
-            navigation.goBack();
-          }
-        }}
+        onPress={() => navigation.goBack()}
         activeOpacity={0.7}
       >
         <Ionicons

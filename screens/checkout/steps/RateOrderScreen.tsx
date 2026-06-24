@@ -1,4 +1,3 @@
-// screens/checkout/CheckoutScreen.tsx
 import { useState } from 'react';
 import {
   View,
@@ -8,13 +7,12 @@ import {
   Alert,
   TextInput,
 } from 'react-native';
-import { ArrowLeft, Check, Star } from 'lucide-react-native';
+import { Star } from 'lucide-react-native';
 import Text from '../../../components/Text';
 import { RateOrderScreenProps } from '../CheckoutScreen';
 import AppText from '../../../components/AppText';
 import { Ionicons } from '@expo/vector-icons';
 
-// Rate Order Screen
 export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
   const { orderId, orderDetails } = route.params;
   const [rating, setRating] = useState(0);
@@ -30,7 +28,6 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
 
     setIsSubmitting(true);
 
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       Alert.alert('Thank You!', 'Your feedback helps us improve our service', [
@@ -69,13 +66,7 @@ export function RateOrderScreen({ route, navigation }: RateOrderScreenProps) {
     <View className='flex-1 bg-gray-50'>
       <TouchableOpacity
         className='flex-row items-center px-4 py-3 bg-primary'
-        onPress={() => {
-          // If using react-navigation, you can use navigation.goBack()
-          // Otherwise, replace with your go back logic
-          if (typeof navigation !== 'undefined' && navigation.goBack) {
-            navigation.goBack();
-          }
-        }}
+        onPress={() => navigation.goBack()}
         activeOpacity={0.7}
       >
         <Ionicons
