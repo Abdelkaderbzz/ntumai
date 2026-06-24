@@ -17,7 +17,6 @@ type DriverDashboardProps = {
 };
 
 const DriverDashboard: React.FC<DriverDashboardProps> = ({ navigation }) => {
-  // Dummy data for Next Orders
   const nextOrders = [
     {
       id: 1,
@@ -56,7 +55,6 @@ const DriverDashboard: React.FC<DriverDashboardProps> = ({ navigation }) => {
     },
   ];
 
-  // Dummy data for Income Cards
   const incomeCards = [
     {
       id: 1,

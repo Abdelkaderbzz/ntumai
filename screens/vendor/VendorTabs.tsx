@@ -1,4 +1,3 @@
-// VendorTabs.tsx - Main Vendor Navigation
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { VendorDashboard } from './VendorDashboard';

@@ -12,7 +12,6 @@ import { StatusBar } from "expo-status-bar";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../App";
 
-// Import reusable components
 import SignupHeader from "../src/components/auth/SignupHeader";
 import AuthMethodTabs from "../src/components/auth/AuthMethodTabs";
 import AuthInput from "../src/components/auth/AuthInput";

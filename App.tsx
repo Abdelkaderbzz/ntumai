@@ -43,7 +43,6 @@ import OrderDeliveryLastStep from './screens/driver/deliveries/OrderDeliveryLast
 import OrderDeliverySecondStep from './screens/driver/deliveries/OrderDeliverySecondStep';
 import { AddLocation } from './screens/checkout/steps/AddLocation';
 
-// Keep splash screen visible while loading fonts
 SplashScreen.preventAutoHideAsync();
 
 export type RootStackParamList = {

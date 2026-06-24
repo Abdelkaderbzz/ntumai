@@ -43,7 +43,6 @@ const AuthInput: React.FC<AuthInputProps> = ({
     );
   }
 
-  // Email input
   return (
     <View className="mb-8">
       <Text className="mb-2 text-gray-500 text-base">

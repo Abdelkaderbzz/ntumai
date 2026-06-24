@@ -1,4 +1,3 @@
-// screens/home/HomeTabs.tsx
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./HomeScreen";
 import MarketplaceScreen from "./MarketplaceScreen";

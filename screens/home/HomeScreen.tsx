@@ -1,4 +1,3 @@
-// screens/home/HomeScreen.tsx
 import {
   View,
   ScrollView,

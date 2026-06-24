@@ -513,12 +513,6 @@ const VendorReports: React.FC<VendorReportsProps> = ({ navigation }) => {
   return (
     <SafeAreaView className='flex-1 bg-white'>
       <HeaderBar />
-      {/* <View className='bg-white px-4 py-3 flex-row items-center border-b border-gray-200'>
-        <TouchableOpacity onPress={handleBackPress} className='mr-4'>
-          <Ionicons name='arrow-back' size={24} color='#000' />
-        </TouchableOpacity>
-        <Text className='text-lg font-semibold text-black'>Reports</Text>
-      </View> */}
 
       <ScrollView className='flex-1 p-4'>
         <FlatList
