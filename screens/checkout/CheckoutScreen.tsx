@@ -1,4 +1,3 @@
-// screens/checkout/CheckoutScreen.tsx
 import { useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Modal, Image } from 'react-native';
 import {
@@ -14,7 +13,6 @@ import Text from '../../components/Text';
 import AppText from '../../components/AppText';
 import { Ionicons } from '@expo/vector-icons';
 
-// Types
 type RootStackParamList = {
   Home: undefined;
   Cart: undefined;
@@ -94,7 +92,6 @@ const mockPaymentMethods: PaymentMethod[] = [
   },
 ];
 
-// Checkout Screen
 export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
   const [selectedAddress, setSelectedAddress] = useState<Address>(
     mockAddresses[0]
@@ -108,13 +105,7 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
     <View className='flex-1 bg-gray-50'>
       <TouchableOpacity
         className='flex-row items-center px-4 py-3 bg-primary'
-        onPress={() => {
-          // If using react-navigation, you can use navigation.goBack()
-          // Otherwise, replace with your go back logic
-          if (typeof navigation !== 'undefined' && navigation.goBack) {
-            navigation.goBack();
-          }
-        }}
+        onPress={() => navigation.goBack()}
         activeOpacity={0.7}
       >
         <Ionicons
@@ -276,7 +267,6 @@ export function CheckoutScreen({ navigation }: CheckoutScreenProps) {
                 <Image
                   source={require('../../assets/pay-pal1.png')}
                   className='w-10 h-10'
-                  // resizeMode='contain'
                 />
               </View>
               <AppText
